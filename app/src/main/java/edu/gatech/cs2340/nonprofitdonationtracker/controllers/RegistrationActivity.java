@@ -7,21 +7,16 @@ import android.view.View;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
-public class OpeningScreen extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_opening_screen);
+        setContentView(R.layout.activity_registration);
     }
 
-    public void onClickLogin(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-    }
-
-    public void onClickRegister(View view) {
-        Intent intent = new Intent(this, RegistrationActivity.class);
+    public void onClickCancel(View view) {
+        Intent intent = new Intent(this, OpeningScreen.class);
         startActivity(intent);
     }
 }
