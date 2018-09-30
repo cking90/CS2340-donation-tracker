@@ -32,6 +32,20 @@ public class UserInfo {
         info.add(password);
         info.add(userType);
         loginInfo.put(email, info);
+
+    }
+
+    public static boolean containsKey(String email) {
+        return loginInfo.containsKey(email);
+    }
+
+    public static boolean correctPassword(String email, String password) {
+        if (containsKey(email)) {
+            List<String> temp = loginInfo.get(email);
+            return password.equals(temp.get(1));
+        }
+        return false;
+
     }
 
 

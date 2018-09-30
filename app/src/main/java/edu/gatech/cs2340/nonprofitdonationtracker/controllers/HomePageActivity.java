@@ -10,15 +10,17 @@ import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
 public class HomePageActivity extends AppCompatActivity {
 
+    private String userEmail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
         Bundle extras = getIntent().getExtras();
-        String user_email = extras.getString("user_email");
+        userEmail = extras.getString("user_email");
         TextView welcomeText = this.findViewById(R.id.welcomeTxtView);
-        String welcomeMsg = String.format("Welcome %s!", user_email.split("@")[0]);
+        String welcomeMsg = String.format("Welcome %s!", userEmail.split("@")[0]);
         welcomeText.setText(welcomeMsg);
 
     }

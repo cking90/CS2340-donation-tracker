@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
+import android.widget.Toast;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -30,7 +31,7 @@ public class RegistrationActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void updateUserInformation(View view) {
+    private boolean updateUserInformation(View view) {
         //getting user entered values from the edit text entry boxes
         EditText name = (EditText)findViewById(R.id.name_edit_text_id);
         Editable name_value = name.getText();
@@ -42,14 +43,26 @@ public class RegistrationActivity extends AppCompatActivity {
         Spinner userType = (Spinner)findViewById(R.id.user_type_spinner_id);
         String selected_user_type = userType.getSelectedItem().toString();
         UserInfo userInfo = new UserInfo();
-        userInfo.addNewUser(name_value.toString(), email_value.toString(), password_value.toString(), selected_user_type);
+        if (!UserInfo.containsKey(email_value.toString())) {
+            userInfo.addNewUser(name_value.toString(), email_value.toString(), password_value.toString(), selected_user_type);
+            return true;
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext()
+                        , "Email already registered to an account.", Toast.LENGTH_SHORT);
+            toast.show();
+            return false;
+        }
+
     }
 
     public void onClickRegister(View view) {
-        updateUserInformation(view);
-        //takes user back to login page so that they can login with their credentials
-        //TODO: set up validation in the LoginActivity class
-        Intent intent = new Intent(this, OpeningScreen.class);
-        startActivity(intent);
+        if (updateUserInformation(view)) {
+            //takes user back to login page so that they can login with their credentials
+            //TODO: set up validation in the LoginActivity class
+            Intent intent = new Intent(this, OpeningScreen.class);
+            startActivity(intent);
+            System.out.println("Infor entered.");
+        }
+
     }
 }
