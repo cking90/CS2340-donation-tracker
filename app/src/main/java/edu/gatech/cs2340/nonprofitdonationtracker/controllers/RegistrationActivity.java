@@ -42,6 +42,14 @@ public class RegistrationActivity extends AppCompatActivity {
         //get user type
         Spinner userType = (Spinner)findViewById(R.id.user_type_spinner_id);
         String selected_user_type = userType.getSelectedItem().toString();
+        if ((email_value.toString() + "").equals("")
+                || (name_value.toString() + "").equals("")
+                || (password_value.toString() + "").equals("")) {
+            Toast toast = Toast.makeText(getApplicationContext()
+                    , "All fields are required to register", Toast.LENGTH_SHORT);
+            toast.show();
+            return false;
+        }
         UserInfo userInfo = new UserInfo();
         if (!UserInfo.containsKey(email_value.toString())) {
             userInfo.addNewUser(name_value.toString(), email_value.toString(), password_value.toString(), selected_user_type);
