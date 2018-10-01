@@ -15,4 +15,5 @@
         completions."
     </string>
     <string name="title_activity_registration">RegistrationActivity</string>
+    <string name="prompt_password_req">Password</string>
 </resources>
