@@ -25,6 +25,10 @@ public class HomePageActivity extends AppCompatActivity {
 
     }
 
+    public void onClickViewLocations(View view) {
+        Intent intent = new Intent(this, ViewLocationsActivity.class);
+        startActivity(intent);
+    }
     public void onClickLogout(View view) {
         Intent intent = new Intent(this, OpeningScreen.class);
         startActivity(intent);
