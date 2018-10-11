@@ -13,8 +13,14 @@ public class OpeningScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opening_screen);
+        readCSVFile();
+
     }
 
+    private void readCSVFile() {
+        String csvString = getResources().openRawResource(R.raw.location_data).toString();
+        Location.parseCSV(csvString);
+    }
     public void onClickLogin(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);

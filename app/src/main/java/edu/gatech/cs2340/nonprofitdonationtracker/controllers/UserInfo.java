@@ -11,7 +11,6 @@ import java.util.Map;
  * It stores User info in a HashMap where the key = email id
  * and the values = List containing name, password & user account type
  */
-
 public class UserInfo {
     private static Map<String, List<String>> loginInfo = new HashMap<>();
 
