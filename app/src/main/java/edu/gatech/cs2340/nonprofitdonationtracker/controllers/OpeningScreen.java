@@ -3,7 +3,10 @@ package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+
+import java.io.InputStream;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
@@ -13,13 +16,15 @@ public class OpeningScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opening_screen);
-        readCSVFile();
+        //readCSVFile();
 
     }
 
+    //Broken, need to fix
     private void readCSVFile() {
-        String csvString = getResources().openRawResource(R.raw.location_data).toString();
-        Location.parseCSV(csvString);
+        Log.d("Help1", getResources().openRawResource(R.raw.location_data).toString());
+        InputStream csvStream = getResources().openRawResource(R.raw.location_data);
+        Location.parseCSV(csvStream);
     }
     public void onClickLogin(View view) {
         Intent intent = new Intent(this, LoginActivity.class);

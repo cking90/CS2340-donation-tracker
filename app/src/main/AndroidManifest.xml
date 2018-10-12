@@ -26,7 +26,8 @@
             android:label="@string/title_activity_login" />
         <activity android:name=".controllers.HomePageActivity" />
         <activity android:name=".controllers.RegistrationActivity" />
-        <activity android:name=".controllers.ViewLocationsActivity"></activity>
+        <activity android:name=".controllers.ViewLocationsActivity" />
+        <activity android:name=".controllers.ViewSingleLocationActivity"></activity>
     </application>
 
 </manifest>

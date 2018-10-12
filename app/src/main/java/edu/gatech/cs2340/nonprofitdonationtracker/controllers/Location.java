@@ -1,10 +1,14 @@
 package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
 
+import android.util.Log;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashSet;
 import java.util.Set;
-import java.io.File;
-import java.util.Scanner;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Created by Charlie on 10/10/2018.
@@ -26,7 +30,7 @@ public class Location {
     private String city;
     private String state;
     private int zipcode;
-    private LocationType type;
+    private String type;
     private int phoneNum;
     private String website;
 
@@ -41,7 +45,7 @@ public class Location {
 
     public Location(int key, String name, double latitude, double longitude,
                         String street, String city, String state, int zipcode,
-                        LocationType type, int phoneNum, String website) {
+                        String type, int phoneNum, String website) {
         this.key = key;
         this.name = name;
         this.latitude = latitude;
@@ -71,24 +75,23 @@ public class Location {
         return this.key == otherLoc.key;
     }
 
-    public static void parseCSV(String csvString) {
-        File csvFile = new File(csvString);
+    public static void parseCSV(InputStream is) {
         try {
-            Scanner csvScan = new Scanner(csvFile);
-            csvScan.nextLine();
-            while (csvScan.hasNext()){
-                String line = csvScan.nextLine();
+            BufferedReader csvScan = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+            csvScan.readLine();
+            String line;
+            while ((line = csvScan.readLine()) != null){
                 String[] data = line.split(",");
                 Location newLoc = new Location(Integer.parseInt(data[KEY_INDEX]), data[NAME_INDEX],
                         Double.parseDouble(data[LAT_INDEX]), Double.parseDouble(data[LONG_INDEX]),
                         data[STREET_INDEX], data[CITY_INDEX], data[STATE_INDEX],
-                        Integer.parseInt(data[ZIP_INDEX]), LocationType.valueOf(data[TYPE_INDEX]),
+                        Integer.parseInt(data[ZIP_INDEX]), data[TYPE_INDEX],
                         Integer.parseInt(data[PHONE_INDEX]), data[URL_INDEX]);
-                locationList.add(newLoc);
-                csvScan.close();
+                Location.addLocation(newLoc);
             }
+            csvScan.close();
         } catch (IOException e) {
-            System.out.println(e.toString());
+            //System.out.println(e.toString());
         }
 
 
@@ -97,6 +100,7 @@ public class Location {
     public int getKey() {
         return this.key;
     }
+
     public String getName(){
         return this.name;
     }
@@ -125,7 +129,7 @@ public class Location {
         return this.zipcode;
     }
 
-    public LocationType getType() {
+    public String getType() {
         return this.type;
     }
 
@@ -135,6 +139,11 @@ public class Location {
 
     public String getWebsite() {
         return this.website;
+    }
+
+    public String getFullAddress() {
+        return String.format("%s, %s, %s, %s",
+                street, city, state, zipcode);
     }
 
 }
