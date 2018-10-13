@@ -17,6 +17,7 @@ public class OpeningScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opening_screen);
         readCSVFile();
+        Log.d("Locations", Location.locationList.toString());
 
     }
 

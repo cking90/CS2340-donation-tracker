@@ -31,7 +31,7 @@ public class Location {
     private String state;
     private int zipcode;
     private String type;
-    private int phoneNum;
+    private long phoneNum;
     private String website;
 
     /**
@@ -45,7 +45,7 @@ public class Location {
 
     public Location(int key, String name, double latitude, double longitude,
                         String street, String city, String state, int zipcode,
-                        String type, int phoneNum, String website) {
+                        String type, long phoneNum, String website) {
         this.key = key;
         this.name = name;
         this.latitude = latitude;
@@ -75,6 +75,16 @@ public class Location {
         return this.key == otherLoc.key;
     }
 
+    @Override
+    public String toString() {
+        String msg = "";
+        msg += "name: " + name  + ", ";
+        msg += "key: " + this.key + ", ";
+        msg += "address: " + this.getFullAddress();
+        return msg;
+    }
+
+
     public static void parseCSV(InputStream is) {
         try {
             BufferedReader csvScan = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
@@ -87,7 +97,7 @@ public class Location {
                         Double.parseDouble(data[LAT_INDEX]), Double.parseDouble(data[LONG_INDEX]),
                         data[STREET_INDEX], data[CITY_INDEX], data[STATE_INDEX],
                         Integer.parseInt(data[ZIP_INDEX]), data[TYPE_INDEX],
-                        Integer.parseInt(data[PHONE_INDEX].replaceAll("[^0-9]", "")),
+                        Long.parseLong(data[PHONE_INDEX].replaceAll("[^0-9]", "")),
                         data[URL_INDEX]);
                 Location.addLocation(newLoc);
             }
@@ -135,7 +145,7 @@ public class Location {
         return this.type;
     }
 
-    public int getPhoneNum() {
+    public long getPhoneNum() {
         return this.phoneNum;
     }
 
@@ -146,6 +156,14 @@ public class Location {
     public String getFullAddress() {
         return String.format("%s, %s, %s, %s",
                 street, city, state, zipcode);
+    }
+
+    public static String locationListToString() {
+        String msg = "";
+        for (Location l : locationList) {
+            msg += l.toString() + "\n";
+        }
+        return msg;
     }
 
 }
