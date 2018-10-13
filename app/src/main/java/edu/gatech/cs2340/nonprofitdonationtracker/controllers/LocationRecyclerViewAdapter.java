@@ -54,16 +54,6 @@ public class LocationRecyclerViewAdapter extends
 
         holder.locationAddress.setText(locationAddresses.get(position));
         holder.locationID.setText(locationIDs.get(position));
-        //final int currentID = Integer.parseInt(holder.locationID.getText().toString());
-        // holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(view.getContext(), ViewSingleLocationActivity.class);
-//                Log.d("WHYYY", "FUCK");
-////                intent.putExtra("location_id", currentID);
-//                view.getContext().startActivity(intent);
-//            }
-        //});
 
 
     }
@@ -95,7 +85,6 @@ public class LocationRecyclerViewAdapter extends
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(view.getContext(), ViewSingleLocationActivity.class);
-                    Log.d("WHYYY", "FUCK");
                     intent.putExtra("location_id", Integer.parseInt(locationID.getText().toString()));
                     view.getContext().startActivity(intent);
                 }
