@@ -84,6 +84,11 @@ public class Location {
         return msg;
     }
 
+    @Override
+    public int hashCode() {
+        return this.key;
+    }
+
 
     public static void parseCSV(InputStream is) {
         try {
@@ -158,6 +163,11 @@ public class Location {
                 street, city, state, zipcode);
     }
 
+    public String getCoordinates() {
+        String coords = String.format("%.2f, %.2f", latitude, longitude);
+        return coords;
+    }
+
     public static String locationListToString() {
         String msg = "";
         for (Location l : locationList) {
@@ -169,5 +179,5 @@ public class Location {
 }
 
 enum LocationType {
-    DROPOFF, STORE, WAREHOUSE;
+    DROPOFF, STORE, WAREHOUSE
 }

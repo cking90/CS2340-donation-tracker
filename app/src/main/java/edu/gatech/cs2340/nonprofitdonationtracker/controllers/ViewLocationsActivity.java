@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.ListView;
+
 
 import java.util.ArrayList;
 
@@ -25,7 +25,7 @@ public class ViewLocationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_locations_acitivity);
         listView = findViewById(R.id.locationsRecyclerView);
-        Log.d("Help", Integer.toString(locationList.size()));
+        Log.d("Help", locationList.toString());
         initLocationData();
     }
 
@@ -39,11 +39,15 @@ public class ViewLocationsActivity extends AppCompatActivity {
     }
 
     private void initRecyclerView() {
+        Log.d("initRecyclerView", "initRecycler: started");
         RecyclerView recyclerView = findViewById(R.id.locationsRecyclerView);
         LocationRecyclerViewAdapter adapter = new LocationRecyclerViewAdapter(locationNames,
                                                     locationAddresses, locationIDs, this);
+        Log.d("initRecyclerView", "initRecycler: adapter instantiated");
         recyclerView.setAdapter(adapter);
+        Log.d("initRecyclerView", "initRecycler: adapter Set");
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        Log.d("initRecyclerView", "initRecycler: layout Set");
     }
 
 }

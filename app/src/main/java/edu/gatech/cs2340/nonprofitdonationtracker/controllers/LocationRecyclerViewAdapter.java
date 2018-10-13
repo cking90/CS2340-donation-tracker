@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,7 @@ import edu.gatech.cs2340.nonprofitdonationtracker.R;
 public class LocationRecyclerViewAdapter extends
                         RecyclerView.Adapter<LocationRecyclerViewAdapter.ViewHolder> {
 
-    private static final String TAG = "LocationRecyclerViewAdapter";
+    private static final String TAG = "RecyclerViewAdapter";
 
     private ArrayList<String> locationNames = new ArrayList<>();
     private ArrayList<String> locationAddresses = new ArrayList<>();
@@ -48,20 +49,21 @@ public class LocationRecyclerViewAdapter extends
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Log.d(TAG, "onBindViewHolder: called");
         holder.locationName.setText(locationNames.get(position));
 
         holder.locationAddress.setText(locationAddresses.get(position));
-
         holder.locationID.setText(locationIDs.get(position));
-        final int currentID = Integer.parseInt(holder.locationID.toString());
-        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), LoginActivity.class);
-                intent.putExtra("location_id", currentID);
-                view.getContext().startActivity(intent);
-            }
-        });
+        //final int currentID = Integer.parseInt(holder.locationID.getText().toString());
+        // holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(view.getContext(), ViewSingleLocationActivity.class);
+//                Log.d("WHYYY", "FUCK");
+////                intent.putExtra("location_id", currentID);
+//                view.getContext().startActivity(intent);
+//            }
+        //});
 
 
     }
@@ -87,8 +89,17 @@ public class LocationRecyclerViewAdapter extends
             super(itemView);
             locationName = itemView.findViewById(R.id.locationNameTextView);
             locationAddress = itemView.findViewById(R.id.locationAddressTextView);
-            locationID = itemView.findViewById(R.id.locationIDTextVew);
+            locationID = itemView.findViewById(R.id.locationIDTextView);
             parentLayout = itemView.findViewById(R.id.locationAdapterLayout);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), ViewSingleLocationActivity.class);
+                    Log.d("WHYYY", "FUCK");
+                    intent.putExtra("location_id", Integer.parseInt(locationID.getText().toString()));
+                    view.getContext().startActivity(intent);
+                }
+            });
 
         }
     }
