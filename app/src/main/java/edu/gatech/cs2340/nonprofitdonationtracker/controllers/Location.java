@@ -6,7 +6,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.nio.charset.StandardCharsets;
 
@@ -30,9 +32,10 @@ public class Location {
     private String city;
     private String state;
     private int zipcode;
-    private String type;
+    private LocationType type;
     private long phoneNum;
     private String website;
+    private List<Donation> donationList = new ArrayList<Donation>();
 
     /**
      * Standardized order of the Location data
@@ -45,7 +48,7 @@ public class Location {
 
     public Location(int key, String name, double latitude, double longitude,
                         String street, String city, String state, int zipcode,
-                        String type, long phoneNum, String website) {
+                        LocationType type, long phoneNum, String website) {
         this.key = key;
         this.name = name;
         this.latitude = latitude;
@@ -101,7 +104,7 @@ public class Location {
                 Location newLoc = new Location(Integer.parseInt(data[KEY_INDEX]), data[NAME_INDEX],
                         Double.parseDouble(data[LAT_INDEX]), Double.parseDouble(data[LONG_INDEX]),
                         data[STREET_INDEX], data[CITY_INDEX], data[STATE_INDEX],
-                        Integer.parseInt(data[ZIP_INDEX]), data[TYPE_INDEX],
+                        Integer.parseInt(data[ZIP_INDEX]), LocationType.valueOf(data[TYPE_INDEX].replaceAll(" ", "").toUpperCase()),
                         Long.parseLong(data[PHONE_INDEX].replaceAll("[^0-9]", "")),
                         data[URL_INDEX]);
                 Location.addLocation(newLoc);
@@ -146,7 +149,7 @@ public class Location {
         return this.zipcode;
     }
 
-    public String getType() {
+    public LocationType getType() {
         return this.type;
     }
 
@@ -174,6 +177,14 @@ public class Location {
             msg += l.toString() + "\n";
         }
         return msg;
+    }
+
+    public List<Donation> getDonations() {
+        return this.donationList;
+    }
+
+    public void addDonation(Donation donation) {
+        donationList.add(donation);
     }
 
 }
