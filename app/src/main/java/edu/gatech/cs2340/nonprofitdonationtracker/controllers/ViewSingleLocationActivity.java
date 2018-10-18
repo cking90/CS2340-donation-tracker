@@ -1,9 +1,11 @@
 package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.view.View;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
@@ -60,5 +62,10 @@ public class ViewSingleLocationActivity extends AppCompatActivity {
             }
         }
         return null;
+    }
+
+    public void onClickAddItem(View view) {
+        Intent intent = new Intent(this, AddItemActivity.class);
+        startActivity(intent);
     }
 }
