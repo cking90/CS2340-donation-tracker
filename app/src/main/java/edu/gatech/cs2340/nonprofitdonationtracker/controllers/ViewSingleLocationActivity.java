@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.view.View;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
@@ -62,6 +63,11 @@ public class ViewSingleLocationActivity extends AppCompatActivity {
             }
         }
         return null;
+    }
+
+    public void onClickAddItem(View view) {
+        Intent intent = new Intent(this, AddItemActivity.class);
+        startActivity(intent);
     }
 
     public void onClickViewItems(View view) {
