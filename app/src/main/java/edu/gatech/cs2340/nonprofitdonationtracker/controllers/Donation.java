@@ -3,13 +3,16 @@ package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
 import java.util.Date;
 
 public class Donation {
+    private String name;
     private Date timeStamp;
     private String shortDescription;
     private String longDescription;
     private float value;
     private Category category;
 
-    public Donation(String shortDescription, String longDescription, float value, Category category) {
+    public Donation(String name, String shortDescription,
+                        String longDescription, float value, Category category) {
+        this.name = name;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
         this.value = value;
@@ -35,6 +38,10 @@ public class Donation {
 
     public Category getCategory() {
         return this.category;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
 
