@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
@@ -21,11 +22,14 @@ public class ItemRecyclerViewAdapter extends
 
     private ArrayList<String> donationNames = new ArrayList<>();
     private ArrayList<String> donationValues = new ArrayList<>();
+    private ArrayList<Date> donationDates = new ArrayList<>();
     private Context mContext;
 
-    public ItemRecyclerViewAdapter(ArrayList<String> donationNames, ArrayList<String> donationValues, Context context) {
+    public ItemRecyclerViewAdapter(ArrayList<String> donationNames, ArrayList<String> donationValues,
+                                   ArrayList<Date> donationDates, Context context) {
         this.donationNames = donationNames;
         this.donationValues = donationValues;
+        this.donationDates = donationDates;
         this.mContext = context;
     }
 
@@ -44,6 +48,7 @@ public class ItemRecyclerViewAdapter extends
         holder.donationName.setText(donationNames.get(position));
 
         holder.donationValue.setText(donationValues.get(position));
+        holder.donationDate.setText(donationDates.get(position).toString());
     }
 
     @Override
@@ -55,6 +60,7 @@ public class ItemRecyclerViewAdapter extends
 
         TextView donationName;
         TextView donationValue;
+        TextView donationDate;
         RelativeLayout parentLayout;
 
         /**
@@ -66,6 +72,7 @@ public class ItemRecyclerViewAdapter extends
             super(itemView);
             donationName = itemView.findViewById(R.id.donationNameTextView);
             donationValue = itemView.findViewById(R.id.donationValueTextView);
+            donationDate = itemView.findViewById(R.id.donationDateTextView);
             parentLayout = itemView.findViewById(R.id.donationAdapterLayout);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
@@ -17,6 +18,7 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
     RecyclerView listView;
     private ArrayList<String> donationNames = new ArrayList<>();
     private ArrayList<String> donationValues = new ArrayList<>();
+    private ArrayList<Date> donationDates = new ArrayList<>();
     private int locationID;
 
     @Override
@@ -26,18 +28,19 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         locationID = extras.getInt("location_id");
 
-        setContentView(R.layout.activity_view_locations_acitivity);
+        setContentView(R.layout.activity_view_all_donations);
         listView = findViewById(R.id.donationsRecyclerView);
 
-        initLocationData();
+        initDonationData();
     }
 
-    private void initLocationData() {
+    private void initDonationData() {
         for (Location l : locationList) {
             if (l.getKey() == locationID) {
                 for (Donation d : l.getDonations()) {
                     donationNames.add(d.getName());
-                    donationNames.add(d.getName());
+                    donationValues.add(String.format("$%.2f", d.getValue()));
+                    donationDates.add(d.getDate());
                 }
                 return;
             }
@@ -47,9 +50,9 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
 
     private void initRecyclerView() {
         Log.d("initRecyclerView", "initRecycler: started");
-        RecyclerView recyclerView = findViewById(R.id.locationsRecyclerView);
+        RecyclerView recyclerView = findViewById(R.id.donationsRecyclerView);
         ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(donationNames,
-                donationValues, this);
+                donationValues, donationDates, this);
         Log.d("initRecyclerView", "initRecycler: adapter instantiated");
         recyclerView.setAdapter(adapter);
         Log.d("initRecyclerView", "initRecycler: adapter Set");
