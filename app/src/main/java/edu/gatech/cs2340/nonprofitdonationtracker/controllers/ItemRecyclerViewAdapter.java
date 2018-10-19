@@ -77,9 +77,9 @@ public class ItemRecyclerViewAdapter extends
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                        Intent intent = new Intent(view.getContext(), ViewSingleLocationActivity.class);
-//                        intent.putExtra("location_id", Integer.parseInt(locationID.getText().toString()));
-//                        view.getContext().startActivity(intent);
+                        Intent intent = new Intent(view.getContext(), ViewSingleDonationActivity.class);
+                        intent.putExtra("donation_Date", Integer.parseInt(donationDate.getText().toString()));
+                        view.getContext().startActivity(intent);
                 }
             });
 
