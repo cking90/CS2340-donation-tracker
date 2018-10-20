@@ -67,9 +67,8 @@ public class RegistrationActivity extends AppCompatActivity {
         if (updateUserInformation(view)) {
             //takes user back to login page so that they can login with their credentials
             //TODO: set up validation in the LoginActivity class
-            Intent intent = new Intent(this, OpeningScreen.class);
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
-            System.out.println("Infor entered.");
         }
 
     }

@@ -26,7 +26,9 @@ public class HomePageActivity extends AppCompatActivity {
     }
 
     public void onClickViewLocations(View view) {
+        Bundle extras = getIntent().getExtras();
         Intent intent = new Intent(this, ViewLocationsActivity.class);
+        intent.putExtra("user_type", extras.getString("user_type"));
         startActivity(intent);
     }
     public void onClickLogout(View view) {

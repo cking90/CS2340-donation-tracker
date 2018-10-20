@@ -47,5 +47,13 @@ public class UserInfo {
 
     }
 
+    public static String getUserType(String email) {
+        if (containsKey(email)) {
+            List<String> temp = loginInfo.get(email);
+            return temp.get(2);
+        }
+        return null;
+    }
+
 
 }

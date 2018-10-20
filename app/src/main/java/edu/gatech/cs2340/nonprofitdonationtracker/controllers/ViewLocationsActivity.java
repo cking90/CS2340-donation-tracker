@@ -41,8 +41,10 @@ public class ViewLocationsActivity extends AppCompatActivity {
     private void initRecyclerView() {
         Log.d("initRecyclerView", "initRecycler: started");
         RecyclerView recyclerView = findViewById(R.id.locationsRecyclerView);
+        Bundle extras = getIntent().getExtras();
         LocationRecyclerViewAdapter adapter = new LocationRecyclerViewAdapter(locationNames,
-                                                    locationAddresses, locationIDs, this);
+                                                    locationAddresses, locationIDs,
+                                                extras.getString("user_type"), this);
         Log.d("initRecyclerView", "initRecycler: adapter instantiated");
         recyclerView.setAdapter(adapter);
         Log.d("initRecyclerView", "initRecycler: adapter Set");

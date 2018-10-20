@@ -28,14 +28,17 @@ public class LocationRecyclerViewAdapter extends
     private ArrayList<String> locationNames = new ArrayList<>();
     private ArrayList<String> locationAddresses = new ArrayList<>();
     private ArrayList<String> locationIDs = new ArrayList<>();
+    private String userType;
     private Context mContext;
 
     public LocationRecyclerViewAdapter(ArrayList<String> locationNames, ArrayList<String> locationAddresses,
-                                       ArrayList<String> locationIDs, Context context) {
+                                       ArrayList<String> locationIDs, String userType, Context context) {
         this.locationNames = locationNames;
         this.locationAddresses = locationAddresses;
         this.locationIDs = locationIDs;
+        this.userType = userType;
         this.mContext = context;
+
     }
 
     @NonNull
@@ -86,6 +89,7 @@ public class LocationRecyclerViewAdapter extends
                 public void onClick(View view) {
                     Intent intent = new Intent(view.getContext(), ViewSingleLocationActivity.class);
                     intent.putExtra("location_id", Integer.parseInt(locationID.getText().toString()));
+                    intent.putExtra("user_type", userType);
                     view.getContext().startActivity(intent);
                 }
             });

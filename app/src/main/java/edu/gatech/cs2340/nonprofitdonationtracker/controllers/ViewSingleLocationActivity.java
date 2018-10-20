@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.view.View;
+import android.widget.Toast;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
@@ -66,8 +67,15 @@ public class ViewSingleLocationActivity extends AppCompatActivity {
     }
 
     public void onClickAddItem(View view) {
-        Intent intent = new Intent(this, AddItemActivity.class);
-        startActivity(intent);
+        Bundle extras = getIntent().getExtras();
+        if (extras.getString("user_type").equals("Location Employee")) {
+            Intent intent = new Intent(this, AddItemActivity.class);
+            startActivity(intent);
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext()
+                    , "Only Location Employees may add items", Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     public void onClickViewItems(View view) {
