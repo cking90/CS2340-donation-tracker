@@ -70,6 +70,7 @@ public class ViewSingleLocationActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras.getString("user_type").equals("Location Employee")) {
             Intent intent = new Intent(this, AddItemActivity.class);
+            intent.putExtra("location_id", getIntent().getExtras().getInt("location_id"));
             startActivity(intent);
         } else {
             Toast toast = Toast.makeText(getApplicationContext()

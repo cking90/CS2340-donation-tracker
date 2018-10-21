@@ -29,8 +29,8 @@
         <activity android:name=".controllers.ViewLocationsActivity" />
         <activity android:name=".controllers.ViewSingleLocationActivity" />
         <activity android:name=".controllers.ViewAllDonationsActivity" />
-        <activity android:name=".controllers.AddItemActivity" />
-        <activity android:name=".controllers.ViewSingleDonationActivity"></activity>
+        <activity android:name=".controllers.ViewSingleDonationActivity" />
+        <activity android:name=".controllers.AddItemActivity"></activity>
     </application>
 
 </manifest>

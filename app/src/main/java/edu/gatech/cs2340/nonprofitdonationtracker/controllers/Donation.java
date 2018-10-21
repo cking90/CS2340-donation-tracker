@@ -44,8 +44,22 @@ public class Donation {
         return this.name;
     }
 
+    public void setDate(Date timeStamp) {this.timeStamp = timeStamp;}
 
+    public void setShortDescription(String shortDescription) {this.shortDescription = shortDescription;}
 
+    public void setLongDescription(String longDescription) {this.longDescription = longDescription;}
+
+    public void setValue(float value) {this.value = value;}
+
+    public void setCategory(Category category) {this.category = category;}
+
+    public void setName(String name) {this.name = name;}
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }
 
 enum Category{
