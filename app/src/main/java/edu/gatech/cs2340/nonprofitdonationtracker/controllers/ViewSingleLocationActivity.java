@@ -20,7 +20,7 @@ public class ViewSingleLocationActivity extends AppCompatActivity {
     TextView locationWebsite;
     TextView locationPhoneNum;
     TextView locationType;
-    Location currLocation;
+    int currLocationID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,8 @@ public class ViewSingleLocationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_single_location);
 
         Bundle extras = getIntent().getExtras();
-        currLocation = getCurrLocation(extras.getInt("location_id"));
+        currLocationID = extras.getInt("location_id");
+        Location currLocation = Location.getLocationWithKey(currLocationID);
 
         locationName = findViewById(R.id.locationNameTextView);
         locationName.setText(currLocation.getName());
@@ -53,18 +54,6 @@ public class ViewSingleLocationActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * Uses the passed in key to find out what location is
-     * currently being queried
-     */
-    private Location getCurrLocation(int ID) {
-        for (Location l : Location.locationList) {
-            if (l.getKey() == ID) {
-                return l;
-            }
-        }
-        return null;
-    }
 
     public void onClickAddItem(View view) {
         Bundle extras = getIntent().getExtras();
@@ -81,7 +70,8 @@ public class ViewSingleLocationActivity extends AppCompatActivity {
 
     public void onClickViewItems(View view) {
         Intent intent = new Intent(this, ViewAllDonationsActivity.class);
-        intent.putExtra("location_id", getIntent().getExtras().getInt("location_id"));
+        intent.putExtra("location_id", currLocationID);
+        Log.d("coconuts", Location.getLocationWithKey(currLocationID).toString());
         startActivity(intent);
     }
 }

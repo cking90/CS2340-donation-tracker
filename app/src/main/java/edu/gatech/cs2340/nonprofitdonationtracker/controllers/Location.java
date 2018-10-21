@@ -179,6 +179,15 @@ public class Location {
         return msg;
     }
 
+    public static Location getLocationWithKey(int key) {
+        for (Location l : Location.locationList) {
+            if (l.getKey() == key) {
+                return l;
+            }
+        }
+        return null;
+    }
+
     public List<Donation> getDonations() {
         return this.donationList;
     }

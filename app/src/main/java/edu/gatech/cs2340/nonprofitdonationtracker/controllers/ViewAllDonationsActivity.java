@@ -2,6 +2,7 @@ package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -19,6 +20,7 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
     private ArrayList<String> donationNames = new ArrayList<>();
     private ArrayList<String> donationValues = new ArrayList<>();
     private ArrayList<Date> donationDates = new ArrayList<>();
+    private ArrayList<String> donationShortDescriptions = new ArrayList<>();
     private int locationID;
 
     @Override
@@ -39,25 +41,29 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
             if (l.getKey() == locationID) {
                 for (Donation d : l.getDonations()) {
                     donationNames.add(d.getName());
-                    donationValues.add(String.format("$%.2f", d.getValue()));
+                    donationValues.add(Float.toString(d.getValue()));
                     donationDates.add(d.getDate());
+                    donationShortDescriptions.add(d.getShortDescription());
                 }
-                return;
+                break;
             }
         }
         initRecyclerView();
     }
 
     private void initRecyclerView() {
-        Log.d("initRecyclerView", "initRecycler: started");
+        Log.d("initDonateRecyclerView", "initRecycler: started");
         RecyclerView recyclerView = findViewById(R.id.donationsRecyclerView);
         ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(donationNames,
-                donationValues, donationDates, this);
-        Log.d("initRecyclerView", "initRecycler: adapter instantiated");
+                donationValues, donationDates, donationShortDescriptions, this);
+        Log.d("initDonateRecyclerView", "initRecycler: adapter instantiated");
         recyclerView.setAdapter(adapter);
-        Log.d("initRecyclerView", "initRecycler: adapter Set");
+        Log.d("initDonateRecyclerView", "initRecycler: adapter Set");
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        Log.d("initRecyclerView", "initRecycler: layout Set");
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
+        Log.d("initDonateRecyclerView", "initRecycler: layout Set");
     }
 
 }

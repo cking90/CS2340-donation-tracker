@@ -23,13 +23,16 @@ public class ItemRecyclerViewAdapter extends
     private ArrayList<String> donationNames = new ArrayList<>();
     private ArrayList<String> donationValues = new ArrayList<>();
     private ArrayList<Date> donationDates = new ArrayList<>();
+    private ArrayList<String> donationShortDescriptions = new ArrayList<>();
     private Context mContext;
 
     public ItemRecyclerViewAdapter(ArrayList<String> donationNames, ArrayList<String> donationValues,
-                                   ArrayList<Date> donationDates, Context context) {
+                                   ArrayList<Date> donationDates, ArrayList<String> shortDescrips,
+                                   Context context) {
         this.donationNames = donationNames;
         this.donationValues = donationValues;
         this.donationDates = donationDates;
+        this.donationShortDescriptions = shortDescrips;
         this.mContext = context;
     }
 
@@ -49,6 +52,7 @@ public class ItemRecyclerViewAdapter extends
 
         holder.donationValue.setText(donationValues.get(position));
         holder.donationDate.setText(donationDates.get(position).toString());
+        holder.donationDescription.setText(donationShortDescriptions.get(position));
     }
 
     @Override
@@ -61,6 +65,7 @@ public class ItemRecyclerViewAdapter extends
         TextView donationName;
         TextView donationValue;
         TextView donationDate;
+        TextView donationDescription;
         RelativeLayout parentLayout;
 
         /**
@@ -73,7 +78,10 @@ public class ItemRecyclerViewAdapter extends
             donationName = itemView.findViewById(R.id.donationNameTextView);
             donationValue = itemView.findViewById(R.id.donationValueTextView);
             donationDate = itemView.findViewById(R.id.donationDateTextView);
+            donationDescription = itemView.findViewById(R.id.donationShortDescriptionTextView);
+
             parentLayout = itemView.findViewById(R.id.donationAdapterLayout);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
