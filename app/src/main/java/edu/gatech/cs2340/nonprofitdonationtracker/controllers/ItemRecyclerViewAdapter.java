@@ -24,15 +24,24 @@ public class ItemRecyclerViewAdapter extends
     private ArrayList<String> donationValues = new ArrayList<>();
     private ArrayList<Date> donationDates = new ArrayList<>();
     private ArrayList<String> donationShortDescriptions = new ArrayList<>();
+    private ArrayList<String> donationLongDescriptions = new ArrayList<>();
+    private ArrayList<String> donationCategories = new ArrayList<>();
+    private int locationID;
+    private String userType;
     private Context mContext;
 
     public ItemRecyclerViewAdapter(ArrayList<String> donationNames, ArrayList<String> donationValues,
                                    ArrayList<Date> donationDates, ArrayList<String> shortDescrips,
-                                   Context context) {
+                                   ArrayList<String> longDescrips, ArrayList<String> donationCategories,
+                                   int locationID, String userType, Context context) {
         this.donationNames = donationNames;
         this.donationValues = donationValues;
         this.donationDates = donationDates;
         this.donationShortDescriptions = shortDescrips;
+        this.donationLongDescriptions = longDescrips;
+        this.donationCategories = donationCategories;
+        this.locationID = locationID;
+        this.userType = userType;
         this.mContext = context;
     }
 
@@ -49,10 +58,11 @@ public class ItemRecyclerViewAdapter extends
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called");
         holder.donationName.setText(donationNames.get(position));
-
         holder.donationValue.setText(donationValues.get(position));
         holder.donationDate.setText(donationDates.get(position).toString());
         holder.donationDescription.setText(donationShortDescriptions.get(position));
+        holder.donationLongDescription = donationLongDescriptions.get(position);
+        holder.donationCategory = donationCategories.get(position);
     }
 
     @Override
@@ -66,6 +76,8 @@ public class ItemRecyclerViewAdapter extends
         TextView donationValue;
         TextView donationDate;
         TextView donationDescription;
+        String donationLongDescription;
+        String donationCategory;
         RelativeLayout parentLayout;
 
         /**
@@ -79,15 +91,21 @@ public class ItemRecyclerViewAdapter extends
             donationValue = itemView.findViewById(R.id.donationValueTextView);
             donationDate = itemView.findViewById(R.id.donationDateTextView);
             donationDescription = itemView.findViewById(R.id.donationShortDescriptionTextView);
-
             parentLayout = itemView.findViewById(R.id.donationAdapterLayout);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                        Intent intent = new Intent(view.getContext(), ViewSingleDonationActivity.class);
-                        intent.putExtra("donation_Date", Integer.parseInt(donationDate.getText().toString()));
-                        view.getContext().startActivity(intent);
+                Intent intent = new Intent(view.getContext(), ViewSingleDonationActivity.class);
+                intent.putExtra("donation_Date", donationDate.getText().toString());
+                intent.putExtra("donation_Name", donationName.getText().toString());
+                intent.putExtra("donation_Value", donationValue.getText().toString());
+                intent.putExtra("donation_ShortDescription", donationDescription.getText().toString());
+                intent.putExtra("donation_LongDescription", donationLongDescription);
+                intent.putExtra("donation_Category", donationCategory);
+                intent.putExtra("location_id", locationID);
+                intent.putExtra("user_type", userType);
+                view.getContext().startActivity(intent);
                 }
             });
 

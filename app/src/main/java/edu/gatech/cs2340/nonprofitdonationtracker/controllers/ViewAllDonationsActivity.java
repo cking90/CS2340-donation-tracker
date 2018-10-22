@@ -21,7 +21,10 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
     private ArrayList<String> donationValues = new ArrayList<>();
     private ArrayList<Date> donationDates = new ArrayList<>();
     private ArrayList<String> donationShortDescriptions = new ArrayList<>();
+    private ArrayList<String> donationLongDescriptions = new ArrayList<>();
+    private ArrayList<String> donationCategories = new ArrayList<>();
     private int locationID;
+    private String userType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,7 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         locationID = extras.getInt("location_id");
+        userType = extras.getString("user_type");
 
         setContentView(R.layout.activity_view_all_donations);
         listView = findViewById(R.id.donationsRecyclerView);
@@ -44,6 +48,8 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
                     donationValues.add(Float.toString(d.getValue()));
                     donationDates.add(d.getDate());
                     donationShortDescriptions.add(d.getShortDescription());
+                    donationLongDescriptions.add(d.getLongDescription());
+                    donationCategories.add(d.getCategory().toString());
                 }
                 break;
             }
@@ -55,7 +61,7 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
         Log.d("initDonateRecyclerView", "initRecycler: started");
         RecyclerView recyclerView = findViewById(R.id.donationsRecyclerView);
         ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(donationNames,
-                donationValues, donationDates, donationShortDescriptions, this);
+                donationValues, donationDates, donationShortDescriptions, donationLongDescriptions, donationCategories, locationID, userType, this);
         Log.d("initDonateRecyclerView", "initRecycler: adapter instantiated");
         recyclerView.setAdapter(adapter);
         Log.d("initDonateRecyclerView", "initRecycler: adapter Set");

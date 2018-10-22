@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.util.Log;
 import android.widget.Spinner;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
@@ -42,7 +41,11 @@ public class AddItemActivity extends AppCompatActivity {
     }
 
     public void onCancelPressed(View view) {
-        //probably don't need this button because user can hit back button on phone
+        Bundle extras = getIntent().getExtras();
+        Intent intent = new Intent(this, ViewSingleLocationActivity.class);
+        intent.putExtra("location_id", getIntent().getExtras().getInt("location_id"));
+        intent.putExtra("user_type",extras.getString("user_type"));
+        startActivity(intent);
     }
 
     //Prem - unsure on how to add the new donation into the correct location list
@@ -59,10 +62,12 @@ public class AddItemActivity extends AppCompatActivity {
                 location.addDonation(new Donation(nameField, shortDescription,
                         longDescription, price, (Category) categorySpinner.getSelectedItem()));
             }
-            for(Donation donation: location.getDonations()) {
-                Log.d("tears", "" + donation);
-            }
         }
 
+        Bundle extras = getIntent().getExtras();
+        Intent intent = new Intent(this, ViewSingleLocationActivity.class);
+        intent.putExtra("location_id", getIntent().getExtras().getInt("location_id"));
+        intent.putExtra("user_type",extras.getString("user_type"));
+        startActivity(intent);
     }
 }

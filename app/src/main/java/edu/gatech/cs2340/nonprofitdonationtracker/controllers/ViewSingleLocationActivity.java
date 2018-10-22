@@ -60,6 +60,7 @@ public class ViewSingleLocationActivity extends AppCompatActivity {
         if (extras.getString("user_type").equals("Location Employee")) {
             Intent intent = new Intent(this, AddItemActivity.class);
             intent.putExtra("location_id", getIntent().getExtras().getInt("location_id"));
+            intent.putExtra("user_type",extras.getString("user_type"));
             startActivity(intent);
         } else {
             Toast toast = Toast.makeText(getApplicationContext()
@@ -69,8 +70,10 @@ public class ViewSingleLocationActivity extends AppCompatActivity {
     }
 
     public void onClickViewItems(View view) {
+        Bundle extras = getIntent().getExtras();
         Intent intent = new Intent(this, ViewAllDonationsActivity.class);
         intent.putExtra("location_id", currLocationID);
+        intent.putExtra("user_type", extras.getString("user_type"));
         Log.d("coconuts", Location.getLocationWithKey(currLocationID).toString());
         startActivity(intent);
     }
