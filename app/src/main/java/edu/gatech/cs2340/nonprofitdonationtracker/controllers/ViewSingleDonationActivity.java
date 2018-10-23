@@ -16,11 +16,13 @@ public class ViewSingleDonationActivity extends AppCompatActivity {
     private TextView price;
     private TextView category;
     private TextView date;
+    Model model;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        model = Model.getInstance();
         setContentView(R.layout.activity_view_single_donation);
         Bundle extras = getIntent().getExtras();
 
@@ -42,7 +44,7 @@ public class ViewSingleDonationActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         Intent intent = new Intent(this, ViewAllDonationsActivity.class);
         intent.putExtra("location_id", extras.getInt("location_id"));
-        intent.putExtra("user_type", extras.getString("user_type"));
+        intent.putExtra("user_type", model.getCurrentUserType());
         startActivity(intent);
     }
 }

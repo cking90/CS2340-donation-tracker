@@ -21,11 +21,14 @@ public class ViewSingleLocationActivity extends AppCompatActivity {
     TextView locationPhoneNum;
     TextView locationType;
     int currLocationID;
+    Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_single_location);
+
+        model = Model.getInstance();
 
         Bundle extras = getIntent().getExtras();
         currLocationID = extras.getInt("location_id");
@@ -77,4 +80,10 @@ public class ViewSingleLocationActivity extends AppCompatActivity {
         Log.d("coconuts", Location.getLocationWithKey(currLocationID).toString());
         startActivity(intent);
     }
+
+    public void onClickBack(View view) {
+        Intent intent = new Intent(this, HomePageActivity.class);
+        startActivity(intent);
+    }
+
 }

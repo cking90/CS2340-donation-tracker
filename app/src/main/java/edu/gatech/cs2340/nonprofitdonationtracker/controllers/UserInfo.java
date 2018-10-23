@@ -34,6 +34,10 @@ public class UserInfo {
 
     }
 
+    public static Map<String, List<String>> getLoginInfo() {
+        return UserInfo.loginInfo;
+    }
+
     public static boolean containsKey(String email) {
         return loginInfo.containsKey(email);
     }

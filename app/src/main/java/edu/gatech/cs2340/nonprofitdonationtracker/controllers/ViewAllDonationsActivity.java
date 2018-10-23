@@ -1,11 +1,13 @@
 package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,15 +26,15 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
     private ArrayList<String> donationLongDescriptions = new ArrayList<>();
     private ArrayList<String> donationCategories = new ArrayList<>();
     private int locationID;
-    private String userType;
+
+    Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        model = Model.getInstance();
         Bundle extras = getIntent().getExtras();
         locationID = extras.getInt("location_id");
-        userType = extras.getString("user_type");
 
         setContentView(R.layout.activity_view_all_donations);
         listView = findViewById(R.id.donationsRecyclerView);
@@ -61,7 +63,7 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
         Log.d("initDonateRecyclerView", "initRecycler: started");
         RecyclerView recyclerView = findViewById(R.id.donationsRecyclerView);
         ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(donationNames,
-                donationValues, donationDates, donationShortDescriptions, donationLongDescriptions, donationCategories, locationID, userType, this);
+                donationValues, donationDates, donationShortDescriptions, donationLongDescriptions, donationCategories, locationID, this);
         Log.d("initDonateRecyclerView", "initRecycler: adapter instantiated");
         recyclerView.setAdapter(adapter);
         Log.d("initDonateRecyclerView", "initRecycler: adapter Set");
@@ -71,5 +73,13 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
         Log.d("initDonateRecyclerView", "initRecycler: layout Set");
     }
+
+    public void onClickBack(View view) {
+        Intent intent = new Intent(this, ViewSingleLocationActivity.class);
+        intent.putExtra("location_id", locationID);
+        intent.putExtra("user_type", model.getCurrentUserType());
+        startActivity(intent);
+    }
+
 
 }
