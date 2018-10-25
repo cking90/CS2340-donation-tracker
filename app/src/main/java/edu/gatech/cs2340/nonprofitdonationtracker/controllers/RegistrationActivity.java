@@ -50,9 +50,8 @@ public class RegistrationActivity extends AppCompatActivity {
             toast.show();
             return false;
         }
-        UserInfo userInfo = new UserInfo();
         if (!UserInfo.containsKey(email_value.toString())) {
-            userInfo.addNewUser(name_value.toString(), email_value.toString(), password_value.toString(), selected_user_type);
+            UserInfo.addNewUser(name_value.toString(), email_value.toString(), password_value.toString(), selected_user_type);
             return true;
         } else {
             Toast toast = Toast.makeText(getApplicationContext()

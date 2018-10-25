@@ -1,5 +1,8 @@
 package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,24 +17,16 @@ import java.util.Map;
 public class UserInfo {
     private static Map<String, List<String>> loginInfo = new HashMap<>();
 
-    public boolean isValidLogin(String email, String password) {
-        if (!loginInfo.containsKey(email))
-            return false;
-        else {
-            if (!password.equals(loginInfo.get(email).get(1))) {
-                return false;
-            }
-        }
-        return true;
-    }
+    private static DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
-    public void addNewUser(String name, String email, String password, String userType) {
-        ArrayList<String> info = new ArrayList<>();
-        info.add(name);
-        info.add(password);
-        info.add(userType);
-        loginInfo.put(email, info);
+    public static void addNewUser(String name, String email, String password, String userType) {
+//        ArrayList<String> info = new ArrayList<>();
+//        info.add(name);
+//        info.add(password);
+//        info.add(userType);
+//        loginInfo.put(email, info);
 
+        database.child("users").child(email).child("name").setValue(name);
     }
 
     public static Map<String, List<String>> getLoginInfo() {
