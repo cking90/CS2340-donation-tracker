@@ -8,6 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
 public class AddItemActivity extends AppCompatActivity {
@@ -17,6 +20,8 @@ public class AddItemActivity extends AppCompatActivity {
     private EditText longDescription;
     private EditText price;
     private Spinner categorySpinner;
+
+    private static DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
     int locationId;
 
@@ -61,6 +66,11 @@ public class AddItemActivity extends AppCompatActivity {
             if (location.getKey() == locationId) {
                 location.addDonation(new Donation(nameField, shortDescription,
                         longDescription, price, (Category) categorySpinner.getSelectedItem()));
+                database.child("item").child(nameField).child("name").setValue(nameField);
+                database.child("item").child(nameField).child("shortDescription").setValue(shortDescription);
+                database.child("item").child(nameField).child("longDescription").setValue(longDescription);
+                database.child("item").child(nameField).child("price").setValue(price);
+                database.child("item").child(nameField).child("category").setValue(categorySpinner.getSelectedItem());
             }
         }
 
