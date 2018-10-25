@@ -2,6 +2,9 @@ package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
 
 import android.util.Log;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,6 +40,8 @@ public class Location {
     private String website;
     private List<Donation> donationList = new ArrayList<Donation>();
 
+    private static DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+
     /**
      * Standardized order of the Location data
      * in the csv file
@@ -64,6 +69,17 @@ public class Location {
 
     public static void addLocation(Location location) {
         locationList.add(location);
+        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(Integer.toString(location.getKey()));
+        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getName());
+        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getLatitude());
+        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getLongitude());
+        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getStreet());
+        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getCity());
+        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getState());
+        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getZipcode());
+        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getType());
+        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getPhoneNum());
+        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getWebsite());
     }
 
     @Override
