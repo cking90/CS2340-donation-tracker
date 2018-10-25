@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
 
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -20,13 +21,10 @@ public class UserInfo {
     private static DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
     public static void addNewUser(String name, String email, String password, String userType) {
-//        ArrayList<String> info = new ArrayList<>();
-//        info.add(name);
-//        info.add(password);
-//        info.add(userType);
-//        loginInfo.put(email, info);
-
-        database.child("users").child(email).child("name").setValue(name);
+         database.child("users").child(email).child("name").setValue(name);
+         database.child("users").child(email).child("email").setValue(email);
+         database.child("users").child(email).child("password").setValue(password);
+         database.child("users").child(email).child("userType").setValue(userType);
     }
 
     public static Map<String, List<String>> getLoginInfo() {
@@ -34,7 +32,7 @@ public class UserInfo {
     }
 
     public static boolean containsKey(String email) {
-        return loginInfo.containsKey(email);
+        return true;
     }
 
     public static boolean correctPassword(String email, String password) {
