@@ -70,16 +70,16 @@ public class Location {
     public static void addLocation(Location location) {
         locationList.add(location);
         database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(Integer.toString(location.getKey()));
-        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getName());
-        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getLatitude());
-        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getLongitude());
-        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getStreet());
-        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getCity());
-        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getState());
-        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getZipcode());
-        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getType());
-        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getPhoneNum());
-        database.child("location").child(Integer.toString(location.getKey())).child("key").setValue(location.getWebsite());
+        database.child("location").child(Integer.toString(location.getKey())).child("name").setValue(location.getName());
+        database.child("location").child(Integer.toString(location.getKey())).child("latitude").setValue(location.getLatitude());
+        database.child("location").child(Integer.toString(location.getKey())).child("longitude").setValue(location.getLongitude());
+        database.child("location").child(Integer.toString(location.getKey())).child("street").setValue(location.getStreet());
+        database.child("location").child(Integer.toString(location.getKey())).child("city").setValue(location.getCity());
+        database.child("location").child(Integer.toString(location.getKey())).child("state").setValue(location.getState());
+        database.child("location").child(Integer.toString(location.getKey())).child("zipcode").setValue(location.getZipcode());
+        database.child("location").child(Integer.toString(location.getKey())).child("type").setValue(location.getType());
+        database.child("location").child(Integer.toString(location.getKey())).child("phone").setValue(location.getPhoneNum());
+        database.child("location").child(Integer.toString(location.getKey())).child("website").setValue(location.getWebsite());
     }
 
     @Override

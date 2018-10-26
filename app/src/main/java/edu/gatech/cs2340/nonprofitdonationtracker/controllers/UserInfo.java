@@ -26,35 +26,32 @@ public class UserInfo {
     private static DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
     public static void addNewUser(String name, String email, String password, String userType) {
-         database.child("users").child(email).child("name").setValue(name);
-         database.child("users").child(email).child("email").setValue(email);
-         database.child("users").child(email).child("password").setValue(password);
-         database.child("users").child(email).child("userType").setValue(userType);
+        List<String> userInfo = new ArrayList<>();
+        userInfo.add(name);
+        userInfo.add(password);
+        userInfo.add(userType);
+        String email2 = email.replaceAll("[.]",",");
+        loginInfo.put(email, userInfo);
+        database.child("users").child(email2).child("name").setValue(name);
+        database.child("users").child(email2).child("email").setValue(email);
+        database.child("users").child(email2).child("password").setValue(password);
+        database.child("users").child(email2).child("userType").setValue(userType);
+    }
+
+    public static void addUserToLocal(String name, String email, String password, String userType) {
+            List<String> userInfo = new ArrayList<>();
+            userInfo.add(name);
+            userInfo.add(password);
+            userInfo.add(userType);
+            loginInfo.put(email, userInfo);
     }
 
     public static Map<String, List<String>> getLoginInfo() {
         return UserInfo.loginInfo;
     }
 
-    public static boolean containsKey(final String email) {
-        final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("users");
-        final List<String> emails = new ArrayList<>();
-        rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Log.d("Coco",(String) dataSnapshot.getKey());
-                    emails.add(dataSnapshot.getKey());
-                    Log.d("Why", Integer.toString(emails.size()));
-                }
-            }
-
-            public void onCancelled(DatabaseError error) {
-                Log.d("Database Error:", error.getMessage());
-            }
-        });
-        Log.d("Why", "String");
-        return emails.contains(email);
+    public static boolean containsKey(String email) {
+        return loginInfo.containsKey(email);
     }
 
     public static boolean correctPassword(String email, String password) {
