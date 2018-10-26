@@ -30,7 +30,7 @@ public class UserInfo {
         userInfo.add(name);
         userInfo.add(password);
         userInfo.add(userType);
-        String email2 = email.replaceAll("[.]",",");
+        String email2 = email.replace(".",",");
         loginInfo.put(email, userInfo);
         database.child("users").child(email2).child("name").setValue(name);
         database.child("users").child(email2).child("email").setValue(email);

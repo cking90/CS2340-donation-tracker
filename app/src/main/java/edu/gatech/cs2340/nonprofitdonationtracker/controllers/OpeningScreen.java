@@ -42,7 +42,7 @@ public class OpeningScreen extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snap : dataSnapshot.child("users").getChildren()) {
-                    String email = snap.getKey();
+                    String email = (String) snap.child("email").getValue();
                     String name = (String) snap.child("name").getValue();
                     String password = (String) snap.child("password").getValue();
                     String type = (String) snap.child("userType").getValue();
