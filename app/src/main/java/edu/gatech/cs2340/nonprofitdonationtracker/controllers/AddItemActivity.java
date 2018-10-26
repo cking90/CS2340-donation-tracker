@@ -66,11 +66,6 @@ public class AddItemActivity extends AppCompatActivity {
             if (location.getKey() == locationId) {
                 location.addDonation(new Donation(nameField, shortDescription,
                         longDescription, price, (Category) categorySpinner.getSelectedItem()));
-                database.child("item").child(nameField).child("name").setValue(nameField);
-                database.child("item").child(nameField).child("shortDescription").setValue(shortDescription);
-                database.child("item").child(nameField).child("longDescription").setValue(longDescription);
-                database.child("item").child(nameField).child("price").setValue(price);
-                database.child("item").child(nameField).child("category").setValue(categorySpinner.getSelectedItem());
             }
         }
 

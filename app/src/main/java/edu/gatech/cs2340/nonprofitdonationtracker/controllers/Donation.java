@@ -20,6 +20,17 @@ public class Donation {
         this.timeStamp = new Date();
     }
 
+    public Donation(String name, String shortDescription,
+                    String longDescription, float value, Category category, Date date) {
+        this.name = name;
+        this.shortDescription = shortDescription;
+        this.longDescription = longDescription;
+        this.value = value;
+        this.category = category;
+        this.timeStamp = date;
+    }
+
+
     public Date getDate() {
         return this.timeStamp;
     }
