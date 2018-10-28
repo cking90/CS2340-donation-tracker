@@ -25,6 +25,7 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
     private ArrayList<String> donationShortDescriptions = new ArrayList<>();
     private ArrayList<String> donationLongDescriptions = new ArrayList<>();
     private ArrayList<String> donationCategories = new ArrayList<>();
+    private ArrayList<Integer> locationIDs = new ArrayList<>();
     private int locationID;
 
     Model model;
@@ -52,6 +53,8 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
                     donationShortDescriptions.add(d.getShortDescription());
                     donationLongDescriptions.add(d.getLongDescription());
                     donationCategories.add(d.getCategory().toString());
+                    locationIDs.add(locationID);
+
                 }
                 break;
             }
@@ -63,7 +66,8 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
         Log.d("initDonateRecyclerView", "initRecycler: started");
         RecyclerView recyclerView = findViewById(R.id.donationsRecyclerView);
         ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(donationNames,
-                donationValues, donationDates, donationShortDescriptions, donationLongDescriptions, donationCategories, locationID, this);
+                donationValues, donationDates, donationShortDescriptions, donationLongDescriptions,
+                donationCategories, locationIDs, this);
         Log.d("initDonateRecyclerView", "initRecycler: adapter instantiated");
         recyclerView.setAdapter(adapter);
         Log.d("initDonateRecyclerView", "initRecycler: adapter Set");
