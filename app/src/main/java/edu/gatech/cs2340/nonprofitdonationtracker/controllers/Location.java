@@ -114,11 +114,7 @@ public class Location {
 
     @Override
     public String toString() {
-        String msg = "";
-        msg += "name: " + name  + ", ";
-        msg += "key: " + this.key + ", ";
-        msg += "address: " + this.getFullAddress();
-        return msg;
+        return this.name;
     }
 
     @Override

@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".controllers.HomePageActivity">
 
+    <Button
+        android:id="@+id/searchDonationsBtn"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="onClickSearchDonations"
+        android:text="Search Items"
+        app:layout_constraintBottom_toTopOf="@+id/viewLocationsBtn"
+        app:layout_constraintEnd_toEndOf="@+id/viewLocationsBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/viewLocationsBtn"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeTxtView"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/welcomeTxtView"
         android:layout_width="173dp"
@@ -45,4 +60,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeTxtView" />
+
 </android.support.constraint.ConstraintLayout>
