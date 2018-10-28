@@ -26,20 +26,20 @@ public class ItemRecyclerViewAdapter extends
     private ArrayList<String> donationShortDescriptions = new ArrayList<>();
     private ArrayList<String> donationLongDescriptions = new ArrayList<>();
     private ArrayList<String> donationCategories = new ArrayList<>();
-    private int locationID;
+    private ArrayList<Integer> locationIDs = new ArrayList<>();
     private Context mContext;
 
     public ItemRecyclerViewAdapter(ArrayList<String> donationNames, ArrayList<String> donationValues,
                                    ArrayList<Date> donationDates, ArrayList<String> shortDescrips,
                                    ArrayList<String> longDescrips, ArrayList<String> donationCategories,
-                                   int locationID, Context context) {
+                                   ArrayList<Integer> locationID, Context context) {
         this.donationNames = donationNames;
         this.donationValues = donationValues;
         this.donationDates = donationDates;
         this.donationShortDescriptions = shortDescrips;
         this.donationLongDescriptions = longDescrips;
         this.donationCategories = donationCategories;
-        this.locationID = locationID;
+        this.locationIDs = locationID;
         this.mContext = context;
     }
 
@@ -61,6 +61,7 @@ public class ItemRecyclerViewAdapter extends
         holder.donationDescription.setText(donationShortDescriptions.get(position));
         holder.donationLongDescription = donationLongDescriptions.get(position);
         holder.donationCategory = donationCategories.get(position);
+        holder.locationID = locationIDs.get(position);
     }
 
     @Override
@@ -77,6 +78,7 @@ public class ItemRecyclerViewAdapter extends
         String donationLongDescription;
         String donationCategory;
         RelativeLayout parentLayout;
+        int locationID;
 
         /**
          * References the layout_location_item
