@@ -42,7 +42,7 @@ public class ViewSingleDonationActivity extends AppCompatActivity {
 
     public void onBackPressed(View view) {
         Bundle extras = getIntent().getExtras();
-        Intent intent = new Intent(this, ViewAllDonationsActivity.class);
+        Intent intent = new Intent(this, ViewSingleLocationActivity.class);
         intent.putExtra("location_id", extras.getInt("location_id"));
         intent.putExtra("user_type", model.getCurrentUserType());
         startActivity(intent);
