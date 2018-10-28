@@ -38,4 +38,9 @@ public class HomePageActivity extends AppCompatActivity {
         Intent intent = new Intent(this, OpeningScreen.class);
         startActivity(intent);
     }
+
+    public void onClickSearchDonations(View view) {
+        Intent intent = new Intent(this, SearchActivity.class);
+        startActivity(intent);
+    }
 }
