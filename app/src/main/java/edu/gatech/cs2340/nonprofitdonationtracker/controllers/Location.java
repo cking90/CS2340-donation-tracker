@@ -67,6 +67,10 @@ public class Location {
         this.website = website;
     }
 
+    public static Set<Location> getLocationList() {
+        return locationList;
+    }
+
     public static void addLocation(Location location) {
         locationList.add(location);
         database.child("locations").child(Integer.toString(location.getKey())).child("key").setValue(location.getKey());
