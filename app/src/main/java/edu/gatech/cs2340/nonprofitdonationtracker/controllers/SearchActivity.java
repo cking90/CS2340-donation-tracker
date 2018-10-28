@@ -1,7 +1,9 @@
 package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -33,7 +35,14 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
+    public void onClickSearchByCategory(View view) {
+        Spinner category_picker = (Spinner)findViewById(R.id.spinner_category_id);
+        Category selected_category = (Category)category_picker.getSelectedItem();
+        //TODO - use selected category in a filter method to return a list of items of this category
+    }
 
+    public void onClickSearchByItem(View view) {
 
+    }
 
 }
