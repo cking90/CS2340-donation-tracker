@@ -3,6 +3,7 @@ package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -43,6 +44,7 @@ public class SearchActivity extends AppCompatActivity {
         Location selectedLocation = (Location)location_picker.getSelectedItem();
         Spinner category_picker = (Spinner)findViewById(R.id.spinner_category_id);
         Category selected_category = (Category)category_picker.getSelectedItem();
+
         int location_key = selectedLocation.getKey();
         donationList = Location.filterByLocation(location_key);
         donationList = filterByCategory(selected_category);
