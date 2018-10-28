@@ -45,6 +45,7 @@ public class SearchActivity extends AppCompatActivity {
         Category selected_category = (Category)category_picker.getSelectedItem();
         int location_key = selectedLocation.getKey();
         List<Donation> filteredListByLocation = Location.filterByLocation(location_key);
+        donationList = filterByCategory(selected_category);
     }
 
     public void onClickSearchByItem(View view) {
@@ -54,8 +55,17 @@ public class SearchActivity extends AppCompatActivity {
         String item = searched_item.getText().toString();
         int location_key = selectedLocation.getKey();
         List<Donation> filteredListByLocation = Location.filterByLocation(location_key);
+        donationList = filterByItemName(item);
     }
 
-    //public void filterByCategory()
+    private List<Donation> filterByCategory(Category category) {
+        List<Donation> updatedList = new ArrayList<>();
+        return updatedList;
+    }
+
+    private List<Donation> filterByItemName(String item) {
+        List<Donation> updatedList = new ArrayList<>();
+        return updatedList;
+    }
 
 }
