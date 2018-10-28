@@ -243,9 +243,9 @@ public class Location {
         donationList.add(d);
     }
 
-    public static List<Donation> filterByLocation(List<Donation> donations, int locationKey) {
+    public static List<Donation> filterByLocation(int locationKey) {
         if (locationKey == -1) {
-            return donations;
+            
         } else {
 
         }
