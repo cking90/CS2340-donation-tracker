@@ -62,7 +62,7 @@ public class SearchActivity extends AppCompatActivity {
         Spinner category_picker = (Spinner)findViewById(R.id.spinner_category_id);
         Category selected_category = (Category)category_picker.getSelectedItem();
         int location_key = selectedLocation.getKey();
-        List<Donation> filteredListByLocation = Location.filterByLocation(location_key);
+        donationList = Location.filterByLocation(location_key);
         donationList = filterByCategory(selected_category);
     }
 
@@ -72,17 +72,27 @@ public class SearchActivity extends AppCompatActivity {
         EditText searched_item = (EditText)findViewById(R.id.editText_searched_item_id);
         String item = searched_item.getText().toString();
         int location_key = selectedLocation.getKey();
-        List<Donation> filteredListByLocation = Location.filterByLocation(location_key);
+        donationList = Location.filterByLocation(location_key);
         donationList = filterByItemName(item);
     }
 
     private List<Donation> filterByCategory(Category category) {
         List<Donation> updatedList = new ArrayList<>();
+        for (Donation item : donationList) {
+            if (item.getCategory().equals(category)) {
+                updatedList.add(item);
+            }
+        }
         return updatedList;
     }
 
     private List<Donation> filterByItemName(String item) {
         List<Donation> updatedList = new ArrayList<>();
+        for (Donation donation: donationList) {
+            if (donation.getName().equalsIgnoreCase(item)) {
+                updatedList.add(donation);
+            }
+        }
         return updatedList;
     }
 

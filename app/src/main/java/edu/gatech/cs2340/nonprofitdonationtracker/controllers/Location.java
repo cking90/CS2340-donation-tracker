@@ -239,13 +239,32 @@ public class Location {
         donationList.add(d);
     }
 
+    public static List<Donation> getAllDonations() {
+        Set<Location> locations = getLocationList();
+        List<Donation> allDonations = new ArrayList<>();
+        for (Location location : locations) {
+            for (Donation donation : location.getDonations()) {
+                allDonations.add(donation);
+            }
+        }
+        return allDonations;
+    }
+
     public static List<Donation> filterByLocation(int locationKey) {
         if (locationKey == -1) {
-            
+            return getAllDonations();
         } else {
-
+            Set<Location> locations = getLocationList();
+            List<Donation> specificDonations = new ArrayList<>();
+            for (Location location : locations) {
+                if (location.getKey() == locationKey) {
+                    for (Donation donation : location.getDonations()) {
+                        specificDonations.add(donation);
+                    }
+                }
+            }
+            return specificDonations;
         }
-        return null;
     }
 
 }
