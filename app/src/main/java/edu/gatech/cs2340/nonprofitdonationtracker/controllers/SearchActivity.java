@@ -18,6 +18,8 @@ import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
 public class SearchActivity extends AppCompatActivity {
 
+    private List<Donation> donationList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
