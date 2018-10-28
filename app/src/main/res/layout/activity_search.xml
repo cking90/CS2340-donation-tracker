@@ -47,7 +47,7 @@
         tools:text="Search" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editText_searched_item_id"
         android:layout_width="134dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
