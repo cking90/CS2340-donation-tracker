@@ -275,7 +275,7 @@ public class Location {
             for (Location location : locations) {
                 if (location.getKey() == locationKey) {
                     for (Donation donation : location.getDonations()) {
-                        if (specificDonations.containsKey(location.getKey())) {
+                        if (!specificDonations.containsKey(location.getKey())) {
                             ArrayList<Donation> donationArray = new ArrayList<>();
                             donationArray.add(donation);
                             specificDonations.put(location.getKey(), donationArray);
