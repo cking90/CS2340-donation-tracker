@@ -10,8 +10,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.nio.charset.StandardCharsets;
 
@@ -250,16 +252,36 @@ public class Location {
         return allDonations;
     }
 
-    public static List<Donation> filterByLocation(int locationKey) {
+    public static Map<Integer, List<Donation>> filterByLocation(int locationKey) {
         if (locationKey == -1) {
-            return getAllDonations();
+            Set<Location> locations = getLocationList();
+            Map<Integer, List<Donation>> specificDonations = new HashMap<>();
+            for (Location location : locations) {
+                for (Donation donation : location.getDonations()) {
+                    if (!specificDonations.containsKey(location.getKey())) {
+                        ArrayList<Donation> donationArray = new ArrayList<>();
+                        donationArray.add(donation);
+                        specificDonations.put(location.getKey(), donationArray);
+                    } else {
+                        specificDonations.get(location.getKey()).add(donation);
+                    }
+
+                }
+            }
+            return specificDonations;
         } else {
             Set<Location> locations = getLocationList();
-            List<Donation> specificDonations = new ArrayList<>();
+            Map<Integer, List<Donation>> specificDonations = new HashMap<>();
             for (Location location : locations) {
                 if (location.getKey() == locationKey) {
                     for (Donation donation : location.getDonations()) {
-                        specificDonations.add(donation);
+                        if (specificDonations.containsKey(location.getKey())) {
+                            ArrayList<Donation> donationArray = new ArrayList<>();
+                            donationArray.add(donation);
+                            specificDonations.put(location.getKey(), donationArray);
+                        } else {
+                            specificDonations.get(location.getKey()).add(donation);
+                        }
                     }
                 }
             }
