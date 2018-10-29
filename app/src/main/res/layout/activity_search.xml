@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,27 +12,23 @@
         android:layout_width="139dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="376dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/button5"
+        app:layout_constraintHorizontal_bias="0.826"
         app:layout_constraintStart_toEndOf="@+id/editText_searched_item_id"
-        app:layout_constraintTop_toTopOf="@+id/editText_searched_item_id"
-        app:layout_constraintVertical_bias="0.027" />
+        app:layout_constraintTop_toTopOf="@+id/editText_searched_item_id" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="44dp"
-        android:layout_marginBottom="308dp"
+        android:layout_marginTop="8dp"
         android:onClick="onClickSearchByItem"
         android:text="Search by item"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.028"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="Search by item" />
+        app:layout_constraintEnd_toEndOf="@+id/editText_searched_item_id"
+        app:layout_constraintStart_toStartOf="@+id/editText_searched_item_id"
+        app:layout_constraintTop_toBottomOf="@+id/editText_searched_item_id" />
 
     <TextView
         android:id="@+id/textView17"
@@ -40,12 +36,9 @@
         android:layout_height="wrap_content"
         android:text="Search"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.017"
-        tools:text="Search" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText_searched_item_id"
@@ -60,10 +53,10 @@
         android:text="Item"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintHorizontal_bias="0.094"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_location_picker_id"
+        app:layout_constraintVertical_bias="0.018" />
 
     <Button
         android:id="@+id/button5"
@@ -72,38 +65,32 @@
         android:layout_marginStart="8dp"
         android:onClick="onClickSearchByCategory"
         android:text="Search by category"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/button4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toTopOf="@+id/button4"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/button4" />
 
     <Spinner
         android:id="@+id/spinner_location_picker_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="265dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/donationsRecyclerView"
-        android:layout_width="368dp"
-        android:layout_height="298dp"
+        android:layout_width="0dp"
+        android:layout_height="310dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/button5" />
 
 
 </android.support.constraint.ConstraintLayout>
