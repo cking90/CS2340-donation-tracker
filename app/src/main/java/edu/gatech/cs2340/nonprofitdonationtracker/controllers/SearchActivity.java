@@ -59,6 +59,14 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * searches the donations by its category
+     *
+     * does so by getting a list of donations by location and then filters
+     * them by the category attribute
+     *
+     * @param view current view
+     */
     public void onClickSearchByCategory(View view) {
         Spinner location_picker = (Spinner)findViewById(R.id.spinner_location_picker_id);
         Location selectedLocation = (Location)location_picker.getSelectedItem();
@@ -70,6 +78,14 @@ public class SearchActivity extends AppCompatActivity {
         updateRecyclerView();
     }
 
+    /**
+     * searches the donations by its name
+     *
+     * does so by getting a list of donations by location and then filters
+     * them by the item name attribute
+     *
+     * @param view current  view
+     */
     public void onClickSearchByItem(View view) {
         Spinner location_picker = (Spinner)findViewById(R.id.spinner_location_picker_id);
         Location selectedLocation = (Location)location_picker.getSelectedItem();
