@@ -20,10 +20,15 @@ import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
 public class OpeningScreen extends AppCompatActivity {
 
+    Model model;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opening_screen);
+
+        model = Model.getInstance();
+
         //readCSVFile();
         Log.d("Locations", Location.locationList.toString());
         initData();
@@ -95,6 +100,15 @@ public class OpeningScreen extends AppCompatActivity {
 
     public void onClickRegister(View view) {
         Intent intent = new Intent(this, RegistrationActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickGuest(View view) {
+        Intent intent = new Intent(this, HomePageActivity.class);
+        String email = "guest";
+        model.setUserInfo(email);
+        intent.putExtra("user_email", email);
+        intent.putExtra("user_type", UserInfo.getUserType(email));
         startActivity(intent);
     }
 }

@@ -50,6 +50,12 @@ public class RegistrationActivity extends AppCompatActivity {
             toast.show();
             return false;
         }
+        if (selected_user_type.equals("Guest User")) {
+            Toast toast = Toast.makeText(getApplicationContext()
+                    , "Cannot register as a guest user", Toast.LENGTH_SHORT);
+            toast.show();
+            return false;
+        }
         if (!UserInfo.containsKey(email_value.toString())) {
             UserInfo.addNewUser(name_value.toString(), email_value.toString(), password_value.toString(), selected_user_type);
             return true;
