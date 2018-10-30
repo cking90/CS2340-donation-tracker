@@ -77,7 +77,7 @@ public class Location {
      * Adds the passed in location to the local and
      * database data centers containing information about
      * all locations
-     * 
+     *
      * @param location to be added
      */
     public static void addLocation(Location location) {

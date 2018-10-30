@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -188,6 +189,12 @@ public class SearchActivity extends AppCompatActivity {
                 , locationIDs, this);
         Log.d("initDonateRecyclerView", "initRecycler: adapter instantiated");
         recyclerView.setAdapter(adapter);
+        if (donationNames.isEmpty()) {
+            Toast toast = Toast.makeText(getApplicationContext()
+                    , "No Items Matched Your Search", Toast.LENGTH_LONG);
+            toast.show();
+        }
+
     }
 
 }
