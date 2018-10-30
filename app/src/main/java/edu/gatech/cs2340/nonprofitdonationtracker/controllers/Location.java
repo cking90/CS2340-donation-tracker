@@ -73,6 +73,13 @@ public class Location {
         return locationList;
     }
 
+    /**
+     * Adds the passed in location to the local and
+     * database data centers containing information about
+     * all locations
+     * 
+     * @param location to be added
+     */
     public static void addLocation(Location location) {
         locationList.add(location);
         database.child("locations").child(Integer.toString(location.getKey())).child("key").setValue(location.getKey());
@@ -97,6 +104,12 @@ public class Location {
 //        }
     }
 
+    /**
+     * Adds the passed in location to the local copy of
+     * a list containing all locations
+     * @param l location to be added to the local
+     *          copy
+     */
     public static void addLocationLocal(Location l) {
         locationList.add(l);
     }
@@ -124,7 +137,12 @@ public class Location {
         return this.key;
     }
 
-
+    /**
+     * parses the input stream of an assumed format
+     * to populated the location data
+     * @param is input stream containing csv file
+     *           with location data
+     */
     public static void parseCSV(InputStream is) {
         try {
             BufferedReader csvScan = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
@@ -149,26 +167,54 @@ public class Location {
 
     }
 
+    /**
+     *
+     * @return the key of the location
+     */
     public int getKey() {
         return this.key;
     }
 
+    /**
+     *
+     * @return String of the location's name
+     */
     public String getName(){
         return this.name;
     }
 
+    /**
+     *
+     * @return the latitudinal position of
+     * the location
+     */
     public double getLatitude() {
         return this.latitude;
     }
 
+    /**
+     *
+     * @return the longitudinal position
+     * of the location
+     */
     public double getLongitude() {
         return this.longitude;
     }
 
+    /**
+     *
+     * @return String of the Street address
+     * of the location
+     */
     public String getStreet() {
         return this.street;
     }
 
+    /**
+     *
+     * @return String name of the city
+     * in which the location is located
+     */
     public String getCity() {
         return this.city;
     }
