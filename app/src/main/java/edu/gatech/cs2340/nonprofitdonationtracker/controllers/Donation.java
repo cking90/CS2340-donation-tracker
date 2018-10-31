@@ -57,7 +57,9 @@ public class Donation {
 
     public void setDate(Date timeStamp) {this.timeStamp = timeStamp;}
 
-    public void setShortDescription(String shortDescription) {this.shortDescription = shortDescription;}
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
+    }
 
     public void setLongDescription(String longDescription) {this.longDescription = longDescription;}
 

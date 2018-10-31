@@ -21,7 +21,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
         //populating spinner with values from enum
         Spinner userType = (Spinner)findViewById(R.id.user_type_spinner_id);
-        userType.setAdapter(new ArrayAdapter<UserType>(this, android.R.layout.simple_spinner_item, UserType.values()));
+        userType.setAdapter(new ArrayAdapter<UserType>(
+                this, android.R.layout.simple_spinner_item, UserType.values()));
     }
 
 
@@ -57,7 +58,8 @@ public class RegistrationActivity extends AppCompatActivity {
             return false;
         }
         if (!UserInfo.containsKey(email_value.toString())) {
-            UserInfo.addNewUser(name_value.toString(), email_value.toString(), password_value.toString(), selected_user_type);
+            UserInfo.addNewUser(name_value.toString(), email_value.toString(),
+                    password_value.toString(), selected_user_type);
             return true;
         } else {
             Toast toast = Toast.makeText(getApplicationContext()

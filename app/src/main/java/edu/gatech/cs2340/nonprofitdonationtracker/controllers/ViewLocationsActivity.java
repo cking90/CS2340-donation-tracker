@@ -50,8 +50,8 @@ public class ViewLocationsActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         Log.d("initRecyclerView", "initRecycler: adapter Set");
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
-                DividerItemDecoration.VERTICAL);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(
+                recyclerView.getContext(), DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
         Log.d("initRecyclerView", "initRecycler: layout Set");
     }

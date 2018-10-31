@@ -49,11 +49,13 @@ public class SearchActivity extends AppCompatActivity {
         Location defaultOption = new Location(-1, "All Locations", -1, -1, "", "", "", -1, null, -1, "");
         locationList.add(0, defaultOption);
         Spinner location_spinner =  (Spinner)findViewById(R.id.spinner_location_picker_id);
-        location_spinner.setAdapter(new ArrayAdapter<Location>(this, android.R.layout.simple_spinner_item, locationList));
+        location_spinner.setAdapter(new ArrayAdapter<Location>(
+                this, android.R.layout.simple_spinner_item, locationList));
 
         Spinner category_picker = (Spinner)findViewById(R.id.spinner_category_id);
         List<Category> categories = Arrays.asList(Category.values());
-        category_picker.setAdapter(new ArrayAdapter<Category>(this, android.R.layout.simple_spinner_item, categories));
+        category_picker.setAdapter(new ArrayAdapter<Category>(
+                this, android.R.layout.simple_spinner_item, categories));
 
         recyclerView = findViewById(R.id.donationsRecyclerView);
         initDonationData();
@@ -153,14 +155,14 @@ public class SearchActivity extends AppCompatActivity {
         Log.d("initDonateRecyclerView", "initRecycler: started");
         recyclerView = findViewById(R.id.donationsRecyclerView);
         ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(donationNames,
-                donationValues, donationDates, donationShortDescriptions, donationLongDescriptions, donationCategories
-                , locationIDs, this);
+                donationValues, donationDates, donationShortDescriptions, donationLongDescriptions,
+                donationCategories, locationIDs, this);
         Log.d("initDonateRecyclerView", "initRecycler: adapter instantiated");
         recyclerView.setAdapter(adapter);
         Log.d("initDonateRecyclerView", "initRecycler: adapter Set");
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
-                DividerItemDecoration.VERTICAL);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(
+                recyclerView.getContext(), DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
         Log.d("initDonateRecyclerView", "initRecycler: layout Set");
     }
@@ -185,8 +187,8 @@ public class SearchActivity extends AppCompatActivity {
             }
         }
         ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(donationNames,
-                donationValues, donationDates, donationShortDescriptions, donationLongDescriptions, donationCategories
-                , locationIDs, this);
+                donationValues, donationDates, donationShortDescriptions, donationLongDescriptions,
+                donationCategories, locationIDs, this);
         Log.d("initDonateRecyclerView", "initRecycler: adapter instantiated");
         recyclerView.setAdapter(adapter);
         if (donationNames.isEmpty()) {

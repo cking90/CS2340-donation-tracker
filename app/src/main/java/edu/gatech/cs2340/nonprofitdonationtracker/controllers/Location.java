@@ -82,17 +82,28 @@ public class Location {
      */
     public static void addLocation(Location location) {
         locationList.add(location);
-        database.child("locations").child(Integer.toString(location.getKey())).child("key").setValue(location.getKey());
-        database.child("locations").child(Integer.toString(location.getKey())).child("name").setValue(location.getName());
-        database.child("locations").child(Integer.toString(location.getKey())).child("latitude").setValue(location.getLatitude());
-        database.child("locations").child(Integer.toString(location.getKey())).child("longitude").setValue(location.getLongitude());
-        database.child("locations").child(Integer.toString(location.getKey())).child("street").setValue(location.getStreet());
-        database.child("locations").child(Integer.toString(location.getKey())).child("city").setValue(location.getCity());
-        database.child("locations").child(Integer.toString(location.getKey())).child("state").setValue(location.getState());
-        database.child("locations").child(Integer.toString(location.getKey())).child("zipcode").setValue(location.getZipcode());
-        database.child("locations").child(Integer.toString(location.getKey())).child("type").setValue(location.getType());
-        database.child("locations").child(Integer.toString(location.getKey())).child("phone").setValue(location.getPhoneNum());
-        database.child("locations").child(Integer.toString(location.getKey())).child("website").setValue(location.getWebsite());
+        database.child("locations").child(Integer.toString(
+                location.getKey())).child("key").setValue(location.getKey());
+        database.child("locations").child(Integer.toString
+                (location.getKey())).child("name").setValue(location.getName());
+        database.child("locations").child(Integer.toString(
+                location.getKey())).child("latitude").setValue(location.getLatitude());
+        database.child("locations").child(Integer.toString(
+                location.getKey())).child("longitude").setValue(location.getLongitude());
+        database.child("locations").child(Integer.toString(
+                location.getKey())).child("street").setValue(location.getStreet());
+        database.child("locations").child(Integer.toString(
+                location.getKey())).child("city").setValue(location.getCity());
+        database.child("locations").child(Integer.toString(
+                location.getKey())).child("state").setValue(location.getState());
+        database.child("locations").child(Integer.toString(
+                location.getKey())).child("zipcode").setValue(location.getZipcode());
+        database.child("locations").child(Integer.toString(
+                location.getKey())).child("type").setValue(location.getType());
+        database.child("locations").child(Integer.toString(
+                location.getKey())).child("phone").setValue(location.getPhoneNum());
+        database.child("locations").child(Integer.toString(
+                location.getKey())).child("website").setValue(location.getWebsite());
 //        DatabaseReference locationRef = database.child("locations");
 //        for (Donation d : location.donationList) {
 //            locationRef.child("donations").child(d.getDate().toString()).child("date").setValue(d.getDate());
@@ -273,14 +284,20 @@ public class Location {
     public void addDonation(Donation d) {
         donationList.add(d);
 
-        DatabaseReference locationRef = FirebaseDatabase.getInstance().getReference()
-                                                .child("locations").child(Integer.toString(this.getKey()));
-        locationRef.child("donations").child(d.getDate().toString()).child("date").setValue(d.getDate().getTime());
-        locationRef.child("donations").child(d.getDate().toString()).child("name").setValue(d.getName());
-        locationRef.child("donations").child(d.getDate().toString()).child("shortDescription").setValue(d.getShortDescription());
-        locationRef.child("donations").child(d.getDate().toString()).child("longDescription").setValue(d.getLongDescription());
-        locationRef.child("donations").child(d.getDate().toString()).child("value").setValue(d.getValue());
-        locationRef.child("donations").child(d.getDate().toString()).child("category").setValue(d.getCategory());
+        DatabaseReference locationRef = FirebaseDatabase.getInstance().getReference().child(
+                "locations").child(Integer.toString(this.getKey()));
+        locationRef.child("donations").child(d.getDate().toString()).child(
+                "date").setValue(d.getDate().getTime());
+        locationRef.child("donations").child(d.getDate().toString()).child(
+                "name").setValue(d.getName());
+        locationRef.child("donations").child(d.getDate().toString()).child(
+                "shortDescription").setValue(d.getShortDescription());
+        locationRef.child("donations").child(d.getDate().toString()).child(
+                "longDescription").setValue(d.getLongDescription());
+        locationRef.child("donations").child(d.getDate().toString()).child(
+                "value").setValue(d.getValue());
+        locationRef.child("donations").child(d.getDate().toString()).child(
+                "category").setValue(d.getCategory());
     }
 
     public void addDonationLocal(Donation d) {

@@ -65,7 +65,8 @@ public class OpeningScreen extends AppCompatActivity {
                     String website = (String) snap.child("website").getValue();
                     int key = ((Long) snap.child("key").getValue()).intValue();
                     int zipcode = ((Long) snap.child("zipcode").getValue()).intValue();
-                    LocationType type = LocationType.valueOf((String) snap.child("type").getValue());
+                    LocationType type = LocationType.valueOf(
+                            (String) snap.child("type").getValue());
                     long phone = (Long) snap.child("phone").getValue();
 
                     Location location = new Location(key, name, latitude, longitude, street, city,
@@ -74,12 +75,16 @@ public class OpeningScreen extends AppCompatActivity {
                     for (DataSnapshot donationsSnap : snap.child("donations").getChildren()) {
                         String donationName = (String) donationsSnap.child("name").getValue();
                         long timestamp = (Long) donationsSnap.child("date").getValue();
-                        String shortDescription = (String) donationsSnap.child("shortDescription").getValue();
-                        String longDescription = (String) donationsSnap.child("longDescription").getValue();
+                        String shortDescription = (String) donationsSnap.child(
+                                "shortDescription").getValue();
+                        String longDescription = (String) donationsSnap.child(
+                                "longDescription").getValue();
                         float value = ((Long) donationsSnap.child("value").getValue()).floatValue();
-                        Category category = Category.valueOf((String) donationsSnap.child("category").getValue());
-                        Donation donation = new Donation(donationName, shortDescription, longDescription
-                                                                , value, category, new Date(timestamp));
+                        Category category = Category.valueOf(
+                                (String) donationsSnap.child("category").getValue());
+                        Donation donation = new Donation(donationName,
+                                shortDescription, longDescription
+                                , value, category, new Date(timestamp));
                         location.addDonationLocal(donation);
                     }
                     Log.d("blue", location.toString());

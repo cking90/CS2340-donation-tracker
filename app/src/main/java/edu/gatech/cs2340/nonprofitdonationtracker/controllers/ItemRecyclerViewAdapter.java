@@ -29,9 +29,10 @@ public class ItemRecyclerViewAdapter extends
     private ArrayList<Integer> locationIDs = new ArrayList<>();
     private Context mContext;
 
-    public ItemRecyclerViewAdapter(ArrayList<String> donationNames, ArrayList<String> donationValues,
-                                   ArrayList<Date> donationDates, ArrayList<String> shortDescrips,
-                                   ArrayList<String> longDescrips, ArrayList<String> donationCategories,
+    public ItemRecyclerViewAdapter(ArrayList<String> donationNames,
+                                   ArrayList<String> donationValues, ArrayList<Date> donationDates,
+                                   ArrayList<String> shortDescrips, ArrayList<String> longDescrips,
+                                   ArrayList<String> donationCategories,
                                    ArrayList<Integer> locationID, Context context) {
         this.donationNames = donationNames;
         this.donationValues = donationValues;
@@ -100,7 +101,8 @@ public class ItemRecyclerViewAdapter extends
                 intent.putExtra("donation_Date", donationDate.getText().toString());
                 intent.putExtra("donation_Name", donationName.getText().toString());
                 intent.putExtra("donation_Value", donationValue.getText().toString());
-                intent.putExtra("donation_ShortDescription", donationDescription.getText().toString());
+                intent.putExtra("donation_ShortDescription",
+                        donationDescription.getText().toString());
                 intent.putExtra("donation_LongDescription", donationLongDescription);
                 intent.putExtra("donation_Category", donationCategory);
                 intent.putExtra("location_id", locationID);
