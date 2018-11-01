@@ -17,20 +17,34 @@ import java.util.ArrayList;
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
 /**
- * Created by Charlie 10/11/18
  * Creates an adapter for the Location display list
+ *
+ * @author cking90
  */
 public class LocationRecyclerViewAdapter extends
                         RecyclerView.Adapter<LocationRecyclerViewAdapter.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
 
-    private ArrayList<String> locationNames = new ArrayList<>();
-    private ArrayList<String> locationAddresses = new ArrayList<>();
-    private ArrayList<String> locationIDs = new ArrayList<>();
+    private ArrayList<String> locationNames;
+    private ArrayList<String> locationAddresses;
+    private ArrayList<String> locationIDs;
     private String userType;
     private Context mContext;
 
+    /**
+     * Creates an adapter to display the passed in lists of information. The lists
+     * should have Location information mapped to the same index
+     *
+     * @param locationNames list of the location's name to be displayed
+     * @param locationAddresses list of the location's addresses to be displayed
+     * @param locationIDs list of the location's id to be displayed
+     * @param userType String representing the user type of the person who clicked on the
+     *                 location. Now deprecated as the current user is stored in the model
+     * @param context of the activity in which the adapter is being used. Currently not utilized,
+     *                but implemented to provide a framework for adding photo functionality if
+     *                needed.
+     */
     public LocationRecyclerViewAdapter(ArrayList<String> locationNames, ArrayList<String> locationAddresses,
                                        ArrayList<String> locationIDs, String userType, Context context) {
         this.locationNames = locationNames;
@@ -66,6 +80,11 @@ public class LocationRecyclerViewAdapter extends
         return locationIDs.size();
     }
 
+    /**
+     * Represents each individual item that is mapped to the list by the
+     * adapter. A view holder is created for each item that is displayed
+     * within the list.
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView locationName;
@@ -76,6 +95,11 @@ public class LocationRecyclerViewAdapter extends
         /**
          * References the layout_location_item
          * used to map individual elements in the recycler view
+         *
+         * Contains an onClickListener that brings the User to the
+         * ViewSingleLocation Activity, where information about the
+         * location and its donations is accessible.
+         *
          * @param itemView the layout_location_item
          */
         public ViewHolder(View itemView) {

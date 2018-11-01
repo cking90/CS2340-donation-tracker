@@ -13,6 +13,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
+/**
+ * Controller for the view in which users can add
+ * an item (donation) to a specific location. Only
+ * Users of type LocationEmployee will be granted
+ * access to this activity
+ */
 public class AddItemActivity extends AppCompatActivity {
 
     private EditText nameField;
@@ -46,6 +52,17 @@ public class AddItemActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Controller for the cancel button displayed in the
+     * activity_add_item layout. Returns to the ViewSingleLocation
+     * Activity and passes back the location id of the current
+     * locations and the user_type of the curent user.
+     *
+     * Note: user_type is deprecated and no longer used. Current
+     * user is now stored in the Model.
+     * @param view the layout file containing the cancel button,
+     *             as described in the method description.
+     */
     public void onCancelPressed(View view) {
         Bundle extras = getIntent().getExtras();
         Intent intent = new Intent(this, ViewSingleLocationActivity.class);
@@ -54,9 +71,14 @@ public class AddItemActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //Prem - unsure on how to add the new donation into the correct location list
-    //feel like this is an easy fix for you charlie so I'm trying to finish the rest
-    //also probably need to add implementation to prevent duplicate items
+    /**
+     * Pulls information from the activity_add_item layout and
+     * adds the item to the donationList instance variable of the
+     * current location.
+     *
+     * @param view the layout file as described in the
+     *             method description.
+     */
     public void onAddItemPressed(View view) {
         String nameField = this.nameField.getText().toString();
         String shortDescription = this.shortDescription.getText().toString();

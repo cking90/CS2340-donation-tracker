@@ -16,19 +16,40 @@ import java.util.Date;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
+/**
+ * Creates an adapter for mapping a Donation Item to a viewable
+ * and clickable list
+ *
+ * @author cking90
+ *
+ */
 public class ItemRecyclerViewAdapter extends
                         RecyclerView.Adapter<ItemRecyclerViewAdapter.ViewHolder> {
     private static final String TAG = "ItemRecyclerViewAdapter";
 
-    private ArrayList<String> donationNames = new ArrayList<>();
-    private ArrayList<String> donationValues = new ArrayList<>();
-    private ArrayList<Date> donationDates = new ArrayList<>();
-    private ArrayList<String> donationShortDescriptions = new ArrayList<>();
-    private ArrayList<String> donationLongDescriptions = new ArrayList<>();
-    private ArrayList<String> donationCategories = new ArrayList<>();
-    private ArrayList<Integer> locationIDs = new ArrayList<>();
+    private ArrayList<String> donationNames;
+    private ArrayList<String> donationValues;
+    private ArrayList<Date> donationDates;
+    private ArrayList<String> donationShortDescriptions;
+    private ArrayList<String> donationLongDescriptions;
+    private ArrayList<String> donationCategories;
+    private ArrayList<Integer> locationIDs;
     private Context mContext;
 
+    /**
+     * Constructor for the adapter that takes in all the information
+     * necessary to populate the recycler view.
+     *
+     * @param donationNames a list of the donation names to be displayed
+     * @param donationValues a list of the donation values (prices) to be displayed
+     * @param donationDates a list of the donation dates to be displayed
+     * @param shortDescrips a list of short descriptions about the donation to be displayed
+     * @param longDescrips a list of long descriptions about the donation to be displayed
+     * @param donationCategories a list of donation categories to be displayed
+     * @param locationID a list of a donation's location id to be displayed
+     * @param context the context of the viewHolder that can later be used to
+     *                display a location's image once such feature is implemented
+     */
     public ItemRecyclerViewAdapter(ArrayList<String> donationNames,
                                    ArrayList<String> donationValues, ArrayList<Date> donationDates,
                                    ArrayList<String> shortDescrips, ArrayList<String> longDescrips,
@@ -70,6 +91,11 @@ public class ItemRecyclerViewAdapter extends
         return donationNames.size();
     }
 
+    /**
+     * Provides the holder for the layout_donation
+     * used in the adapter
+     *
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView donationName;
@@ -84,6 +110,11 @@ public class ItemRecyclerViewAdapter extends
         /**
          * References the layout_location_item
          * used to map individual elements in the recycler view
+         *
+         * Contains and onClick listener that brings the user
+         * to the ViewSingleDonation Activity where they can view
+         * more information about the item
+         *
          * @param itemView the layout_location_item
          */
         public ViewHolder(View itemView) {

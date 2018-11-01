@@ -18,6 +18,12 @@ import java.util.Date;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
+/**
+ * Controller for the launch activity of the application.
+ * Provides the user with the option to either sign in or create
+ * a new account.
+ *
+ */
 public class OpeningScreen extends AppCompatActivity {
 
     Model model;

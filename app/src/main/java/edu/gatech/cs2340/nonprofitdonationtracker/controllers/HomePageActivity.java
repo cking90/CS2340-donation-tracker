@@ -8,6 +8,13 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
+/**
+ * Controller for the layout displayed when the user
+ * successfully signs into the application. Currently
+ * provides immediate access to viewing all locations
+ * and searching through all donations.
+ *
+ */
 public class HomePageActivity extends AppCompatActivity {
 
     private String userEmail;
@@ -27,6 +34,14 @@ public class HomePageActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Brings the user to the ViewAllLocations Activity and
+     * passes the user's email and type to the next activity.
+     * Such information is now deprecated, as the current user
+     * is stored within the Model class
+     *
+     * @param view the activity_home_page layout file
+     */
     public void onClickViewLocations(View view) {
         Bundle extras = getIntent().getExtras();
         Intent intent = new Intent(this, ViewLocationsActivity.class);
@@ -34,11 +49,24 @@ public class HomePageActivity extends AppCompatActivity {
         intent.putExtra("user_type", model.getCurrentUserType());
         startActivity(intent);
     }
+
+    /**
+     * Returns the user to the OpeningScreen activity, where
+     * they can register or sign back in with a different account.
+     *
+     * @param view the activity_home_page layout file
+     */
     public void onClickLogout(View view) {
         Intent intent = new Intent(this, OpeningScreen.class);
         startActivity(intent);
     }
 
+    /**
+     * Brings the user to the SearchDonationActivity, where
+     * they can filter through donations across all locations.
+     *
+     * @param view the activity_home_page layout file
+     */
     public void onClickSearchDonations(View view) {
         Intent intent = new Intent(this, SearchActivity.class);
         startActivity(intent);
