@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
@@ -45,8 +44,10 @@ public class LocationRecyclerViewAdapter extends
      *                but implemented to provide a framework for adding photo functionality if
      *                needed.
      */
-    public LocationRecyclerViewAdapter(ArrayList<String> locationNames, ArrayList<String> locationAddresses,
-                                       ArrayList<String> locationIDs, String userType, Context context) {
+    public LocationRecyclerViewAdapter(ArrayList<String> locationNames,
+                                       ArrayList<String> locationAddresses,
+                                       ArrayList<String> locationIDs, String userType,
+                                       Context context) {
         this.locationNames = locationNames;
         this.locationAddresses = locationAddresses;
         this.locationIDs = locationIDs;
@@ -112,7 +113,8 @@ public class LocationRecyclerViewAdapter extends
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(view.getContext(), ViewSingleLocationActivity.class);
-                    intent.putExtra("location_id", Integer.parseInt(locationID.getText().toString()));
+                    intent.putExtra("location_id",
+                            Integer.parseInt(locationID.getText().toString()));
                     intent.putExtra("user_type", userType);
                     view.getContext().startActivity(intent);
                 }
