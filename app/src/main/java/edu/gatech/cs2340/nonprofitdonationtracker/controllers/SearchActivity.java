@@ -25,8 +25,6 @@ import java.util.Set;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
-import static edu.gatech.cs2340.nonprofitdonationtracker.controllers.Location.locationList;
-
 public class SearchActivity extends AppCompatActivity {
 
     private Map<Integer, List<Donation>> donationList;
@@ -137,7 +135,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void initDonationData() {
-        for (Location l : locationList) {
+        for (Location l : Location.getLocationList()) {
             for (Donation d : l.getDonations()) {
                 donationNames.add(d.getName());
                 donationValues.add(Float.toString(d.getValue()));

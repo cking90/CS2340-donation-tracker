@@ -14,8 +14,6 @@ import java.util.Date;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
-import static edu.gatech.cs2340.nonprofitdonationtracker.controllers.Location.locationList;
-
 public class ViewAllDonationsActivity extends AppCompatActivity {
 
     RecyclerView listView;
@@ -44,7 +42,7 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
     }
 
     private void initDonationData() {
-        for (Location l : locationList) {
+        for (Location l : Location.getLocationList()) {
             if (l.getKey() == locationID) {
                 for (Donation d : l.getDonations()) {
                     donationNames.add(d.getName());

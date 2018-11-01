@@ -27,7 +27,7 @@ import java.nio.charset.StandardCharsets;
  */
 public class Location {
 
-    public static final Set<Location> locationList = new HashSet<>();
+    private static final Set<Location> locationList = new HashSet<>();
 
     private int key;
     private String name;

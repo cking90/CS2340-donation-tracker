@@ -12,8 +12,6 @@ import java.util.ArrayList;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
-import static edu.gatech.cs2340.nonprofitdonationtracker.controllers.Location.locationList;
-
 public class ViewLocationsActivity extends AppCompatActivity {
 
     RecyclerView listView;
@@ -26,12 +24,12 @@ public class ViewLocationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_locations_acitivity);
         listView = findViewById(R.id.locationsRecyclerView);
-        Log.d("Help", locationList.toString());
+        Log.d("Help", Location.getLocationList().toString());
         initLocationData();
     }
 
     private void initLocationData() {
-        for (Location location : locationList) {
+        for (Location location : Location.getLocationList()) {
             locationNames.add(location.getName());
             locationAddresses.add(location.getFullAddress());
             locationIDs.add(Integer.toString(location.getKey()));

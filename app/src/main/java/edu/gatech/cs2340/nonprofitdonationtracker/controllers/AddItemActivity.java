@@ -85,7 +85,7 @@ public class AddItemActivity extends AppCompatActivity {
         String longDescription = this.longDescription.getText().toString();
         Float price = Float.parseFloat(this.price.getText().toString());
 
-        for (Location location: Location.locationList) {
+        for (Location location: Location.getLocationList()) {
             if (location.getKey() == locationId) {
                 location.addDonation(new Donation(nameField, shortDescription,
                         longDescription, price, (Category) categorySpinner.getSelectedItem()));
