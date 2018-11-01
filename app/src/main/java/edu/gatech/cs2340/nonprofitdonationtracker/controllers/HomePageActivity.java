@@ -50,6 +50,11 @@ public class HomePageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onClickViewOnMaps (View view) {
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
+    }
+
     /**
      * Returns the user to the OpeningScreen activity, where
      * they can register or sign back in with a different account.
