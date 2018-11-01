@@ -104,15 +104,6 @@ public class Location {
                 location.getKey())).child("phone").setValue(location.getPhoneNum());
         database.child("locations").child(Integer.toString(
                 location.getKey())).child("website").setValue(location.getWebsite());
-//        DatabaseReference locationRef = database.child("locations");
-//        for (Donation d : location.donationList) {
-//            locationRef.child("donations").child(d.getDate().toString()).child("date").setValue(d.getDate());
-//            locationRef.child("donations").child(d.getDate().toString()).child("name").setValue(d.getName());
-//            locationRef.child("donations").child(d.getDate().toString()).child("shortDescription").setValue(d.getShortDescription());
-//            locationRef.child("donations").child(d.getDate().toString()).child("longDescription").setValue(d.getLongDescription());
-//            locationRef.child("donations").child(d.getDate().toString()).child("value").setValue(d.getValue());
-//            locationRef.child("donations").child(d.getDate().toString()).child("category").setValue(d.getCategory());
-//        }
     }
 
     /**
@@ -156,7 +147,8 @@ public class Location {
      */
     public static void parseCSV(InputStream is) {
         try {
-            BufferedReader csvScan = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+            BufferedReader csvScan = new BufferedReader(
+                    new InputStreamReader(is, StandardCharsets.UTF_8));
             csvScan.readLine();
             String line;
             while ((line = csvScan.readLine()) != null){
@@ -165,8 +157,11 @@ public class Location {
                 Location newLoc = new Location(Integer.parseInt(data[KEY_INDEX]), data[NAME_INDEX],
                         Double.parseDouble(data[LAT_INDEX]), Double.parseDouble(data[LONG_INDEX]),
                         data[STREET_INDEX], data[CITY_INDEX], data[STATE_INDEX],
-                        Integer.parseInt(data[ZIP_INDEX]), LocationType.valueOf(data[TYPE_INDEX].replaceAll(" ", "").toUpperCase()),
-                        Long.parseLong(data[PHONE_INDEX].replaceAll("[^0-9]", "")),
+                        Integer.parseInt(data[ZIP_INDEX]),
+                        LocationType.valueOf(data[TYPE_INDEX].replaceAll(
+                                " ", "").toUpperCase()),
+                        Long.parseLong(
+                                data[PHONE_INDEX].replaceAll("[^0-9]", "")),
                         data[URL_INDEX]);
                 Location.addLocation(newLoc);
             }
