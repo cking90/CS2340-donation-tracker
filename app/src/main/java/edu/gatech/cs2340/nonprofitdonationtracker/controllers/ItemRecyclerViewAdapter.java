@@ -28,13 +28,13 @@ public class ItemRecyclerViewAdapter extends
                         RecyclerView.Adapter<ItemRecyclerViewAdapter.ViewHolder> {
     private static final String TAG = "ItemRecyclerViewAdapter";
 
-    private List<String> donationNames;
-    private List<String> donationValues;
-    private List<Date> donationDates;
-    private List<String> donationShortDescriptions;
-    private List<String> donationLongDescriptions;
-    private List<String> donationCategories;
-    private List<Integer> locationIDs;
+    private final List<String> donationNames;
+    private final List<String> donationValues;
+    private final List<Date> donationDates;
+    private final List<String> donationShortDescriptions;
+    private final List<String> donationLongDescriptions;
+    private final List<String> donationCategories;
+    private final List<Integer> locationIDs;
     private Context mContext;
 
     /**
