@@ -20,7 +20,7 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         //populating spinner with values from enum
-        Spinner userType = (Spinner)findViewById(R.id.user_type_spinner_id);
+        Spinner userType = findViewById(R.id.user_type_spinner_id);
         userType.setAdapter(new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, UserType.values()));
     }
@@ -34,18 +34,18 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private boolean updateUserInformation(View view) {
         //getting user entered values from the edit text entry boxes
-        EditText name = (EditText)findViewById(R.id.name_edit_text_id);
+        EditText name = findViewById(R.id.name_edit_text_id);
         Editable name_value = name.getText();
-        EditText email = (EditText)findViewById(R.id.email_edit_text_id);
+        EditText email = findViewById(R.id.email_edit_text_id);
         Editable email_value = email.getText();
-        EditText password = (EditText)findViewById(R.id.password_edit_text_id);
+        EditText password = findViewById(R.id.password_edit_text_id);
         Editable password_value = password.getText();
         //get user type
-        Spinner userType = (Spinner)findViewById(R.id.user_type_spinner_id);
+        Spinner userType = findViewById(R.id.user_type_spinner_id);
         String selected_user_type = userType.getSelectedItem().toString();
-        if ((email_value.toString() + "").equals("")
-                || (name_value.toString() + "").equals("")
-                || (password_value.toString() + "").equals("")) {
+        if (("").equals(email_value.toString() + "")
+                || ("").equals(name_value.toString() + "")
+                || ("").equals(password_value.toString() + "")) {
             Toast toast = Toast.makeText(getApplicationContext()
                     , "All fields are required to register", Toast.LENGTH_SHORT);
             toast.show();

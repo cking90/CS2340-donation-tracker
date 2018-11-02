@@ -44,11 +44,11 @@ public class SearchActivity extends AppCompatActivity {
                 -1, "All Locations", -1, -1, "", "",
                 "", -1, null, -1, "");
         locationList.add(0, defaultOption);
-        Spinner location_spinner =  (Spinner)findViewById(R.id.spinner_location_picker_id);
+        Spinner location_spinner = findViewById(R.id.spinner_location_picker_id);
         location_spinner.setAdapter(new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, locationList));
 
-        Spinner category_picker = (Spinner)findViewById(R.id.spinner_category_id);
+        Spinner category_picker = findViewById(R.id.spinner_category_id);
         List<Category> categories = Arrays.asList(Category.values());
         category_picker.setAdapter(new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, categories));
@@ -67,9 +67,9 @@ public class SearchActivity extends AppCompatActivity {
      * @param view current view
      */
     public void onClickSearchByCategory(View view) {
-        Spinner location_picker = (Spinner)findViewById(R.id.spinner_location_picker_id);
+        Spinner location_picker = findViewById(R.id.spinner_location_picker_id);
         Location selectedLocation = (Location)location_picker.getSelectedItem();
-        Spinner category_picker = (Spinner)findViewById(R.id.spinner_category_id);
+        Spinner category_picker = findViewById(R.id.spinner_category_id);
         Category selected_category = (Category)category_picker.getSelectedItem();
         int location_key = selectedLocation.getKey();
         donationList = Location.filterByLocation(location_key);
@@ -86,9 +86,9 @@ public class SearchActivity extends AppCompatActivity {
      * @param view current  view
      */
     public void onClickSearchByItem(View view) {
-        Spinner location_picker = (Spinner)findViewById(R.id.spinner_location_picker_id);
+        Spinner location_picker = findViewById(R.id.spinner_location_picker_id);
         Location selectedLocation = (Location)location_picker.getSelectedItem();
-        EditText searched_item = (EditText)findViewById(R.id.editText_searched_item_id);
+        EditText searched_item = findViewById(R.id.editText_searched_item_id);
         String item = searched_item.getText().toString();
         int location_key = selectedLocation.getKey();
         donationList = Location.filterByLocation(location_key);

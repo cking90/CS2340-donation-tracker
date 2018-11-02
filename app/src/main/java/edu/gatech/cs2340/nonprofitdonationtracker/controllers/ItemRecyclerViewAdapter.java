@@ -51,11 +51,11 @@ public class ItemRecyclerViewAdapter extends
      * @param context the context of the viewHolder that can later be used to
      *                display a location's image once such feature is implemented
      */
-    public ItemRecyclerViewAdapter(ArrayList<String> donationNames,
-                                   ArrayList<String> donationValues, ArrayList<Date> donationDates,
-                                   ArrayList<String> shortDescrips, ArrayList<String> longDescrips,
-                                   ArrayList<String> donationCategories,
-                                   ArrayList<Integer> locationID, Context context) {
+    public ItemRecyclerViewAdapter(List<String> donationNames,
+                                   List<String> donationValues, List<Date> donationDates,
+                                   List<String> shortDescrips, List<String> longDescrips,
+                                   List<String> donationCategories,
+                                   List<Integer> locationID, Context context) {
         this.donationNames = donationNames;
         this.donationValues = donationValues;
         this.donationDates = donationDates;

@@ -48,7 +48,7 @@ public class OpeningScreen extends AppCompatActivity {
         Location.parseCSV(csvStream);
     }
 
-    private void initData() {
+    private void initData() throws NullPointerException {
         DatabaseReference dbr = FirebaseDatabase.getInstance().getReference();
         dbr.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

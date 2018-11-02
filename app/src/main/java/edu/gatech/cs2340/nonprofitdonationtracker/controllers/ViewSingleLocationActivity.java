@@ -23,43 +23,49 @@ public class ViewSingleLocationActivity extends AppCompatActivity {
     Model model;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) throws NullPointerException {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_single_location);
 
         model = Model.getInstance();
 
-        Bundle extras = getIntent().getExtras();
-        currLocationID = extras.getInt("location_id");
-        Location currLocation = Location.getLocationWithKey(currLocationID);
+        try {
+            Bundle extras = getIntent().getExtras();
+            currLocationID = extras.getInt("location_id");
+            Location currLocation = Location.getLocationWithKey(currLocationID);
 
-        locationName = findViewById(R.id.locationNameTextView);
-        locationName.setText(currLocation.getName());
+            locationName = findViewById(R.id.locationNameTextView);
+            locationName.setText(currLocation.getName());
 
-        locationKey = findViewById(R.id.locationIDTextView);
-        locationKey.setText((Integer.toString(currLocation.getKey())));
+            locationKey = findViewById(R.id.locationIDTextView);
+            locationKey.setText((Integer.toString(currLocation.getKey())));
 
-        locationAddress = findViewById(R.id.locationAddressTextView);
-        locationAddress.setText((currLocation.getFullAddress()));
+            locationAddress = findViewById(R.id.locationAddressTextView);
+            locationAddress.setText((currLocation.getFullAddress()));
 
-        locationCoords = findViewById(R.id.locationCoordsTextView);
-        locationCoords.setText(("Coordinates: " + currLocation.getCoordinates()));
+            locationCoords = findViewById(R.id.locationCoordsTextView);
+            locationCoords.setText(("Coordinates: " + currLocation.getCoordinates()));
 
-        locationWebsite = findViewById(R.id.locationWebTextView);
-        locationWebsite.setText(("Website: " + currLocation.getWebsite()));
+            locationWebsite = findViewById(R.id.locationWebTextView);
+            locationWebsite.setText(("Website: " + currLocation.getWebsite()));
 
-        locationPhoneNum = findViewById(R.id.locationPhoneTextView);
-        locationPhoneNum.setText(("Phone: " + Long.toString(currLocation.getPhoneNum())));
+            locationPhoneNum = findViewById(R.id.locationPhoneTextView);
+            locationPhoneNum.setText(("Phone: " + Long.toString(currLocation.getPhoneNum())));
 
-        locationType = findViewById(R.id.locationTypeTextView);
-        locationType.setText(("Type: " + currLocation.getType()));
+            locationType = findViewById(R.id.locationTypeTextView);
+            locationType.setText(("Type: " + currLocation.getType()));
+        } catch (NullPointerException e) {
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    e.getMessage(), Toast.LENGTH_LONG);
+            toast.show();
+        }
 
     }
 
 
     public void onClickAddItem(View view) {
         Bundle extras = getIntent().getExtras();
-        if (extras.getString("user_type").equals("Location Employee")) {
+        if ("Location Employee".equals(extras.getString("user_type"))) {
             Intent intent = new Intent(this, AddItemActivity.class);
             intent.putExtra("location_id", getIntent().getExtras().getInt("location_id"));
             intent.putExtra("user_type",extras.getString("user_type"));

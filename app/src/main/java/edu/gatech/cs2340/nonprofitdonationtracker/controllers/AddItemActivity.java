@@ -39,11 +39,11 @@ public class AddItemActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         locationId = extras.getInt("location_id");
 
-        nameField = (EditText) findViewById(R.id.itemName);
-        shortDescription = (EditText) findViewById(R.id.shortDescription);
-        longDescription = (EditText) findViewById(R.id.longDescription);
-        price = (EditText) findViewById(R.id.price);
-        categorySpinner = (Spinner) findViewById(R.id.categorySpinner);
+        nameField = findViewById(R.id.itemName);
+        shortDescription = findViewById(R.id.shortDescription);
+        longDescription = findViewById(R.id.longDescription);
+        price = findViewById(R.id.price);
+        categorySpinner = findViewById(R.id.categorySpinner);
 
         ArrayAdapter<Category> adapter = new ArrayAdapter(
                 this,android.R.layout.simple_spinner_item, Category.values());
