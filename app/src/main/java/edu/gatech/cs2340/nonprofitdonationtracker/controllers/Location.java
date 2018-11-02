@@ -174,7 +174,7 @@ public class Location {
     }
 
     /**
-     *
+     * gets the location's key
      * @return the key of the location
      */
     public int getKey() {
@@ -182,7 +182,7 @@ public class Location {
     }
 
     /**
-     *
+     * getter
      * @return String of the location's name
      */
     public String getName(){
@@ -190,7 +190,7 @@ public class Location {
     }
 
     /**
-     *
+     * getter
      * @return the latitudinal position of
      * the location
      */
@@ -199,7 +199,7 @@ public class Location {
     }
 
     /**
-     *
+     * getter
      * @return the longitudinal position
      * of the location
      */
@@ -208,7 +208,7 @@ public class Location {
     }
 
     /**
-     *
+     * getter
      * @return String of the Street address
      * of the location
      */
@@ -217,7 +217,7 @@ public class Location {
     }
 
     /**
-     *
+     * getter
      * @return String name of the city
      * in which the location is located
      */
@@ -225,36 +225,74 @@ public class Location {
         return this.city;
     }
 
+    /**
+     * getter
+     * @return String of the location's city
+     */
     public String getState() {
         return this.state;
     }
 
+    /**
+     * getter
+     * @return int of the location's zipcode
+     */
     public int getZipcode() {
         return this.zipcode;
     }
 
+    /**
+     * Gets the type.
+     *
+     * @return     The type.
+     */
     public LocationType getType() {
         return this.type;
     }
 
+    /**
+     * Gets the phone number.
+     *
+     * @return     The phone number.
+     */
     public long getPhoneNum() {
         return this.phoneNum;
     }
 
+    /**
+     * Gets the website.
+     *
+     * @return     The website.
+     */
     public String getWebsite() {
         return this.website;
     }
 
+    /**
+     * Gets the full address.
+     *
+     * @return     The full address.
+     */
     public String getFullAddress() {
         return String.format("%s, %s, %s, %s",
                 street, city, state, zipcode);
     }
 
+    /**
+     * Gets the coordinates.
+     *
+     * @return     The coordinates.
+     */
     public String getCoordinates() {
         String coords = String.format("%.2f, %.2f", latitude, longitude);
         return coords;
     }
 
+    /**
+     * gives you the list of locations in a string format.
+     *
+     * @return a description of the locations
+     */
     public static String locationListToString() {
         String msg = "";
         for (Location l : locationList) {
@@ -263,6 +301,13 @@ public class Location {
         return msg;
     }
 
+    /**
+     * Gets the location using a key.
+     *
+     * @param      key   The key of the location you want
+     *
+     * @return     The location with that key.
+     */
     public static Location getLocationWithKey(int key) {
         for (Location l : Location.locationList) {
             if (l.getKey() == key) {
@@ -272,10 +317,20 @@ public class Location {
         return null;
     }
 
+    /**
+     * Gets the donations.
+     *
+     * @return     The donations.
+     */
     public List<Donation> getDonations() {
         return this.donationList;
     }
 
+    /**
+     * Adds a donation.
+     *
+     * @param      d     a donation to add
+     */
     public void addDonation(Donation d) {
         donationList.add(d);
 
@@ -295,10 +350,21 @@ public class Location {
                 "category").setValue(d.getCategory());
     }
 
+    /**
+     * Adds a donation to a local list.
+     *
+     * @param      d    the donation to add
+     */
     public void addDonationLocal(Donation d) {
         donationList.add(d);
     }
 
+    /**
+     * Filters donations by location they are at
+     * with only ones at a location w/input key shown
+     * @param locationKey is the input key you want to see donations at.
+     * @return Map<Integer, List<Donation>> all Donations at a location.
+     */
     public static Map<Integer, List<Donation>> filterByLocation(int locationKey) {
         if (locationKey == -1) {
             Set<Location> locations = getLocationList();
@@ -338,6 +404,10 @@ public class Location {
 
 }
 
+/**
+ * This enum describes the three types of locations:
+ * Dropoff, Store and Warehouse.
+ */
 enum LocationType {
     DROPOFF, STORE, WAREHOUSE
 }
