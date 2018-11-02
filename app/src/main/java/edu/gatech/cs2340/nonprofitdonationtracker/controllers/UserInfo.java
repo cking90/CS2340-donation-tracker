@@ -8,12 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Neha on 9/29/2018.
- * This class is TEMPORARY
- * It stores User info in a HashMap where the key = email id
- * and the values = List containing name, password & user account type
- */
+
 public class UserInfo {
     private static Map<String, List<String>> loginInfo = new HashMap<>();
 

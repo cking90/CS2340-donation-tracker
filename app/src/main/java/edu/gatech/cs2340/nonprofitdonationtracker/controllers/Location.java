@@ -29,18 +29,18 @@ public class Location {
 
     private static final Set<Location> locationList = new HashSet<>();
 
-    private int key;
-    private String name;
-    private double latitude;
-    private double longitude;
-    private String street;
-    private String city;
-    private String state;
-    private int zipcode;
-    private LocationType type;
-    private long phoneNum;
-    private String website;
-    private List<Donation> donationList = new ArrayList<Donation>();
+    private final int key;
+    private final String name;
+    private final double latitude;
+    private final double longitude;
+    private final String street;
+    private final String city;
+    private final String state;
+    private final int zipcode;
+    private final LocationType type;
+    private final long phoneNum;
+    private final String website;
+    private List<Donation> donationList = new ArrayList<>();
 
     private static DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
@@ -299,17 +299,6 @@ public class Location {
         donationList.add(d);
     }
 
-    public static List<Donation> getAllDonations() {
-        Set<Location> locations = getLocationList();
-        List<Donation> allDonations = new ArrayList<>();
-        for (Location location : locations) {
-            for (Donation donation : location.getDonations()) {
-                allDonations.add(donation);
-            }
-        }
-        return allDonations;
-    }
-
     public static Map<Integer, List<Donation>> filterByLocation(int locationKey) {
         if (locationKey == -1) {
             Set<Location> locations = getLocationList();
@@ -317,7 +306,7 @@ public class Location {
             for (Location location : locations) {
                 for (Donation donation : location.getDonations()) {
                     if (!specificDonations.containsKey(location.getKey())) {
-                        ArrayList<Donation> donationArray = new ArrayList<>();
+                        List<Donation> donationArray = new ArrayList<>();
                         donationArray.add(donation);
                         specificDonations.put(location.getKey(), donationArray);
                     } else {
@@ -334,7 +323,7 @@ public class Location {
                 if (location.getKey() == locationKey) {
                     for (Donation donation : location.getDonations()) {
                         if (!specificDonations.containsKey(location.getKey())) {
-                            ArrayList<Donation> donationArray = new ArrayList<>();
+                            List<Donation> donationArray = new ArrayList<>();
                             donationArray.add(donation);
                             specificDonations.put(location.getKey(), donationArray);
                         } else {

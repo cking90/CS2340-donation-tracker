@@ -23,7 +23,7 @@ public class ViewSingleLocationActivity extends AppCompatActivity {
     Model model;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) throws NullPointerException {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_single_location);
 

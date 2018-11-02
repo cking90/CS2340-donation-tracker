@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
@@ -27,13 +28,13 @@ public class ItemRecyclerViewAdapter extends
                         RecyclerView.Adapter<ItemRecyclerViewAdapter.ViewHolder> {
     private static final String TAG = "ItemRecyclerViewAdapter";
 
-    private ArrayList<String> donationNames;
-    private ArrayList<String> donationValues;
-    private ArrayList<Date> donationDates;
-    private ArrayList<String> donationShortDescriptions;
-    private ArrayList<String> donationLongDescriptions;
-    private ArrayList<String> donationCategories;
-    private ArrayList<Integer> locationIDs;
+    private List<String> donationNames;
+    private List<String> donationValues;
+    private List<Date> donationDates;
+    private List<String> donationShortDescriptions;
+    private List<String> donationLongDescriptions;
+    private List<String> donationCategories;
+    private List<Integer> locationIDs;
     private Context mContext;
 
     /**

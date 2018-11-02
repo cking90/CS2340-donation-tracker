@@ -32,7 +32,7 @@ public class AddItemActivity extends AppCompatActivity {
     int locationId;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) throws NullPointerException {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
 
@@ -56,14 +56,14 @@ public class AddItemActivity extends AppCompatActivity {
      * Controller for the cancel button displayed in the
      * activity_add_item layout. Returns to the ViewSingleLocation
      * Activity and passes back the location id of the current
-     * locations and the user_type of the curent user.
+     * locations and the user_type of the current user.
      *
      * Note: user_type is deprecated and no longer used. Current
      * user is now stored in the Model.
      * @param view the layout file containing the cancel button,
      *             as described in the method description.
      */
-    public void onCancelPressed(View view) {
+    public void onCancelPressed(View view) throws NullPointerException {
         Bundle extras = getIntent().getExtras();
         Intent intent = new Intent(this, ViewSingleLocationActivity.class);
         intent.putExtra("location_id", getIntent().getExtras().getInt("location_id"));
@@ -79,7 +79,7 @@ public class AddItemActivity extends AppCompatActivity {
      * @param view the layout file as described in the
      *             method description.
      */
-    public void onAddItemPressed(View view) {
+    public void onAddItemPressed(View view) throws NullPointerException {
         String nameField = this.nameField.getText().toString();
         String shortDescription = this.shortDescription.getText().toString();
         String longDescription = this.longDescription.getText().toString();

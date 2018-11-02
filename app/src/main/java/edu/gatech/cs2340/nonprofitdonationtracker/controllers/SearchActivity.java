@@ -45,12 +45,12 @@ public class SearchActivity extends AppCompatActivity {
                 "", -1, null, -1, "");
         locationList.add(0, defaultOption);
         Spinner location_spinner =  (Spinner)findViewById(R.id.spinner_location_picker_id);
-        location_spinner.setAdapter(new ArrayAdapter<Location>(
+        location_spinner.setAdapter(new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, locationList));
 
         Spinner category_picker = (Spinner)findViewById(R.id.spinner_category_id);
         List<Category> categories = Arrays.asList(Category.values());
-        category_picker.setAdapter(new ArrayAdapter<Category>(
+        category_picker.setAdapter(new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, categories));
 
         recyclerView = findViewById(R.id.donationsRecyclerView);
@@ -102,7 +102,7 @@ public class SearchActivity extends AppCompatActivity {
             for (Donation d : donationList.get(key)) {
                 if (d.getCategory().equals(category)) {
                     if (!updatedList.containsKey(key)) {
-                        ArrayList<Donation> donationArray = new ArrayList<Donation>();
+                        List<Donation> donationArray = new ArrayList<>();
                         donationArray.add(d);
                         updatedList.put(key, donationArray);
                     } else {
@@ -120,7 +120,7 @@ public class SearchActivity extends AppCompatActivity {
             for (Donation d : donationList.get(key)) {
                 if (d.getName().equals(item)) {
                     if (!updatedList.containsKey(key)) {
-                        ArrayList<Donation> donationArray = new ArrayList<Donation>();
+                        List<Donation> donationArray = new ArrayList<>();
                         donationArray.add(d);
                         updatedList.put(key, donationArray);
                     } else {

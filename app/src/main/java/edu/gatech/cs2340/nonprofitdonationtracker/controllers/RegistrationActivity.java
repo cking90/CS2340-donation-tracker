@@ -21,7 +21,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         //populating spinner with values from enum
         Spinner userType = (Spinner)findViewById(R.id.user_type_spinner_id);
-        userType.setAdapter(new ArrayAdapter<UserType>(
+        userType.setAdapter(new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, UserType.values()));
     }
 
