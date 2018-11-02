@@ -1,15 +1,25 @@
 package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.Map;
 import java.util.Set;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
@@ -41,6 +51,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.getUiSettings().setCompassEnabled(true);
+        mMap.getUiSettings().setMapToolbarEnabled(true);
+        mMap.getUiSettings().setRotateGesturesEnabled(true);
 
         // Add a marker in Sydney and move the camera
 //        LatLng sydney = new LatLng(-34, 151);
@@ -49,8 +63,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Set<Location> locationSet = Location.getLocationList();
         for (Location location: locationSet) {
             LatLng position = new LatLng(location.getLatitude(), location.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(position).title(location.getName()));
+            String snippetInfo = "Phone: " + Long.toString(location.getPhoneNum()) + "\nWebsite: " + location.getWebsite();
+            mMap.addMarker(new MarkerOptions().position(position).title(location.getName())
+                .snippet(snippetInfo));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(position));
         }
+
+        mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+            @Override
+            public View getInfoWindow(Marker marker) {
+                return null;
+            }
+
+            @Override
+            public View getInfoContents(Marker marker) {
+                Context context = getApplicationContext();
+                LinearLayout info = new LinearLayout(context);
+                info.setOrientation(LinearLayout.VERTICAL);
+
+                TextView title = new TextView(context);
+                title.setTextColor(Color.BLACK);
+                title.setGravity(Gravity.CENTER);
+                title.setTypeface(null, Typeface.BOLD);
+                title.setText(marker.getTitle());
+
+                TextView snippet = new TextView(context);
+                snippet.setTextColor(Color.MAGENTA);
+                snippet.setText(marker.getSnippet());
+
+                info.addView(title);
+                info.addView(snippet);
+
+                return info;
+            }
+        });
     }
 }
