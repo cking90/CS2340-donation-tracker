@@ -16,7 +16,7 @@ import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
 public class ViewAllDonationsActivity extends AppCompatActivity {
 
-    RecyclerView listView;
+    private RecyclerView listView;
     private final ArrayList<String> donationNames = new ArrayList<>();
     private final ArrayList<String> donationValues = new ArrayList<>();
     private final ArrayList<Date> donationDates = new ArrayList<>();
@@ -26,7 +26,7 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
     private final ArrayList<Integer> locationIDs = new ArrayList<>();
     private int locationID;
 
-    Model model;
+    private Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

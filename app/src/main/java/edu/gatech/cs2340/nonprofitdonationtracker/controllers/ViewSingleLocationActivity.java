@@ -12,15 +12,15 @@ import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
 public class ViewSingleLocationActivity extends AppCompatActivity {
 
-    TextView locationName;
-    TextView locationAddress;
-    TextView locationKey;
-    TextView locationCoords;
-    TextView locationWebsite;
-    TextView locationPhoneNum;
-    TextView locationType;
-    int currLocationID;
-    Model model;
+    private TextView locationName;
+    private TextView locationAddress;
+    private TextView locationKey;
+    private TextView locationCoords;
+    private TextView locationWebsite;
+    private TextView locationPhoneNum;
+    private TextView locationType;
+    private int currLocationID;
+    private Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,37 +29,30 @@ public class ViewSingleLocationActivity extends AppCompatActivity {
 
         model = Model.getInstance();
 
-        try {
-            Bundle extras = getIntent().getExtras();
-            currLocationID = extras.getInt("location_id");
-            Location currLocation = Location.getLocationWithKey(currLocationID);
+        Bundle extras = getIntent().getExtras();
+        currLocationID = extras.getInt("location_id");
+        Location currLocation = Location.getLocationWithKey(currLocationID);
 
-            locationName = findViewById(R.id.locationNameTextView);
-            locationName.setText(currLocation.getName());
+        locationName = findViewById(R.id.locationNameTextView);
+        locationName.setText(currLocation.getName());
 
-            locationKey = findViewById(R.id.locationIDTextView);
-            locationKey.setText((Integer.toString(currLocation.getKey())));
+        locationKey = findViewById(R.id.locationIDTextView);
+        locationKey.setText((Integer.toString(currLocation.getKey())));
 
-            locationAddress = findViewById(R.id.locationAddressTextView);
-            locationAddress.setText((currLocation.getFullAddress()));
+        locationAddress = findViewById(R.id.locationAddressTextView);
+        locationAddress.setText((currLocation.getFullAddress()));
 
-            locationCoords = findViewById(R.id.locationCoordsTextView);
-            locationCoords.setText(("Coordinates: " + currLocation.getCoordinates()));
+        locationCoords = findViewById(R.id.locationCoordsTextView);
+        locationCoords.setText(("Coordinates: " + currLocation.getCoordinates()));
 
-            locationWebsite = findViewById(R.id.locationWebTextView);
-            locationWebsite.setText(("Website: " + currLocation.getWebsite()));
+        locationWebsite = findViewById(R.id.locationWebTextView);
+        locationWebsite.setText(("Website: " + currLocation.getWebsite()));
 
-            locationPhoneNum = findViewById(R.id.locationPhoneTextView);
-            locationPhoneNum.setText(("Phone: " + Long.toString(currLocation.getPhoneNum())));
+        locationPhoneNum = findViewById(R.id.locationPhoneTextView);
+        locationPhoneNum.setText(("Phone: " + Long.toString(currLocation.getPhoneNum())));
 
-            locationType = findViewById(R.id.locationTypeTextView);
-            locationType.setText(("Type: " + currLocation.getType()));
-        } catch (NullPointerException e) {
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    e.getMessage(), Toast.LENGTH_LONG);
-            toast.show();
-        }
-
+        locationType = findViewById(R.id.locationTypeTextView);
+        locationType.setText(("Type: " + currLocation.getType()));
     }
 
 

@@ -34,7 +34,6 @@ import java.util.List;
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
 import static android.Manifest.permission.READ_CONTACTS;
-import android.util.Log;
 
 /**
  * A login screen that offers login via email/password.
@@ -48,7 +47,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     /**
      * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
      */
     private static final String[] DUMMY_CREDENTIALS = new String[]{
             "foo@example.com:hello", "bar@example.com:world"
@@ -64,7 +62,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
     private final int SLEEPTIME = 2000;
-    Model model;
+    private Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -211,7 +209,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * against a hard-coded username and password
      */
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
         return UserInfo.containsKey(email);
     }
 
@@ -331,7 +328,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
 
             try {
                 // Simulate network access
@@ -348,7 +344,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 }
             }
 
-            // TODO: register the new account here.
             return true;
         }
 

@@ -13,7 +13,7 @@ public class Model {
     /**
      * Singleton pattern
      */
-    private static Model instance = new Model();
+    private final static Model instance = new Model();
 
 
     /**

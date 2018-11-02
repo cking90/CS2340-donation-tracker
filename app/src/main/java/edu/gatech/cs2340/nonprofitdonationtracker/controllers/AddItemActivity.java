@@ -27,9 +27,9 @@ public class AddItemActivity extends AppCompatActivity {
     private EditText price;
     private Spinner categorySpinner;
 
-    private static DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+    private final static DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
-    int locationId;
+    private int locationId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) throws NullPointerException {

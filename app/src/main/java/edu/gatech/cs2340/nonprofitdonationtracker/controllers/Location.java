@@ -40,9 +40,9 @@ public class Location {
     private final LocationType type;
     private final long phoneNum;
     private final String website;
-    private List<Donation> donationList = new ArrayList<>();
+    private final List<Donation> donationList = new ArrayList<>();
 
-    private static DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+    private final static DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
     /**
      * Standardized order of the Location data
@@ -284,8 +284,7 @@ public class Location {
      * @return     The coordinates.
      */
     public String getCoordinates() {
-        String coords = String.format("%.2f, %.2f", latitude, longitude);
-        return coords;
+        return String.format("%.2f, %.2f", latitude, longitude);
     }
 
     /**

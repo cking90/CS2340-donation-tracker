@@ -18,7 +18,7 @@ import edu.gatech.cs2340.nonprofitdonationtracker.R;
 public class HomePageActivity extends AppCompatActivity {
 
     private String userEmail;
-    Model model;
+    private Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

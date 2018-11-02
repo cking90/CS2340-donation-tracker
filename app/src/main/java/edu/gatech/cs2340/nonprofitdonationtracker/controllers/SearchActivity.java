@@ -24,14 +24,14 @@ import edu.gatech.cs2340.nonprofitdonationtracker.R;
 public class SearchActivity extends AppCompatActivity {
 
     private Map<Integer, List<Donation>> donationList;
-    RecyclerView recyclerView;
-    private ArrayList<String> donationNames = new ArrayList<>();
-    private ArrayList<String> donationValues = new ArrayList<>();
-    private ArrayList<Date> donationDates = new ArrayList<>();
-    private ArrayList<String> donationShortDescriptions = new ArrayList<>();
-    private ArrayList<String> donationLongDescriptions = new ArrayList<>();
-    private ArrayList<String> donationCategories = new ArrayList<>();
-    private ArrayList<Integer> locationIDs = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private final ArrayList<String> donationNames = new ArrayList<>();
+    private final ArrayList<String> donationValues = new ArrayList<>();
+    private final ArrayList<Date> donationDates = new ArrayList<>();
+    private final ArrayList<String> donationShortDescriptions = new ArrayList<>();
+    private final ArrayList<String> donationLongDescriptions = new ArrayList<>();
+    private final ArrayList<String> donationCategories = new ArrayList<>();
+    private final ArrayList<Integer> locationIDs = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

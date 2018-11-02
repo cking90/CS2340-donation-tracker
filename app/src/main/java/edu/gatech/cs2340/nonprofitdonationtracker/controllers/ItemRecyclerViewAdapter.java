@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -35,7 +34,7 @@ public class ItemRecyclerViewAdapter extends
     private final List<String> donationLongDescriptions;
     private final List<String> donationCategories;
     private final List<Integer> locationIDs;
-    private Context mContext;
+    private final Context mContext;
 
     /**
      * Constructor for the adapter that takes in all the information
@@ -71,8 +70,7 @@ public class ItemRecyclerViewAdapter extends
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.layout_donation_item, parent, false);
-        ViewHolder viewHolder = new ItemRecyclerViewAdapter.ViewHolder(view);
-        return viewHolder;
+        return new ItemRecyclerViewAdapter.ViewHolder(view);
     }
 
     @Override
@@ -99,13 +97,13 @@ public class ItemRecyclerViewAdapter extends
      */
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView donationName;
-        TextView donationValue;
-        TextView donationDate;
-        TextView donationDescription;
+        final private TextView donationName;
+        final private TextView donationValue;
+        final private TextView donationDate;
+        final private TextView donationDescription;
         String donationLongDescription;
         String donationCategory;
-        RelativeLayout parentLayout;
+        final private RelativeLayout parentLayout;
         int locationID;
 
         /**

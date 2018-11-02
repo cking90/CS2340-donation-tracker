@@ -13,7 +13,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.InputStream;
 import java.util.Date;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
@@ -26,7 +25,7 @@ import edu.gatech.cs2340.nonprofitdonationtracker.R;
  */
 public class OpeningScreen extends AppCompatActivity {
 
-    Model model;
+    private Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +40,11 @@ public class OpeningScreen extends AppCompatActivity {
 
     }
 
-    //Broken, need to fix
-    private void readCSVFile() {
-        Log.d("Help1", getResources().openRawResource(R.raw.location_data).toString());
-        InputStream csvStream = getResources().openRawResource(R.raw.location_data);
-        Location.parseCSV(csvStream);
-    }
+//    private void readCSVFile() {
+//        Log.d("Help1", getResources().openRawResource(R.raw.location_data).toString());
+//        InputStream csvStream = getResources().openRawResource(R.raw.location_data);
+//        Location.parseCSV(csvStream);
+//    }
 
     private void initData() throws NullPointerException {
         DatabaseReference dbr = FirebaseDatabase.getInstance().getReference();

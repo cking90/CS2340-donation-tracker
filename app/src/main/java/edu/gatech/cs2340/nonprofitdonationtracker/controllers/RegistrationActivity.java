@@ -51,7 +51,7 @@ public class RegistrationActivity extends AppCompatActivity {
             toast.show();
             return false;
         }
-        if (selected_user_type.equals("Guest User")) {
+        if (("Guest User").equals(selected_user_type)) {
             Toast toast = Toast.makeText(getApplicationContext()
                     , "Cannot register as a guest user", Toast.LENGTH_SHORT);
             toast.show();
@@ -73,7 +73,6 @@ public class RegistrationActivity extends AppCompatActivity {
     public void onClickRegister(View view) {
         if (updateUserInformation(view)) {
             //takes user back to login page so that they can login with their credentials
-            //TODO: set up validation in the LoginActivity class
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }

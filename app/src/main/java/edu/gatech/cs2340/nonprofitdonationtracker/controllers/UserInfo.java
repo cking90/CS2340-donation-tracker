@@ -10,9 +10,9 @@ import java.util.Map;
 
 
 public class UserInfo {
-    private static Map<String, List<String>> loginInfo = new HashMap<>();
+    private final static Map<String, List<String>> loginInfo = new HashMap<>();
 
-    private static DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+    private final static DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
     public static void addNewUser(String name, String email, String password, String userType) {
         List<String> userInfo = new ArrayList<>();

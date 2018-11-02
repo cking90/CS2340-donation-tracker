@@ -14,7 +14,7 @@ import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
 public class ViewLocationsActivity extends AppCompatActivity {
 
-    RecyclerView listView;
+    private RecyclerView listView;
     private final ArrayList<String> locationNames = new ArrayList<>();
     private final ArrayList<String> locationAddresses = new ArrayList<>();
     private final ArrayList<String> locationIDs = new ArrayList<>();

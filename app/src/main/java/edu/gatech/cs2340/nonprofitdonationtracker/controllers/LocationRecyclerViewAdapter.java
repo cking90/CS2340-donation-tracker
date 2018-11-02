@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
@@ -25,11 +25,11 @@ public class LocationRecyclerViewAdapter extends
 
     private static final String TAG = "RecyclerViewAdapter";
 
-    private ArrayList<String> locationNames;
-    private ArrayList<String> locationAddresses;
-    private ArrayList<String> locationIDs;
-    private String userType;
-    private Context mContext;
+    private final List<String> locationNames;
+    private final List<String> locationAddresses;
+    private final List<String> locationIDs;
+    private final String userType;
+    private final Context mContext;
 
     /**
      * Creates an adapter to display the passed in lists of information. The lists
@@ -44,9 +44,9 @@ public class LocationRecyclerViewAdapter extends
      *                but implemented to provide a framework for adding photo functionality if
      *                needed.
      */
-    public LocationRecyclerViewAdapter(ArrayList<String> locationNames,
-                                       ArrayList<String> locationAddresses,
-                                       ArrayList<String> locationIDs, String userType,
+    public LocationRecyclerViewAdapter(List<String> locationNames,
+                                       List<String> locationAddresses,
+                                       List<String> locationIDs, String userType,
                                        Context context) {
         this.locationNames = locationNames;
         this.locationAddresses = locationAddresses;
@@ -61,8 +61,7 @@ public class LocationRecyclerViewAdapter extends
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.layout_location_item, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -88,10 +87,10 @@ public class LocationRecyclerViewAdapter extends
      */
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView locationName;
-        TextView locationAddress;
-        TextView locationID;
-        RelativeLayout parentLayout;
+        final private TextView locationName;
+        final private TextView locationAddress;
+        final private TextView locationID;
+        final private RelativeLayout parentLayout;
 
         /**
          * References the layout_location_item

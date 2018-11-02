@@ -10,13 +10,7 @@ import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
 public class ViewSingleDonationActivity extends AppCompatActivity {
 
-    private TextView name;
-    private TextView shortDescription;
-    private TextView longDescription;
-    private TextView price;
-    private TextView category;
-    private TextView date;
-    Model model;
+    private Model model;
 
 
     @Override
@@ -25,6 +19,13 @@ public class ViewSingleDonationActivity extends AppCompatActivity {
         model = Model.getInstance();
         setContentView(R.layout.activity_view_single_donation);
         Bundle extras = getIntent().getExtras();
+
+        TextView name;
+        TextView shortDescription;
+        TextView longDescription;
+        TextView price;
+        TextView category;
+        TextView date;
 
         name = findViewById(R.id.nameTextView);
         name.setText(extras.getString("donation_Name"));
