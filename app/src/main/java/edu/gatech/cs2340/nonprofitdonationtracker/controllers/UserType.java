@@ -1,5 +1,10 @@
 package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
 
+/**
+ * Enumeration of UserTypes used to
+ * delegate access rights of various
+ * users
+ */
 public enum UserType {
     ADMIN("Admin"),
     MANAGER("Manager"),
@@ -8,6 +13,12 @@ public enum UserType {
 
     private final String userTypeInString;
 
+    /**
+     * Constructor for the UserType Enum that provides
+     * a formatted string instance variable that represents
+     * the enum type
+     * @param userTypeInString UserType String representation
+     */
     UserType(String userTypeInString) {
         this.userTypeInString = userTypeInString;
     }
