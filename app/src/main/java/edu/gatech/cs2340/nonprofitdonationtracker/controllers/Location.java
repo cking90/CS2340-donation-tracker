@@ -293,11 +293,12 @@ public class Location {
      * @return a description of the locations
      */
     public static String locationListToString() {
-        String msg = "";
+        StringBuilder msg = new StringBuilder();
         for (Location l : locationList) {
-            msg += l.toString() + "\n";
+            msg.append(l.toString());
+            msg.append("\n");
         }
-        return msg;
+        return msg.toString();
     }
 
     /**
