@@ -26,9 +26,7 @@ public class AddItemActivity extends AppCompatActivity {
     private EditText longDescription;
     private EditText price;
     private Spinner categorySpinner;
-
-    private static final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-
+    
     private int locationId;
 
     @Override
