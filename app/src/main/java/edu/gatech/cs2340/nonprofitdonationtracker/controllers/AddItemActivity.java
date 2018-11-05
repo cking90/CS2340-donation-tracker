@@ -8,9 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
 /**
@@ -26,7 +23,7 @@ public class AddItemActivity extends AppCompatActivity {
     private EditText longDescription;
     private EditText price;
     private Spinner categorySpinner;
-    
+
     private int locationId;
 
     @Override
