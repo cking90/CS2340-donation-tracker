@@ -42,7 +42,7 @@ public class Location {
     private final String website;
     private final List<Donation> donationList = new ArrayList<>();
 
-    private final static DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+    private static final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
     /**
      * Standardized order of the Location data

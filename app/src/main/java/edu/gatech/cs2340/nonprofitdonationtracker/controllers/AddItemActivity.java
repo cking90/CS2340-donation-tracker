@@ -27,7 +27,7 @@ public class AddItemActivity extends AppCompatActivity {
     private EditText price;
     private Spinner categorySpinner;
 
-    private final static DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+    private static final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
     private int locationId;
 

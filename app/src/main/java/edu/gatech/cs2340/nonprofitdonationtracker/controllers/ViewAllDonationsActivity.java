@@ -16,7 +16,6 @@ import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
 public class ViewAllDonationsActivity extends AppCompatActivity {
 
-    private RecyclerView listView;
     private final ArrayList<String> donationNames = new ArrayList<>();
     private final ArrayList<String> donationValues = new ArrayList<>();
     private final ArrayList<Date> donationDates = new ArrayList<>();
@@ -36,7 +35,7 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
         locationID = extras.getInt("location_id");
 
         setContentView(R.layout.activity_view_all_donations);
-        listView = findViewById(R.id.donationsRecyclerView);
+        RecyclerView listView = findViewById(R.id.donationsRecyclerView);
 
         initDonationData();
     }

@@ -13,9 +13,9 @@ import java.util.Map;
  * application
  */
 public class UserInfo {
-    private final static Map<String, List<String>> loginInfo = new HashMap<>();
+    private static final Map<String, List<String>> loginInfo = new HashMap<>();
 
-    private final static DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+    private static final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
     /**
      * Creates a new User with the passed in information

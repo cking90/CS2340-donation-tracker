@@ -12,22 +12,22 @@ import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
 public class ViewSingleLocationActivity extends AppCompatActivity {
 
-    private TextView locationName;
-    private TextView locationAddress;
-    private TextView locationKey;
-    private TextView locationCoords;
-    private TextView locationWebsite;
-    private TextView locationPhoneNum;
-    private TextView locationType;
     private int currLocationID;
-    private Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_single_location);
 
-        model = Model.getInstance();
+        TextView locationName;
+        TextView locationAddress;
+        TextView locationKey;
+        TextView locationCoords;
+        TextView locationWebsite;
+        TextView locationPhoneNum;
+        TextView locationType;
+
+        Model model = Model.getInstance();
 
         Bundle extras = getIntent().getExtras();
         currLocationID = extras.getInt("location_id");

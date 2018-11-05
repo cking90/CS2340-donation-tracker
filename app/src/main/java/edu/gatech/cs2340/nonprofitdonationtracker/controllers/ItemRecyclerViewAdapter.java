@@ -97,13 +97,13 @@ public class ItemRecyclerViewAdapter extends
      */
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        final private TextView donationName;
-        final private TextView donationValue;
-        final private TextView donationDate;
-        final private TextView donationDescription;
+        private final TextView donationName;
+        private final TextView donationValue;
+        private final TextView donationDate;
+        private final TextView donationDescription;
         String donationLongDescription;
         String donationCategory;
-        final private RelativeLayout parentLayout;
+        private final RelativeLayout parentLayout;
         int locationID;
 
         /**

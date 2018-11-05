@@ -87,10 +87,10 @@ public class LocationRecyclerViewAdapter extends
      */
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        final private TextView locationName;
-        final private TextView locationAddress;
-        final private TextView locationID;
-        final private RelativeLayout parentLayout;
+        private final TextView locationName;
+        private final TextView locationAddress;
+        private final TextView locationID;
+        private final RelativeLayout parentLayout;
 
         /**
          * References the layout_location_item
