@@ -14,6 +14,11 @@ import java.util.Date;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
+/**
+ * Allows the user to view all the donations of a given activity.
+ * Selecting an item will bring the user to the ViewSingleDonationActivity,
+ * where they can view more information about the item.
+ */
 public class ViewAllDonationsActivity extends AppCompatActivity {
 
     private final ArrayList<String> donationNames = new ArrayList<>();
@@ -75,6 +80,11 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
         Log.d("initDonateRecyclerView", "initRecycler: layout Set");
     }
 
+    /**
+     * Controller for the back button on the associated layout page.
+     * Brings the user back to the ViewSingleLocationActivity
+     * @param view the Back button on the associated layout page
+     */
     public void onClickBack(View view) {
         Intent intent = new Intent(this, ViewSingleLocationActivity.class);
         intent.putExtra("location_id", locationID);

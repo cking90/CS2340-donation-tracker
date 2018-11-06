@@ -21,6 +21,11 @@ import java.util.Map;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
+/**
+ * Controller for the activity_search layout file that
+ * allows the user to search through the donations across
+ * all locations.
+ */
 public class SearchActivity extends AppCompatActivity {
 
     private Map<Integer, List<Donation>> donationList;

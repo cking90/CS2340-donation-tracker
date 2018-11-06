@@ -12,6 +12,10 @@ import java.util.ArrayList;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
+/**
+ * Provides the user with the list of all locations. Selecting
+ * a location will bring the user to the ViewSingleLocationActivity
+ */
 public class ViewLocationsActivity extends AppCompatActivity {
 
     private final ArrayList<String> locationNames = new ArrayList<>();

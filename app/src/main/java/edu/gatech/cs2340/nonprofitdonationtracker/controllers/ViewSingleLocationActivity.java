@@ -10,7 +10,12 @@ import android.widget.Toast;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
-public class ViewSingleLocationActivity extends AppCompatActivity {
+/**
+ * Provides users with the details of a single location. Location
+ * Employee's can access the AddItemActivity from the associated
+ * layout file. Users can also view the donations for the location
+ */
+public class  ViewSingleLocationActivity extends AppCompatActivity {
 
     private int currLocationID;
 
@@ -55,7 +60,14 @@ public class ViewSingleLocationActivity extends AppCompatActivity {
         locationType.setText(("Type: " + currLocation.getType()));
     }
 
-
+    /**
+     * Controller for the Add Item button on the associated
+     * layout file. Checks to confirm that the user
+     * is of type Location Employee before proceeding to
+     * the AddItemActivity
+     *
+     * @param view Add Item Button
+     */
     public void onClickAddItem(View view) {
         Bundle extras = getIntent().getExtras();
         if ("Location Employee".equals(extras.getString("user_type"))) {
@@ -70,6 +82,13 @@ public class ViewSingleLocationActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Controller for the View Items (Donations) button.
+     * Allows the user to view all the donations help
+     * within the location
+     *
+     * @param view the view items button
+     */
     public void onClickViewItems(View view) {
         Bundle extras = getIntent().getExtras();
         Intent intent = new Intent(this, ViewAllDonationsActivity.class);
@@ -79,6 +98,10 @@ public class ViewSingleLocationActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Brings the user back to the home page
+     * @param view the back button
+     */
     public void onClickBack(View view) {
         Intent intent = new Intent(this, HomePageActivity.class);
         startActivity(intent);

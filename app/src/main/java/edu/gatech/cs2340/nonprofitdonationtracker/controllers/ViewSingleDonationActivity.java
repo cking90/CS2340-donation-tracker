@@ -8,6 +8,9 @@ import android.view.View;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
+/**
+ * Provides user with information about a donation
+ */
 public class ViewSingleDonationActivity extends AppCompatActivity {
 
     private Model model;
@@ -41,6 +44,12 @@ public class ViewSingleDonationActivity extends AppCompatActivity {
         date.setText(extras.getString("donation_Date"));
     }
 
+    /**
+     * Controller for the back button on the associated
+     * layout file. Brings the user back to the location
+     * that currently holds the ite,
+     * @param view the back button
+     */
     public void onBackPressed(View view) {
         Bundle extras = getIntent().getExtras();
         Intent intent = new Intent(this, ViewSingleLocationActivity.class);

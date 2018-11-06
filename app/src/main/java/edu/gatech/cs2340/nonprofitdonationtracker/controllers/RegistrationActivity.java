@@ -12,6 +12,10 @@ import android.widget.Spinner;
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 import android.widget.Toast;
 
+/**
+ * Controller for the activity_registration layout file.
+ * Allows the user to create a new account.
+ */
 public class RegistrationActivity extends AppCompatActivity {
 
     @Override
@@ -26,7 +30,11 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Controller for the cancel button. Returns the
+     * user back to the OpeningScreenActivity
+     * @param view the button being clicked
+     */
     public void onClickCancel(View view) {
         Intent intent = new Intent(this, OpeningScreen.class);
         startActivity(intent);
@@ -70,6 +78,14 @@ public class RegistrationActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Creates the new account depending if the information is
+     * deemed to be valid. If the account is not valid or available for
+     * creation, the user is notified. If the account is successfully, the
+     * user is brought to the LoginActivity.
+     *
+     * @param view the register button being selected
+     */
     public void onClickRegister(View view) {
         if (updateUserInformation(view)) {
             //takes user back to login page so that they can login with their credentials
