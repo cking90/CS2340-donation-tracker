@@ -22,6 +22,10 @@ import java.util.Set;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
+/**
+ * Controller of the Google Maps Activity within the application. Accessed
+ * from the HomePageActivity
+ */
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     @Override

@@ -2,6 +2,12 @@ package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
 
 import java.util.Date;
 
+/**
+ * Represents an item donated to the organization
+ * at a certain location. All donations are tied
+ * to a specific location through a reference in the
+ * Location class
+ */
 public class Donation {
     private final String name;
     private final Date timeStamp;
@@ -10,6 +16,18 @@ public class Donation {
     private final float value;
     private final Category category;
 
+    /**
+     * Constructor for the donation object. Date of object
+     * assigned to the current time
+     *
+     * @param name of the donation
+     * @param shortDescription short message describing the
+     *                         donation
+     * @param longDescription a long message describing the
+     *                        donation in more detail
+     * @param value price of the donation
+     * @param category the type of donation
+     */
     public Donation(String name, String shortDescription,
                         String longDescription, float value, Category category) {
         this.name = name;
@@ -20,6 +38,19 @@ public class Donation {
         this.timeStamp = new Date();
     }
 
+    /**
+     * Constructor for the donation object that sets
+     * the date instance variable to the passed in date
+     *
+     * @param name of the donation
+     * @param shortDescription short message describing the
+     *                         donation
+     * @param longDescription a long message describing the
+     *                        donation in more detail
+     * @param value price of the donation
+     * @param category the type of donation
+     * @param date the date the donation was made
+     */
     public Donation(String name, String shortDescription,
                     String longDescription, float value, Category category, Date date) {
         this.name = name;
@@ -30,27 +61,52 @@ public class Donation {
         this.timeStamp = date;
     }
 
-
+    /**
+     *
+     * @return Date instance variable
+     */
     public Date getDate() {
         return this.timeStamp;
     }
 
+    /**
+     *
+     * @return short description instance variable
+     * of the donation
+     */
     public String getShortDescription() {
         return this.shortDescription;
     }
 
+    /**
+     *
+     * @return long description instance variable of
+     * the object
+     */
     public String getLongDescription() {
         return this.longDescription;
     }
 
+    /**
+     *
+     * @return price of the donation
+     */
     public float getValue() {
         return this.value;
     }
 
+    /**
+     *
+     * @return category of the variable
+     */
     public Category getCategory() {
         return this.category;
     }
 
+    /**
+     *
+     * @return name of the donation
+     */
     public String getName() {
         return this.name;
     }
@@ -77,6 +133,9 @@ public class Donation {
     }
 }
 
+/**
+ * Enumeration of the types of valid donations
+ */
 enum Category{
     CLOTHING, HAT, KITCHEN, ELECTRONICS, HOUSEHOLD, OTHER
 }

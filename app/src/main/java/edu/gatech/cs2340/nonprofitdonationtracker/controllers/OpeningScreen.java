@@ -102,16 +102,32 @@ public class OpeningScreen extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Controller for the Login Button within
+     * the activity_login_screen layout file
+     * @param view the button
+     */
     public void onClickLogin(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Controller for the register button within the
+     * activity_login_screen layout file
+     * @param view the button
+     */
     public void onClickRegister(View view) {
         Intent intent = new Intent(this, RegistrationActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Controller for the guest button within the
+     * activity_login_screen layout file
+     * @param view the button
+     */
     public void onClickGuest(View view) {
         Intent intent = new Intent(this, HomePageActivity.class);
         String email = "guest";
