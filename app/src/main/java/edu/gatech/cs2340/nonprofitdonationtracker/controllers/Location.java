@@ -153,7 +153,7 @@ public class Location {
             String line;
             while ((line = csvScan.readLine()) != null){
                 String[] data = line.split(",");
-                Log.d("CSVline", line);
+                Log.d("CSV line", line);
                 Location newLoc = new Location(Integer.parseInt(data[KEY_INDEX]), data[NAME_INDEX],
                         Double.parseDouble(data[LAT_INDEX]), Double.parseDouble(data[LONG_INDEX]),
                         data[STREET_INDEX], data[CITY_INDEX], data[STATE_INDEX],
@@ -406,7 +406,7 @@ public class Location {
 
 /**
  * This enum describes the three types of locations:
- * Dropoff, Store and Warehouse.
+ * Drop off, Store and Warehouse.
  */
 enum LocationType {
     DROPOFF, STORE, WAREHOUSE
