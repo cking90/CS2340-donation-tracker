@@ -404,10 +404,3 @@ public class Location {
 
 }
 
-/**
- * This enum describes the three types of locations:
- * Dropoff, Store and Warehouse.
- */
-enum LocationType {
-    DROPOFF, STORE, WAREHOUSE
-}
