@@ -60,8 +60,8 @@ public class UserInfo {
     }
 
     /**
-     * Gets the list of users and their login credentails
-     * @return a hashmap mapping a user's email to a list of
+     * Gets the list of users and their login credentials
+     * @return a hash map mapping a user's email to a list of
      * the user's instance variables
      */
     public static Map<String, List<String>> getLoginInfo() {

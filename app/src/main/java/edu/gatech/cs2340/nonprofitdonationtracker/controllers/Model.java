@@ -33,7 +33,7 @@ public class Model {
 
     /**
      * Returns the list of information about a user from the
-     * hashmap of user information stored in the UserInfo class
+     * hash map of user information stored in the UserInfo class
      * @param email of the account
      * @return list of information associated with the email
      */
