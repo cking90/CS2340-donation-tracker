@@ -217,6 +217,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
 
+    /**
+     * on click for the cancel button that takes you back to the Openingscreen page
+     * @param view - view
+     */
     public void onClickCancelLogin(View view) {
         Intent intent = new Intent(this, OpeningScreen.class);
         startActivity(intent);

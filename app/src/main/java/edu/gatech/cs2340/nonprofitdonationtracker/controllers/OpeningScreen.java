@@ -74,7 +74,7 @@ public class OpeningScreen extends AppCompatActivity {
                     long phone = (Long) snap.child("phone").getValue();
 
                     Location location = new Location(key, name, latitude, longitude, street, city,
-                                street, zipcode, type, phone, website);
+                                state, zipcode, type, phone, website);
 
                     for (DataSnapshot donationsSnap : snap.child("donations").getChildren()) {
                         String donationName = (String) donationsSnap.child("name").getValue();

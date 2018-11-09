@@ -49,6 +49,10 @@ public class HomePageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * the on click method for a button which opens MapsActivity
+     * @param view - view
+     */
     public void onClickViewOnMaps (View view) {
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
