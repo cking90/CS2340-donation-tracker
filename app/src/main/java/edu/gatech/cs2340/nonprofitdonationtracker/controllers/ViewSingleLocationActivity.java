@@ -35,6 +35,7 @@ public class  ViewSingleLocationActivity extends AppCompatActivity {
         Model model = Model.getInstance();
 
         Bundle extras = getIntent().getExtras();
+        assert extras != null;
         currLocationID = extras.getInt("location_id");
         Location currLocation = Location.getLocationWithKey(currLocationID);
 

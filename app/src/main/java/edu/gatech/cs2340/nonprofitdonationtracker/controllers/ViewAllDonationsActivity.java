@@ -37,6 +37,7 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         model = Model.getInstance();
         Bundle extras = getIntent().getExtras();
+        assert extras != null;
         locationID = extras.getInt("location_id");
 
         setContentView(R.layout.activity_view_all_donations);

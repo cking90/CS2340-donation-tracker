@@ -14,6 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Date;
+import java.util.Objects;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
@@ -67,7 +68,7 @@ public class OpeningScreen extends AppCompatActivity {
                     String state = (String) snap.child("state").getValue();
                     String name = (String) snap.child("name").getValue();
                     String website = (String) snap.child("website").getValue();
-                    int key = ((Long) snap.child("key").getValue()).intValue();
+                    int key = ((Long) Objects.requireNonNull(snap.child("key").getValue())).intValue();
                     int zipcode = ((Long) snap.child("zipcode").getValue()).intValue();
                     LocationType type = LocationType.valueOf(
                             (String) snap.child("type").getValue());

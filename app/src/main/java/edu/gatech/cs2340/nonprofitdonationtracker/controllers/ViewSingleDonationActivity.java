@@ -31,6 +31,7 @@ public class ViewSingleDonationActivity extends AppCompatActivity {
         TextView date;
 
         name = findViewById(R.id.nameTextView);
+        assert extras != null;
         name.setText(extras.getString("donation_Name"));
         shortDescription = findViewById(R.id.shortDescriptionTextView);
         shortDescription.setText(extras.getString("donation_ShortDescription"));
