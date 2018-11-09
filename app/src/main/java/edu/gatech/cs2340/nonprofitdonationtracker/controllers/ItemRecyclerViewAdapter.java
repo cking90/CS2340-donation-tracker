@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -55,13 +56,13 @@ public class ItemRecyclerViewAdapter extends
                                    List<String> shortDescrips, List<String> longDescrips,
                                    List<String> donationCategories,
                                    List<Integer> locationID, Context context) {
-        this.donationNames = donationNames;
-        this.donationValues = donationValues;
-        this.donationDates = donationDates;
-        this.donationShortDescriptions = shortDescrips;
-        this.donationLongDescriptions = longDescrips;
-        this.donationCategories = donationCategories;
-        this.locationIDs = locationID;
+        this.donationNames = new ArrayList<>(donationNames);
+        this.donationValues = new ArrayList<>(donationValues);
+        this.donationDates = new ArrayList<>(donationDates);
+        this.donationShortDescriptions = new ArrayList<>(shortDescrips);
+        this.donationLongDescriptions = new ArrayList<>(longDescrips);
+        this.donationCategories = new ArrayList<>(donationCategories);
+        this.locationIDs = new ArrayList<>(locationID);
         this.mContext = context;
     }
 

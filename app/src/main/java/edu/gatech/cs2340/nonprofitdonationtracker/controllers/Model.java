@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * The Model class handles user info updates and information retrieval
  */
-public class Model {
+public final class Model {
 
     /**
      * the facade maintains references to any required model classes

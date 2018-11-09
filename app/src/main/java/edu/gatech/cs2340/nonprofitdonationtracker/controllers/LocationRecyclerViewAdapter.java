@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
@@ -48,9 +49,9 @@ public class LocationRecyclerViewAdapter extends
                                        List<String> locationAddresses,
                                        List<String> locationIDs, String userType,
                                        Context context) {
-        this.locationNames = locationNames;
-        this.locationAddresses = locationAddresses;
-        this.locationIDs = locationIDs;
+        this.locationNames = new ArrayList<>(locationNames);
+        this.locationAddresses = new ArrayList<>(locationAddresses);
+        this.locationIDs = new ArrayList<>(locationIDs);
         this.userType = userType;
         this.mContext = context;
 
