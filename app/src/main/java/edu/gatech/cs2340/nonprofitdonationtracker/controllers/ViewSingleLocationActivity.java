@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
 /**
@@ -40,7 +42,7 @@ public class  ViewSingleLocationActivity extends AppCompatActivity {
         Location currLocation = Location.getLocationWithKey(currLocationID);
 
         locationName = findViewById(R.id.locationNameTextView);
-        locationName.setText(currLocation.getName());
+        locationName.setText(Objects.requireNonNull(currLocation).getName());
 
         locationKey = findViewById(R.id.locationIDTextView);
         locationKey.setText((Integer.toString(currLocation.getKey())));
@@ -71,9 +73,9 @@ public class  ViewSingleLocationActivity extends AppCompatActivity {
      */
     public void onClickAddItem(View view) {
         Bundle extras = getIntent().getExtras();
-        if ("Location Employee".equals(extras.getString("user_type"))) {
+        if ("Location Employee".equals(Objects.requireNonNull(extras).getString("user_type"))) {
             Intent intent = new Intent(this, AddItemActivity.class);
-            intent.putExtra("location_id", getIntent().getExtras().getInt("location_id"));
+            intent.putExtra("location_id", Objects.requireNonNull(getIntent().getExtras()).getInt("location_id"));
             intent.putExtra("user_type",extras.getString("user_type"));
             startActivity(intent);
         } else {
@@ -94,8 +96,8 @@ public class  ViewSingleLocationActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         Intent intent = new Intent(this, ViewAllDonationsActivity.class);
         intent.putExtra("location_id", currLocationID);
-        intent.putExtra("user_type", extras.getString("user_type"));
-        Log.d("coconuts", Location.getLocationWithKey(currLocationID).toString());
+        intent.putExtra("user_type", Objects.requireNonNull(extras).getString("user_type"));
+        Log.d("coconuts", Objects.requireNonNull(Location.getLocationWithKey(currLocationID)).toString());
         startActivity(intent);
     }
 

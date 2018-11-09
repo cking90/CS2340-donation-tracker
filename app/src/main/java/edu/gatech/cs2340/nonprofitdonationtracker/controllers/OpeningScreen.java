@@ -69,7 +69,7 @@ public class OpeningScreen extends AppCompatActivity {
                     String name = (String) snap.child("name").getValue();
                     String website = (String) snap.child("website").getValue();
                     int key = ((Long) Objects.requireNonNull(snap.child("key").getValue())).intValue();
-                    int zipcode = ((Long) snap.child("zipcode").getValue()).intValue();
+                    int zipcode = ((Long) Objects.requireNonNull(snap.child("zipcode").getValue())).intValue();
                     LocationType type = LocationType.valueOf(
                             (String) snap.child("type").getValue());
                     long phone = (Long) snap.child("phone").getValue();
@@ -84,7 +84,7 @@ public class OpeningScreen extends AppCompatActivity {
                                 "shortDescription").getValue();
                         String longDescription = (String) donationsSnap.child(
                                 "longDescription").getValue();
-                        float value = ((Long) donationsSnap.child("value").getValue()).floatValue();
+                        float value = ((Long) Objects.requireNonNull(donationsSnap.child("value").getValue())).floatValue();
                         Category category = Category.valueOf(
                                 (String) donationsSnap.child("category").getValue());
                         Donation donation = new Donation(donationName,
