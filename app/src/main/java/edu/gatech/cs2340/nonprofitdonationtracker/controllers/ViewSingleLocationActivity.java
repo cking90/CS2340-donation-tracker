@@ -36,8 +36,6 @@ public class  ViewSingleLocationActivity extends AppCompatActivity {
         TextView locationPhoneNum;
         TextView locationType;
 
-        Model model = Model.getInstance();
-
         Bundle extras = getIntent().getExtras();
         assert extras != null;
         currLocationID = extras.getInt("location_id");

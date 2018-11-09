@@ -15,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -56,6 +57,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
+    @Nullable
     private UserLoginTask mAuthTask;
 
     // UI references.
@@ -336,8 +338,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             try {
                 // Simulate network access
-                int sleepTime = 2000;
-                Thread.sleep(sleepTime);
+                final int SLEEP_TIME = 2000;
+                Thread.sleep(SLEEP_TIME);
             } catch (InterruptedException e) {
                 return false;
             }
