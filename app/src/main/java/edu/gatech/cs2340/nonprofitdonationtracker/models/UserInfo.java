@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
+package edu.gatech.cs2340.nonprofitdonationtracker.models;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

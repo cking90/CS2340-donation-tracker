@@ -4,13 +4,12 @@ package edu.gatech.cs2340.nonprofitdonationtracker;
 
 import org.junit.Test;
 
-import edu.gatech.cs2340.nonprofitdonationtracker.controllers.Location;
-import edu.gatech.cs2340.nonprofitdonationtracker.controllers.LocationType;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Location;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.LocationType;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
+
 
 /**
  * test to check if two equal locations are recognized as equal

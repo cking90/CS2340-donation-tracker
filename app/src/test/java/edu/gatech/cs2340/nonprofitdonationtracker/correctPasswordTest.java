@@ -3,7 +3,7 @@ package edu.gatech.cs2340.nonprofitdonationtracker;
 
 import org.junit.Test;
 
-import edu.gatech.cs2340.nonprofitdonationtracker.controllers.UserInfo;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.UserInfo;
 
 import static junit.framework.Assert.assertTrue;
 

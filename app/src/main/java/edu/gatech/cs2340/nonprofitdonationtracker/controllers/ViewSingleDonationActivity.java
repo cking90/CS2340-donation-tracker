@@ -9,6 +9,7 @@ import android.view.View;
 import java.util.Objects;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Model;
 
 /**
  * Provides user with information about a donation

@@ -69,17 +69,20 @@ public class ItemRecyclerViewAdapter extends
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.layout_donation_item, parent, false);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view = inflater.inflate(R.layout.layout_donation_item, parent, false);
         return new ItemRecyclerViewAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called");
+
+        Date date = donationDates.get(position);
+
         holder.donationName.setText(donationNames.get(position));
         holder.donationValue.setText(donationValues.get(position));
-        holder.donationDate.setText(donationDates.get(position).toString());
+        holder.donationDate.setText(date.toString());
         holder.donationDescription.setText(donationShortDescriptions.get(position));
         holder.donationLongDescription = donationLongDescriptions.get(position);
         holder.donationCategory = donationCategories.get(position);
@@ -128,6 +131,7 @@ public class ItemRecyclerViewAdapter extends
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
                 Intent intent = new Intent(view.getContext(), ViewSingleDonationActivity.class);
                 intent.putExtra("donation_Date", donationDate.getText().toString());
                 intent.putExtra("donation_Name", donationName.getText().toString());

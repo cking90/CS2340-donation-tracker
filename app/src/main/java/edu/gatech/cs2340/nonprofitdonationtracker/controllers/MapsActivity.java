@@ -21,6 +21,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.Set;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Location;
 
 /**
  * Controller of the Google Maps Activity within the application. Accessed

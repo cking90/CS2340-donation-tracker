@@ -20,6 +20,9 @@ import java.util.List;
 import java.util.Map;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Category;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Donation;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Location;
 
 /**
  * Controller for the activity_search layout file that

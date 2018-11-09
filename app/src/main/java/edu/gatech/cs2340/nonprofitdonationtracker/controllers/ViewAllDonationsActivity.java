@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Donation;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Location;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Model;
 
 /**
  * Allows the user to view all the donations of a given activity.

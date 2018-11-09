@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
+package edu.gatech.cs2340.nonprofitdonationtracker.models;
 
 import java.util.Date;
 
@@ -8,7 +8,7 @@ import java.util.Date;
  * to a specific location through a reference in the
  * Location class
  */
-class Donation {
+public class Donation {
     private final String name;
     private final Date timeStamp;
     private final String shortDescription;

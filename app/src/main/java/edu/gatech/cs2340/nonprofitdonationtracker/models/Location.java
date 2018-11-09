@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
+package edu.gatech.cs2340.nonprofitdonationtracker.models;
 
 import android.util.Log;
 

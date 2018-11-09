@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.UserInfo;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.UserType;
+
 import android.widget.Toast;
 
 /**

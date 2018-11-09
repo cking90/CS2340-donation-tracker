@@ -3,6 +3,7 @@ package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -11,6 +12,9 @@ import android.widget.Spinner;
 import java.util.Objects;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Category;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Donation;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Location;
 
 /**
  * Controller for the view in which users can add
@@ -33,7 +37,8 @@ public class AddItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
 
-        Bundle extras = getIntent().getExtras();
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
         assert extras != null;
         locationId = extras.getInt("location_id");
 
@@ -62,12 +67,15 @@ public class AddItemActivity extends AppCompatActivity {
      *             as described in the method description.
      */
     public void onCancelPressed(View view) {
-        Bundle extras = getIntent().getExtras();
+        Intent extrasIntent = getIntent();
+        Bundle extras = extrasIntent.getExtras();
+
+        assert extras != null;
+        int locationId = extras.getInt("location_id");
+        String userType = extras.getString("user_type");
         Intent intent = new Intent(this, ViewSingleLocationActivity.class);
-        intent.putExtra("location_id", Objects.requireNonNull(
-                getIntent().getExtras()).getInt("location_id"));
-        intent.putExtra("user_type", Objects.requireNonNull(
-                extras).getString("user_type"));
+        intent.putExtra("location_id", locationId);
+        intent.putExtra("user_type", userType);
         startActivity(intent);
     }
 
@@ -80,18 +88,32 @@ public class AddItemActivity extends AppCompatActivity {
      *             method description.
      */
     public void onAddItemPressed(View view) {
-        String nameField = this.nameField.getText().toString();
-        String shortDescription = this.shortDescription.getText().toString();
-        String longDescription = this.longDescription.getText().toString();
-        Float price = Float.parseFloat(this.price.getText().toString());
-        Donation d = new Donation(nameField, shortDescription,
-                longDescription, price, (Category) categorySpinner.getSelectedItem());
+        Editable nameField = this.nameField.getText();
+        String nameString = nameField.toString();
+
+        Editable shortDescriptionField = this.shortDescription.getText();
+        String shortDescriptionString = shortDescriptionField.toString();
+
+        Editable longDescriptionField = this.longDescription.getText();
+        String longDescriptionString = longDescriptionField.toString();
+
+        Editable priceField = this.price.getText();
+        Float priceFloat = Float.parseFloat(priceField.toString());
+
+
+        Donation d = new Donation(nameString, shortDescriptionString,
+                longDescriptionString, priceFloat, (Category) categorySpinner.getSelectedItem());
         Location.addDonationToLocation(locationId, d);
 
-        Bundle extras = getIntent().getExtras();
+        Intent passedIntent = getIntent();
+        Bundle extras = passedIntent.getExtras();
+
+        assert extras != null;
+        String userType = extras.getString("user_type");
+
         Intent intent = new Intent(this, ViewSingleLocationActivity.class);
-        intent.putExtra("location_id", Objects.requireNonNull(getIntent().getExtras()).getInt("location_id"));
-        intent.putExtra("user_type", Objects.requireNonNull(extras).getString("user_type"));
+        intent.putExtra("location_id", Objects.requireNonNull(extras.getInt("location_id")));
+        intent.putExtra("user_type", userType);
         startActivity(intent);
     }
 }

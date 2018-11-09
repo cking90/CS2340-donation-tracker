@@ -11,6 +11,7 @@ import android.util.Log;
 import java.util.ArrayList;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Location;
 
 /**
  * Provides the user with the list of all locations. Selecting

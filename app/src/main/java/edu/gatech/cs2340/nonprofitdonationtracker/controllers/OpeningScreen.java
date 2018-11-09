@@ -17,6 +17,12 @@ import java.util.Date;
 import java.util.Objects;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Category;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Donation;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Location;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.LocationType;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Model;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.UserInfo;
 
 /**
  * Controller for the launch activity of the application.

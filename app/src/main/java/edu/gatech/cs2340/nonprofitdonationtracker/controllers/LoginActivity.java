@@ -32,6 +32,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Model;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.UserInfo;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
