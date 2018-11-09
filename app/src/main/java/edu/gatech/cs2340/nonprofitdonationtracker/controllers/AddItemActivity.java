@@ -58,7 +58,7 @@ public class AddItemActivity extends AppCompatActivity {
      * @param view the layout file containing the cancel button,
      *             as described in the method description.
      */
-    public void onCancelPressed(View view) throws NullPointerException {
+    public void onCancelPressed(View view) {
         Bundle extras = getIntent().getExtras();
         Intent intent = new Intent(this, ViewSingleLocationActivity.class);
         intent.putExtra("location_id", getIntent().getExtras().getInt("location_id"));
@@ -74,7 +74,7 @@ public class AddItemActivity extends AppCompatActivity {
      * @param view the layout file as described in the
      *             method description.
      */
-    public void onAddItemPressed(View view) throws NullPointerException {
+    public void onAddItemPressed(View view) {
         String nameField = this.nameField.getText().toString();
         String shortDescription = this.shortDescription.getText().toString();
         String longDescription = this.longDescription.getText().toString();

@@ -311,8 +311,10 @@ public class Location {
      */
     public static Location getLocationWithKey(int key) {
         for (Location l : Location.locationList) {
-            if (l.getKey() == key) {
-                return l;
+            if (l != null) {
+                if (l.getKey() == key) {
+                    return l;
+                }
             }
         }
         return null;
