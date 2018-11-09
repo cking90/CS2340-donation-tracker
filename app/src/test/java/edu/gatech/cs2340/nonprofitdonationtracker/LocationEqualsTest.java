@@ -13,9 +13,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * test to check if two equal locations are recognized as equal
+ */
 public class LocationEqualsTest {
 
-
+    /**
+     * The test that checks if two equal locations are recognized as equal
+     */
     @Test
     public void testEquals() {
         

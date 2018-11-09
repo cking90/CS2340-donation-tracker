@@ -13,6 +13,9 @@ import static org.junit.Assert.assertEquals;
  * Test to check for getting location, when inputting a given key
  */
 public class getLocationWithKeyTest {
+    /**
+     * checks that correct location is returned when a given key is inputted
+     */
     @Test
     public void getLocationWithKey() {
         //no locations, testing for loop condition where it doesn't enter

@@ -2,6 +2,9 @@ package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
 
 import java.util.List;
 
+/**
+ * The Model class handles user info updates and information retrieval
+ */
 public class Model {
 
     /**
