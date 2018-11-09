@@ -1,34 +1,41 @@
+//Created by Prem
+
 package edu.gatech.cs2340.nonprofitdonationtracker;
-import junit.framework.Assert;
 
 import org.junit.Test;
 
-import edu.gatech.cs2340.nonprofitdonationtracker.controllers.Location;
-import edu.gatech.cs2340.nonprofitdonationtracker.controllers.LocationType;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Location;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.LocationType;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import static org.junit.Assert.assertEquals;
 
 public class GetLocationWithKeyTest {
-
-//    public static final Location def = new Location(-1,
-//    "default", 0.0, 0.0, "123 main st.", "Atlanta", "Georgia",
-//    12345, LocationType.WAREHOUSE, 1234567890,
-//            "www.google.com");
-
     @Test
-    public void testNoLocations() {
-        Assert.assertEquals("Please set your location list to empty to run this test.",
-                0, Location.getLocationList().size());
-        Assert.assertNull("Since there is nothing in the list, you should return null",
-                Location.getLocationWithKey(0));
+    public void getLocationWithKey() {
+        //no locations, testing for loop condition where it doesn't enter
+        assertEquals(Location.getLocationWithKey(1), null);
+
+        Location location1 = new Location(1, "name1", 20, 30,
+                "street", "city", "state", 30308,
+                LocationType.DROPOFF, 123, "website");
+
+        Location location2 = new Location(2, "name2", 20, 30,
+                "street", "city", "state", 30308,
+                LocationType.STORE, 123, "website");
+
+        Location location3 = null;
+
+        Location.addLocationLocal(location1);
+        Location.addLocationLocal(location2);
+        Location.addLocationLocal(location3);
+
+        //there are locations, key is valid
+        assertEquals(Location.getLocationWithKey(2), location2);
+
+        //there are locations, location is null
+        assertEquals(Location.getLocationWithKey(3), null);
+
+        //there are locations, key is not valid
+        assertEquals(Location.getLocationWithKey(4), null);
     }
-
-    @Test
-    public void testKeyNotInList() {}
-
-    @Test
-    public void testKeyInList() {}
-
 }

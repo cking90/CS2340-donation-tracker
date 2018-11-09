@@ -44,7 +44,6 @@ public class  ViewSingleLocationActivity extends AppCompatActivity {
         assert currLocation != null;
 
         locationName = findViewById(R.id.locationNameTextView);
-
         String currLocationName = currLocation.getName();
         locationName.setText(currLocationName);
 
@@ -53,8 +52,8 @@ public class  ViewSingleLocationActivity extends AppCompatActivity {
         locationKey.setText((Integer.toString(currLocationKey)));
 
         locationAddress = findViewById(R.id.locationAddressTextView);
-        String currLocationFullAdress = currLocation.getFullAddress();
-        locationAddress.setText(currLocationFullAdress);
+        String currLocationFullAddress = currLocation.getFullAddress();
+        locationAddress.setText(currLocationFullAddress);
 
         locationCoords = findViewById(R.id.locationCoordsTextView);
         locationCoords.setText(("Coordinates: " + currLocation.getCoordinates()));

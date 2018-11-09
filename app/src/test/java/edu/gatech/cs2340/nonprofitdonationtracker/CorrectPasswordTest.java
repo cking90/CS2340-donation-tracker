@@ -10,7 +10,7 @@ import static junit.framework.Assert.assertTrue;
 /**
  * Class that performs tests to check if the password is correct
  */
-public class correctPasswordTest {
+public class CorrectPasswordTest {
 
     /**
      * asserts true if the password is correct
