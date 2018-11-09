@@ -42,7 +42,6 @@ public class Location {
     private final String website;
     private final List<Donation> donationList = new ArrayList<>();
 
-    private static final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
     /**
      * Standardized order of the Location data
@@ -82,6 +81,8 @@ public class Location {
      */
     public static void addLocation(Location location) {
         locationList.add(location);
+
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
         database.child("locations").child(Integer.toString(
                 location.getKey())).child("key").setValue(location.getKey());
         database.child("locations").child(Integer.toString
