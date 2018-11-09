@@ -12,7 +12,6 @@ import java.util.Objects;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 import edu.gatech.cs2340.nonprofitdonationtracker.models.Location;
-import edu.gatech.cs2340.nonprofitdonationtracker.models.Model;
 
 /**
  * Provides users with the details of a single location. Location
