@@ -102,7 +102,7 @@ public class LocationRecyclerViewAdapter extends
          *
          * @param itemView the layout_location_item
          */
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             locationName = itemView.findViewById(R.id.locationNameTextView);
             locationAddress = itemView.findViewById(R.id.locationAddressTextView);

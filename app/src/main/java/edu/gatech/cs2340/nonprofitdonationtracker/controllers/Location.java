@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -97,7 +98,7 @@ public class Location {
      * @return a list of locations
      */
     public static Set<Location> getLocationList() {
-        return locationList;
+        return Collections.unmodifiableSet(locationList);
     }
 
     /**
@@ -355,7 +356,7 @@ public class Location {
      * @return     The donations.
      */
     public List<Donation> getDonations() {
-        return this.donationList;
+        return Collections.unmodifiableList(this.donationList);
     }
 
     /**

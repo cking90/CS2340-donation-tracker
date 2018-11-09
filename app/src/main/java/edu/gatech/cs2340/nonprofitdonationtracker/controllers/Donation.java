@@ -8,7 +8,7 @@ import java.util.Date;
  * to a specific location through a reference in the
  * Location class
  */
-public class Donation {
+class Donation {
     private final String name;
     private final Date timeStamp;
     private final String shortDescription;
@@ -58,7 +58,7 @@ public class Donation {
         this.longDescription = longDescription;
         this.value = value;
         this.category = category;
-        this.timeStamp = date;
+        this.timeStamp = (Date) date.clone();
     }
 
     /**
@@ -66,7 +66,7 @@ public class Donation {
      * @return Date instance variable
      */
     public Date getDate() {
-        return this.timeStamp;
+        return (Date) this.timeStamp.clone();
     }
 
     /**

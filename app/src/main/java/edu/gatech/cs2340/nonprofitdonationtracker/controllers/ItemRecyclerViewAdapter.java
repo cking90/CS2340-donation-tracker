@@ -116,7 +116,7 @@ public class ItemRecyclerViewAdapter extends
          *
          * @param itemView the layout_location_item
          */
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             donationName = itemView.findViewById(R.id.donationNameTextView);
             donationValue = itemView.findViewById(R.id.donationValueTextView);

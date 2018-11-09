@@ -40,7 +40,7 @@ public class Model {
      * @param email of the account
      * @return list of information associated with the email
      */
-    public List<String> getUserInfo(String email) {
+    private List<String> getUserInfo(String email) {
         return UserInfo.getLoginInfo().get(email);
     }
 

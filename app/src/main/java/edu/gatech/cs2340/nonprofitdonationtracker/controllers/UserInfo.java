@@ -4,6 +4,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,7 +65,7 @@ public class UserInfo {
      * the user's instance variables
      */
     public static Map<String, List<String>> getLoginInfo() {
-        return UserInfo.loginInfo;
+        return Collections.unmodifiableMap(UserInfo.loginInfo);
     }
 
     /**
