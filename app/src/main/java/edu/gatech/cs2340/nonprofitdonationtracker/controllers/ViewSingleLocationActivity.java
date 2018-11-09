@@ -43,28 +43,22 @@ public class  ViewSingleLocationActivity extends AppCompatActivity {
         locationName.setText(Objects.requireNonNull(currLocation).getName());
 
         locationKey = findViewById(R.id.locationIDTextView);
-        int key = currLocation.getKey();
-        locationKey.setText((Integer.toString(key)));
+        locationKey.setText((Integer.toString(currLocation.getKey())));
 
         locationAddress = findViewById(R.id.locationAddressTextView);
-        String fullAddress  = currLocation.getFullAddress();
-        locationAddress.setText(fullAddress);
+        locationAddress.setText((currLocation.getFullAddress()));
 
         locationCoords = findViewById(R.id.locationCoordsTextView);
-        String coordinates = currLocation.getCoordinates();
-        locationCoords.setText(("Coordinates: " + coordinates));
+        locationCoords.setText(("Coordinates: " + currLocation.getCoordinates()));
 
         locationWebsite = findViewById(R.id.locationWebTextView);
-        String website = currLocation.getWebsite();
-        locationWebsite.setText(("Website: " + website));
+        locationWebsite.setText(("Website: " + currLocation.getWebsite()));
 
         locationPhoneNum = findViewById(R.id.locationPhoneTextView);
-        long phoneNum = currLocation.getPhoneNum();
-        locationPhoneNum.setText(("Phone: " + Long.toString(phoneNum)));
+        locationPhoneNum.setText(("Phone: " + Long.toString(currLocation.getPhoneNum())));
 
         locationType = findViewById(R.id.locationTypeTextView);
-        LocationType type = currLocation.getType();
-        locationType.setText(("Type: " + type));
+        locationType.setText(("Type: " + currLocation.getType()));
     }
 
     /**
