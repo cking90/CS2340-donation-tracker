@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.nio.charset.StandardCharsets;
@@ -158,8 +159,8 @@ public class Location {
             BufferedReader csvScan = new BufferedReader(
                     new InputStreamReader(is, StandardCharsets.UTF_8));
             csvScan.readLine();
-            String line;
-            while ((line = csvScan.readLine()) != null){
+            String line = csvScan.readLine();
+            while (line != null){
                 String[] data = line.split(",");
                 Log.d("CSV line", line);
                 Location newLoc = new Location(Integer.parseInt(data[KEY_INDEX]), data[NAME_INDEX],
@@ -172,6 +173,7 @@ public class Location {
                                 data[PHONE_INDEX].replaceAll("[^0-9]", "")),
                         data[URL_INDEX]);
                 Location.addLocation(newLoc);
+                line = csvScan.readLine();
             }
             csvScan.close();
         } catch (IOException e) {
@@ -292,7 +294,7 @@ public class Location {
      * @return     The coordinates.
      */
     public String getCoordinates() {
-        return String.format("%.2f, %.2f", latitude, longitude);
+        return String.format(Locale.US,"%.2f, %.2f", latitude, longitude);
     }
 
     /**

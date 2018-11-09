@@ -43,7 +43,7 @@ public class UserInfo {
 
     /**
      * Adds a new user to local reference to all users.
-     * Used when reading data from the firebase
+     * Used when reading data from the fire base
      *
      * @param name the user's name
      * @param email the user's email address
