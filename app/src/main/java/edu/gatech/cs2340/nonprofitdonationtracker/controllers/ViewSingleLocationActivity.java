@@ -34,8 +34,6 @@ public class  ViewSingleLocationActivity extends AppCompatActivity {
         TextView locationPhoneNum;
         TextView locationType;
 
-        Model model = Model.getInstance();
-
         Bundle extras = getIntent().getExtras();
         assert extras != null;
         currLocationID = extras.getInt("location_id");
@@ -45,22 +43,28 @@ public class  ViewSingleLocationActivity extends AppCompatActivity {
         locationName.setText(Objects.requireNonNull(currLocation).getName());
 
         locationKey = findViewById(R.id.locationIDTextView);
-        locationKey.setText((Integer.toString(currLocation.getKey())));
+        int key = currLocation.getKey();
+        locationKey.setText((Integer.toString(key)));
 
         locationAddress = findViewById(R.id.locationAddressTextView);
-        locationAddress.setText((currLocation.getFullAddress()));
+        String fullAddress  = currLocation.getFullAddress();
+        locationAddress.setText(fullAddress);
 
         locationCoords = findViewById(R.id.locationCoordsTextView);
-        locationCoords.setText(("Coordinates: " + currLocation.getCoordinates()));
+        String coordinates = currLocation.getCoordinates();
+        locationCoords.setText(("Coordinates: " + coordinates));
 
         locationWebsite = findViewById(R.id.locationWebTextView);
-        locationWebsite.setText(("Website: " + currLocation.getWebsite()));
+        String website = currLocation.getWebsite();
+        locationWebsite.setText(("Website: " + website));
 
         locationPhoneNum = findViewById(R.id.locationPhoneTextView);
-        locationPhoneNum.setText(("Phone: " + Long.toString(currLocation.getPhoneNum())));
+        long phoneNum = currLocation.getPhoneNum();
+        locationPhoneNum.setText(("Phone: " + Long.toString(phoneNum)));
 
         locationType = findViewById(R.id.locationTypeTextView);
-        locationType.setText(("Type: " + currLocation.getType()));
+        LocationType type = currLocation.getType();
+        locationType.setText(("Type: " + type));
     }
 
     /**

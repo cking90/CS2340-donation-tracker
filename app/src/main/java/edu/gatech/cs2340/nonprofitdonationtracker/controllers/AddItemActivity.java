@@ -90,8 +90,10 @@ public class AddItemActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         Intent intent = new Intent(this, ViewSingleLocationActivity.class);
-        intent.putExtra("location_id", Objects.requireNonNull(getIntent().getExtras()).getInt("location_id"));
-        intent.putExtra("user_type", Objects.requireNonNull(extras).getString("user_type"));
+        intent.putExtra("location_id", Objects.requireNonNull(
+                getIntent().getExtras()).getInt("location_id"));
+        intent.putExtra("user_type",
+                Objects.requireNonNull(extras).getString("user_type"));
         startActivity(intent);
     }
 }
