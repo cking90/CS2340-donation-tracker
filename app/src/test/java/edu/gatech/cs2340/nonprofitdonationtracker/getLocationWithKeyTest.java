@@ -3,13 +3,13 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
-import edu.gatech.cs2340.nonprofitdonationtracker.models.Location;
+import edu.gatech.cs2340.nonprofitdonationtracker.controllers.Location;
+import edu.gatech.cs2340.nonprofitdonationtracker.controllers.LocationType;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
-/**
- * Tests the getLocationwithKey(int key) method
- * inside of the Location class
- */
 public class GetLocationWithKeyTest {
 
 //    public static final Location def = new Location(-1,
