@@ -13,6 +13,10 @@ public class ExampleUnitTest {
 
 
     @Test
+
+    /**
+     * Method checks if an addition is correct
+     */
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }

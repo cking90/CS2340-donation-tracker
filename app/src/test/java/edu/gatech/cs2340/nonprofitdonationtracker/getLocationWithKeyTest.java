@@ -9,6 +9,9 @@ import edu.gatech.cs2340.nonprofitdonationtracker.controllers.LocationType;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Test to check for getting location, when inputting a given key
+ */
 public class getLocationWithKeyTest {
     @Test
     public void getLocationWithKey() {
