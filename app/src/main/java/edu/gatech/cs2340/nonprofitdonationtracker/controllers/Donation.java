@@ -132,10 +132,3 @@ class Donation {
         return this.name;
     }
 }
-
-/**
- * Enumeration of the types of valid donations
- */
-enum Category{
-    CLOTHING, HAT, KITCHEN, ELECTRONICS, HOUSEHOLD, OTHER
-}

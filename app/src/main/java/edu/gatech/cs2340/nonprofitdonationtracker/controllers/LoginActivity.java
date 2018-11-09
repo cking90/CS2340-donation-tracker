@@ -61,7 +61,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    private final int SLEEPTIME = 2000;
     private Model model;
 
     @Override
@@ -335,7 +334,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             try {
                 // Simulate network access
-                Thread.sleep(SLEEPTIME);
+                int sleepTime = 2000;
+                Thread.sleep(sleepTime);
             } catch (InterruptedException e) {
                 return false;
             }
