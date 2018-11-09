@@ -87,10 +87,12 @@
 
     <Button
         android:id="@+id/button3"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="127dp"
         android:layout_height="44dp"
-        android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="casual"
         android:onClick="onBackPressed"
         android:text="BACK"
         app:layout_constraintBottom_toBottomOf="parent"

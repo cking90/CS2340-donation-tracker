@@ -65,17 +65,20 @@
 
             <Button
                 android:id="@+id/email_sign_in_button"
-                style="@style/Widget.AppCompat.Button"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:fontFamily="casual"
                 android:text="Sign In"
                 android:textStyle="bold" />
 
             <Button
                 android:id="@+id/cancelLoginBtn"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="casual"
                 android:onClick="onClickCancelLogin"
                 android:text="Cancel"
                 android:textStyle="bold" />

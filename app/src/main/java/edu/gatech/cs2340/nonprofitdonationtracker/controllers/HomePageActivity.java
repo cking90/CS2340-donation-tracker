@@ -28,10 +28,6 @@ public class HomePageActivity extends AppCompatActivity {
         model = Model.getInstance();
         userEmail = model.getCurrentUserEmail();
 
-        TextView welcomeText = this.findViewById(R.id.welcomeTxtView);
-        String welcomeMsg = String.format("Welcome %s!", userEmail.split("@")[0]);
-        welcomeText.setText(welcomeMsg);
-
     }
 
     /**

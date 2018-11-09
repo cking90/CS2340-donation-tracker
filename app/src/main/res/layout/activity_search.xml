@@ -22,12 +22,14 @@
 
     <Button
         android:id="@+id/button4"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="142dp"
         android:layout_height="36dp"
-        android:layout_marginTop="8dp"
+        android:fontFamily="casual"
         android:onClick="onClickSearchByItem"
         android:text="Search by name"
         app:layout_constraintEnd_toEndOf="@+id/editText_searched_item_id"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editText_searched_item_id"
         app:layout_constraintTop_toBottomOf="@+id/editText_searched_item_id" />
 
@@ -35,6 +37,7 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:text="Search"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,9 +65,11 @@
 
     <Button
         android:id="@+id/button5"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="187dp"
         android:layout_height="36dp"
         android:layout_marginStart="8dp"
+        android:fontFamily="casual"
         android:onClick="onClickSearchByCategory"
         android:text="Search by category"
         app:layout_constraintBottom_toBottomOf="@+id/button4"
