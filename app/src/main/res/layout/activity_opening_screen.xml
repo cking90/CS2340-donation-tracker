@@ -115,6 +115,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/donation" />
+        app:srcCompat="@drawable/donations" />
 
 </android.support.constraint.ConstraintLayout>
