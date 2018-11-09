@@ -43,6 +43,7 @@ public class ViewLocationsActivity extends AppCompatActivity {
         Log.d("initRecyclerView", "initRecycler: started");
         RecyclerView recyclerView = findViewById(R.id.locationsRecyclerView);
         Bundle extras = getIntent().getExtras();
+        assert extras != null;
         LocationRecyclerViewAdapter adapter = new LocationRecyclerViewAdapter(locationNames,
                                                     locationAddresses, locationIDs,
                                                 extras.getString("user_type"), this);

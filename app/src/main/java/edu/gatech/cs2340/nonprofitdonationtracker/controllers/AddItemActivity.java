@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.util.Objects;
+
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
 /**
@@ -32,6 +34,7 @@ public class AddItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_item);
 
         Bundle extras = getIntent().getExtras();
+        assert extras != null;
         locationId = extras.getInt("location_id");
 
         nameField = findViewById(R.id.itemName);
@@ -61,8 +64,10 @@ public class AddItemActivity extends AppCompatActivity {
     public void onCancelPressed(View view) {
         Bundle extras = getIntent().getExtras();
         Intent intent = new Intent(this, ViewSingleLocationActivity.class);
-        intent.putExtra("location_id", getIntent().getExtras().getInt("location_id"));
-        intent.putExtra("user_type",extras.getString("user_type"));
+        intent.putExtra("location_id", Objects.requireNonNull(
+                getIntent().getExtras()).getInt("location_id"));
+        intent.putExtra("user_type", Objects.requireNonNull(
+                extras).getString("user_type"));
         startActivity(intent);
     }
 
@@ -79,18 +84,14 @@ public class AddItemActivity extends AppCompatActivity {
         String shortDescription = this.shortDescription.getText().toString();
         String longDescription = this.longDescription.getText().toString();
         Float price = Float.parseFloat(this.price.getText().toString());
-
-        for (Location location: Location.getLocationList()) {
-            if (location.getKey() == locationId) {
-                location.addDonation(new Donation(nameField, shortDescription,
-                        longDescription, price, (Category) categorySpinner.getSelectedItem()));
-            }
-        }
+        Donation d = new Donation(nameField, shortDescription,
+                longDescription, price, (Category) categorySpinner.getSelectedItem());
+        Location.addDonationToLocation(locationId, d);
 
         Bundle extras = getIntent().getExtras();
         Intent intent = new Intent(this, ViewSingleLocationActivity.class);
-        intent.putExtra("location_id", getIntent().getExtras().getInt("location_id"));
-        intent.putExtra("user_type",extras.getString("user_type"));
+        intent.putExtra("location_id", Objects.requireNonNull(getIntent().getExtras()).getInt("location_id"));
+        intent.putExtra("user_type", Objects.requireNonNull(extras).getString("user_type"));
         startActivity(intent);
     }
 }

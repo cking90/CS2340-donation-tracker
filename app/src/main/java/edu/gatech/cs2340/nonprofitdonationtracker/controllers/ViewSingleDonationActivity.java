@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.view.View;
 
+import java.util.Objects;
+
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 
 /**
@@ -31,6 +33,7 @@ public class ViewSingleDonationActivity extends AppCompatActivity {
         TextView date;
 
         name = findViewById(R.id.nameTextView);
+        assert extras != null;
         name.setText(extras.getString("donation_Name"));
         shortDescription = findViewById(R.id.shortDescriptionTextView);
         shortDescription.setText(extras.getString("donation_ShortDescription"));
@@ -53,7 +56,7 @@ public class ViewSingleDonationActivity extends AppCompatActivity {
     public void onBackPressed(View view) {
         Bundle extras = getIntent().getExtras();
         Intent intent = new Intent(this, ViewSingleLocationActivity.class);
-        intent.putExtra("location_id", extras.getInt("location_id"));
+        intent.putExtra("location_id", Objects.requireNonNull(extras).getInt("location_id"));
         intent.putExtra("user_type", model.getCurrentUserType());
         startActivity(intent);
     }
