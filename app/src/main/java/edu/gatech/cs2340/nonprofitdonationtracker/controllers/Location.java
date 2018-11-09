@@ -345,7 +345,6 @@ public class Location {
      */
     public void addDonation(Donation d) {
         donationList.add(d);
-
         DatabaseReference locationRef = FirebaseDatabase.getInstance().getReference().child(
                 "locations").child(Integer.toString(this.getKey()));
         locationRef.child("donations").child(d.getDate().toString()).child(
@@ -411,6 +410,19 @@ public class Location {
                 }
             }
             return specificDonations;
+        }
+    }
+
+    /**
+     * Adds the donation to the proper location
+     * @param locationId the location being added to
+     * @param d the donation being added
+     */
+    public static void addDonationToLocation(int locationId, Donation d) {
+        for (Location location: Location.getLocationList()) {
+            if (location.getKey() == locationId) {
+                location.addDonation(d);
+            }
         }
     }
 

@@ -32,6 +32,7 @@ public class AddItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_item);
 
         Bundle extras = getIntent().getExtras();
+        assert extras != null;
         locationId = extras.getInt("location_id");
 
         nameField = findViewById(R.id.itemName);
@@ -79,13 +80,9 @@ public class AddItemActivity extends AppCompatActivity {
         String shortDescription = this.shortDescription.getText().toString();
         String longDescription = this.longDescription.getText().toString();
         Float price = Float.parseFloat(this.price.getText().toString());
-
-        for (Location location: Location.getLocationList()) {
-            if (location.getKey() == locationId) {
-                location.addDonation(new Donation(nameField, shortDescription,
-                        longDescription, price, (Category) categorySpinner.getSelectedItem()));
-            }
-        }
+        Donation d = new Donation(nameField, shortDescription,
+                longDescription, price, (Category) categorySpinner.getSelectedItem());
+        Location.addDonationToLocation(locationId, d);
 
         Bundle extras = getIntent().getExtras();
         Intent intent = new Intent(this, ViewSingleLocationActivity.class);

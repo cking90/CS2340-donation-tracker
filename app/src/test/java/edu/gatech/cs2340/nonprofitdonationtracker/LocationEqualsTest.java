@@ -1,8 +1,6 @@
 package edu.gatech.cs2340.nonprofitdonationtracker;
 
-import android.content.Context;
 
-import com.google.firebase.FirebaseApp;
 
 import org.junit.Test;
 
@@ -11,6 +9,7 @@ import edu.gatech.cs2340.nonprofitdonationtracker.controllers.LocationType;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 public class LocationEqualsTest {
@@ -35,10 +34,10 @@ public class LocationEqualsTest {
 
         Location location4 = null;
 
-        assertTrue(location1.equals(location1));
-        assertFalse(location1.equals(location2));
-        assertFalse(location1.equals(location4));
-        assertTrue(location1.equals(location3));
+        assertEquals(location1,location1);
+        assertNotEquals(location1, location2);
+        assertNotEquals(location1, location4);
+        assertEquals(location1, location3);
 
 
     }
