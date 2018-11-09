@@ -7,8 +7,14 @@ import edu.gatech.cs2340.nonprofitdonationtracker.controllers.UserInfo;
 
 import static junit.framework.Assert.assertTrue;
 
+/**
+ * Class that performs tests to check if the password is correct
+ */
 public class correctPasswordTest {
 
+    /**
+     * asserts true if the password is correct
+     */
     @Test
     public void correctPassword() {
         UserInfo user = new UserInfo();

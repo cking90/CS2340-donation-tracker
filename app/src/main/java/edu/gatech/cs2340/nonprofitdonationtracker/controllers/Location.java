@@ -60,6 +60,22 @@ public class Location {
     private static final int PHONE_INDEX = 9;
     private static final int URL_INDEX = 10;
 
+    /**
+     * Constructor which creates a new location based on
+     * pssed in parameters
+     *
+     * @param key - unique location key
+     * @param name - name of location
+     * @param latitude - latitude
+     * @param longitude - longitude
+     * @param street - street address
+     * @param city - city address
+     * @param state - state
+     * @param zipcode - zip code
+     * @param type - type of location (enum)
+     * @param phoneNum - phone number
+     * @param website - website of location
+     */
     public Location(int key, String name, double latitude, double longitude,
                         String street, String city, String state, int zipcode,
                         LocationType type, long phoneNum, String website) {
@@ -76,6 +92,10 @@ public class Location {
         this.website = website;
     }
 
+    /**
+     * Returns the list of locations
+     * @return a list of locations
+     */
     public static Set<Location> getLocationList() {
         return locationList;
     }
@@ -345,7 +365,6 @@ public class Location {
      */
     public void addDonation(Donation d) {
         donationList.add(d);
-
         DatabaseReference locationRef = FirebaseDatabase.getInstance().getReference().child(
                 "locations").child(Integer.toString(this.getKey()));
         locationRef.child("donations").child(d.getDate().toString()).child(
@@ -411,6 +430,19 @@ public class Location {
                 }
             }
             return specificDonations;
+        }
+    }
+
+    /**
+     * Adds the donation to the proper location
+     * @param locationId the location being added to
+     * @param d the donation being added
+     */
+    public static void addDonationToLocation(int locationId, Donation d) {
+        for (Location location: Location.getLocationList()) {
+            if (location.getKey() == locationId) {
+                location.addDonation(d);
+            }
         }
     }
 
