@@ -226,7 +226,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
     /**
-     * on click for the cancel button that takes you back to the Openingscreen page
+     * on click for the cancel button that takes you back to the Opening screen page
      * @param view - view
      */
     public void onClickCancelLogin(View view) {

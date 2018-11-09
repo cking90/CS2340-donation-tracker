@@ -63,7 +63,7 @@ public class Location {
 
     /**
      * Constructor which creates a new location based on
-     * pssed in parameters
+     * passed in parameters
      *
      * @param key - unique location key
      * @param name - name of location
