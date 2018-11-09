@@ -27,7 +27,6 @@ public class ViewLocationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_locations_acitivity);
         RecyclerView listView = findViewById(R.id.locationsRecyclerView);
-        Log.d("Help", Location.getLocationList().toString());
         initLocationData();
     }
 

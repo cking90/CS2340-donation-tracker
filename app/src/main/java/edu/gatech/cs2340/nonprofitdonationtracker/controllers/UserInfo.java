@@ -15,8 +15,6 @@ import java.util.Map;
 public class UserInfo {
     private static final Map<String, List<String>> loginInfo = new HashMap<>();
 
-    private static final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-
     /**
      * Creates a new User with the passed in information
      * and adds the user to the database and local static
@@ -29,6 +27,7 @@ public class UserInfo {
      *                 decide access to application features
      */
     public static void addNewUser(String name, String email, String password, String userType) {
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
         List<String> userInfo = new ArrayList<>();
         userInfo.add(name);
         userInfo.add(password);
@@ -43,7 +42,7 @@ public class UserInfo {
 
     /**
      * Adds a new user to local reference to all users.
-     * Used when reading data from the firebase
+     * Used when reading data from the fire base
      *
      * @param name the user's name
      * @param email the user's email address

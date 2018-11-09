@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.nio.charset.StandardCharsets;
@@ -42,16 +43,22 @@ public class Location {
     private final String website;
     private final List<Donation> donationList = new ArrayList<>();
 
-    private static final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
     /**
      * Standardized order of the Location data
      * in the csv file
      */
-    private static final int KEY_INDEX = 0, NAME_INDEX = 1, LAT_INDEX = 2,
-                        LONG_INDEX = 3, STREET_INDEX = 4, CITY_INDEX = 5,
-                        STATE_INDEX = 6, ZIP_INDEX = 7, TYPE_INDEX = 8,
-                        PHONE_INDEX = 9, URL_INDEX = 10;
+    private static final int KEY_INDEX = 0;
+    private static final int NAME_INDEX = 1;
+    private static final int LAT_INDEX = 2;
+    private static final int LONG_INDEX = 3;
+    private static final int STREET_INDEX = 4;
+    private static final int CITY_INDEX = 5;
+    private static final int STATE_INDEX = 6;
+    private static final int ZIP_INDEX = 7;
+    private static final int TYPE_INDEX = 8;
+    private static final int PHONE_INDEX = 9;
+    private static final int URL_INDEX = 10;
 
     public Location(int key, String name, double latitude, double longitude,
                         String street, String city, String state, int zipcode,
@@ -82,6 +89,8 @@ public class Location {
      */
     public static void addLocation(Location location) {
         locationList.add(location);
+
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
         database.child("locations").child(Integer.toString(
                 location.getKey())).child("key").setValue(location.getKey());
         database.child("locations").child(Integer.toString
@@ -150,8 +159,8 @@ public class Location {
             BufferedReader csvScan = new BufferedReader(
                     new InputStreamReader(is, StandardCharsets.UTF_8));
             csvScan.readLine();
-            String line;
-            while ((line = csvScan.readLine()) != null){
+            String line = csvScan.readLine();
+            while (line != null){
                 String[] data = line.split(",");
                 Log.d("CSV line", line);
                 Location newLoc = new Location(Integer.parseInt(data[KEY_INDEX]), data[NAME_INDEX],
@@ -164,6 +173,7 @@ public class Location {
                                 data[PHONE_INDEX].replaceAll("[^0-9]", "")),
                         data[URL_INDEX]);
                 Location.addLocation(newLoc);
+                line = csvScan.readLine();
             }
             csvScan.close();
         } catch (IOException e) {
@@ -284,7 +294,7 @@ public class Location {
      * @return     The coordinates.
      */
     public String getCoordinates() {
-        return String.format("%.2f, %.2f", latitude, longitude);
+        return String.format(Locale.US,"%.2f, %.2f", latitude, longitude);
     }
 
     /**
@@ -310,8 +320,10 @@ public class Location {
      */
     public static Location getLocationWithKey(int key) {
         for (Location l : Location.locationList) {
-            if (l.getKey() == key) {
-                return l;
+            if (l != null) {
+                if (l.getKey() == key) {
+                    return l;
+                }
             }
         }
         return null;
