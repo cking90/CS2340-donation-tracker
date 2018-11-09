@@ -43,8 +43,7 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        List<Location> locationList = new ArrayList<>();
-        locationList.addAll(Location.getLocationList());
+        List<Location> locationList = new ArrayList<>(Location.getLocationList());
         Location defaultOption = new Location(
                 -1, "All Locations", -1, -1, "", "",
                 "", -1, null, -1, "");
