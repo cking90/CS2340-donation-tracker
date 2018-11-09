@@ -42,7 +42,7 @@ public class OpeningScreen extends AppCompatActivity {
         model = Model.getInstance();
 
         //readCSVFile();
-        Log.d("Locations", Location.getLocationList().toString());
+//        Log.d("Locations", Location.getLocationList().toString());
         initData();
 
     }

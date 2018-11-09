@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -133,15 +134,22 @@ public class ItemRecyclerViewAdapter extends
                 public void onClick(View view) {
 
                 Intent intent = new Intent(view.getContext(), ViewSingleDonationActivity.class);
-                intent.putExtra("donation_Date", donationDate.getText().toString());
-                intent.putExtra("donation_Name", donationName.getText().toString());
-                intent.putExtra("donation_Value", donationValue.getText().toString());
+
+                CharSequence dateField = donationDate.getText();
+                CharSequence nameField = donationName.getText();
+                CharSequence valueField = donationValue.getText();
+                CharSequence shortDescriptionField = donationDescription.getText();
+
+                intent.putExtra("donation_Date", dateField.toString());
+                intent.putExtra("donation_Name", nameField.toString());
+                intent.putExtra("donation_Value", valueField.toString());
                 intent.putExtra("donation_ShortDescription",
-                        donationDescription.getText().toString());
+                        shortDescriptionField.toString());
                 intent.putExtra("donation_LongDescription", donationLongDescription);
                 intent.putExtra("donation_Category", donationCategory);
                 intent.putExtra("location_id", locationID);
-                view.getContext().startActivity(intent);
+                Context context = view.getContext();
+                context.startActivity(intent);
                 }
             });
 

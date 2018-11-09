@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.nonprofitdonationtracker.models;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * The Model class handles user info updates and information retrieval
@@ -41,7 +42,8 @@ public final class Model {
      * @return list of information associated with the email
      */
     private List<String> getUserInfo(String email) {
-        return UserInfo.getLoginInfo().get(email);
+        Map<String, List<String>> loginInfo = UserInfo.getLoginInfo();
+        return loginInfo.get(email);
     }
 
     /**

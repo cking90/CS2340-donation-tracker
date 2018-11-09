@@ -60,8 +60,8 @@ public class LocationRecyclerViewAdapter extends
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.layout_location_item, parent, false);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view = inflater.inflate(R.layout.layout_donation_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -109,14 +109,19 @@ public class LocationRecyclerViewAdapter extends
             locationAddress = itemView.findViewById(R.id.locationAddressTextView);
             locationID = itemView.findViewById(R.id.locationIDTextView);
             parentLayout = itemView.findViewById(R.id.locationAdapterLayout);
+
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    CharSequence locationIdField = locationID.getText();
                     Intent intent = new Intent(view.getContext(), ViewSingleLocationActivity.class);
                     intent.putExtra("location_id",
-                            Integer.parseInt(locationID.getText().toString()));
+                            Integer.parseInt(locationIdField.toString()));
                     intent.putExtra("user_type", userType);
-                    view.getContext().startActivity(intent);
+                    Context context = view.getContext();
+                    context.startActivity(intent);
                 }
             });
 
