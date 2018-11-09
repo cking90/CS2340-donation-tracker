@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -96,7 +97,9 @@ public class SearchActivity extends AppCompatActivity {
         Spinner location_picker = findViewById(R.id.spinner_location_picker_id);
         Location selectedLocation = (Location)location_picker.getSelectedItem();
         EditText searched_item = findViewById(R.id.editText_searched_item_id);
-        String item = searched_item.getText().toString();
+
+        Editable itemField = searched_item.getText();
+        String item = itemField.toString();
         int location_key = selectedLocation.getKey();
         donationList = Location.filterByLocation(location_key);
         filterByItemName(item);
@@ -107,13 +110,15 @@ public class SearchActivity extends AppCompatActivity {
         Map<Integer, List<Donation>> updatedList = new HashMap<>();
         for (Integer key : donationList.keySet()) {
             for (Donation d : donationList.get(key)) {
-                if (d.getCategory().equals(category)) {
+                Category donationCategory = d.getCategory();
+                if (donationCategory.equals(category)) {
                     if (!updatedList.containsKey(key)) {
                         List<Donation> donationArray = new ArrayList<>();
                         donationArray.add(d);
                         updatedList.put(key, donationArray);
                     } else {
-                        updatedList.get(key).add(d);
+                        List<Donation> donationList = updatedList.get(key);
+                        donationList.add(d);
                     }
                 }
             }
@@ -125,13 +130,15 @@ public class SearchActivity extends AppCompatActivity {
         Map<Integer, List<Donation>> updatedList = new HashMap<>();
         for (Integer key : donationList.keySet()) {
             for (Donation d : donationList.get(key)) {
-                if (d.getName().equals(item)) {
+                String donationName = d.getName();
+                if (donationName.equals(item)) {
                     if (!updatedList.containsKey(key)) {
                         List<Donation> donationArray = new ArrayList<>();
                         donationArray.add(d);
                         updatedList.put(key, donationArray);
                     } else {
-                        updatedList.get(key).add(d);
+                        List<Donation> donationList = updatedList.get(key);
+                        donationList.add(d);
                     }
                 }
             }
@@ -147,8 +154,12 @@ public class SearchActivity extends AppCompatActivity {
                 donationDates.add(d.getDate());
                 donationShortDescriptions.add(d.getShortDescription());
                 donationLongDescriptions.add(d.getLongDescription());
-                donationCategories.add(d.getCategory().toString());
+
+                Category donationCategory = d.getCategory();
+                donationCategories.add(donationCategory.toString());
+
                 locationIDs.add(l.getKey());
+
             }
         }
         initRecyclerView();
@@ -185,7 +196,9 @@ public class SearchActivity extends AppCompatActivity {
                 donationDates.add(d.getDate());
                 donationShortDescriptions.add(d.getShortDescription());
                 donationLongDescriptions.add(d.getLongDescription());
-                donationCategories.add(d.getCategory().toString());
+
+                Category donationCategory = d.getCategory();
+                donationCategories.add(donationCategory.toString());
                 locationIDs.add(key);
             }
         }

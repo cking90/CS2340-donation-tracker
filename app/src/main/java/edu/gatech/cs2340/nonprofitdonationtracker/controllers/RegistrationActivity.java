@@ -53,7 +53,9 @@ public class RegistrationActivity extends AppCompatActivity {
         Editable password_value = password.getText();
         //get user type
         Spinner userType = findViewById(R.id.user_type_spinner_id);
-        String selected_user_type = userType.getSelectedItem().toString();
+
+        Object userTypeField = userType.getSelectedItem();
+        String selected_user_type = userTypeField.toString();
         if (("").equals(email_value.toString() + "")
                 || ("").equals(name_value.toString() + "")
                 || ("").equals(password_value.toString() + "")) {

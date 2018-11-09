@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Category;
 import edu.gatech.cs2340.nonprofitdonationtracker.models.Donation;
 import edu.gatech.cs2340.nonprofitdonationtracker.models.Location;
 import edu.gatech.cs2340.nonprofitdonationtracker.models.Model;
@@ -39,7 +40,9 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         model = Model.getInstance();
-        Bundle extras = getIntent().getExtras();
+
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
         assert extras != null;
         locationID = extras.getInt("location_id");
 
@@ -58,7 +61,9 @@ public class ViewAllDonationsActivity extends AppCompatActivity {
                     donationDates.add(d.getDate());
                     donationShortDescriptions.add(d.getShortDescription());
                     donationLongDescriptions.add(d.getLongDescription());
-                    donationCategories.add(d.getCategory().toString());
+
+                    Category donationCategory = d.getCategory();
+                    donationCategories.add(donationCategory.toString());
                     locationIDs.add(locationID);
 
                 }

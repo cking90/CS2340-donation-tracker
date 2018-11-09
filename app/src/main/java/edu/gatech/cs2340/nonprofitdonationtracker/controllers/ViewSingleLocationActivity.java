@@ -35,19 +35,26 @@ public class  ViewSingleLocationActivity extends AppCompatActivity {
         TextView locationPhoneNum;
         TextView locationType;
 
-        Bundle extras = getIntent().getExtras();
+        Intent extrasIntent = getIntent();
+        Bundle extras = extrasIntent.getExtras();
         assert extras != null;
         currLocationID = extras.getInt("location_id");
+
         Location currLocation = Location.getLocationWithKey(currLocationID);
+        assert currLocation != null;
 
         locationName = findViewById(R.id.locationNameTextView);
-        locationName.setText(Objects.requireNonNull(currLocation).getName());
+
+        String currLocationName = currLocation.getName();
+        locationName.setText(currLocationName);
 
         locationKey = findViewById(R.id.locationIDTextView);
-        locationKey.setText((Integer.toString(currLocation.getKey())));
+        int currLocationKey = currLocation.getKey();
+        locationKey.setText((Integer.toString(currLocationKey)));
 
         locationAddress = findViewById(R.id.locationAddressTextView);
-        locationAddress.setText((currLocation.getFullAddress()));
+        String currLocationFullAdress = currLocation.getFullAddress();
+        locationAddress.setText(currLocationFullAdress);
 
         locationCoords = findViewById(R.id.locationCoordsTextView);
         locationCoords.setText(("Coordinates: " + currLocation.getCoordinates()));
@@ -71,9 +78,12 @@ public class  ViewSingleLocationActivity extends AppCompatActivity {
      * @param view Add Item Button
      */
     public void onClickAddItem(View view) {
-        Bundle extras = getIntent().getExtras();
-        if ("Location Employee".equals(
-                Objects.requireNonNull(extras).getString("user_type"))) {
+        Intent extrasIntent = getIntent();
+        Bundle extras = extrasIntent.getExtras();
+        assert extras != null;
+        String userType = extras.getString("user_type");
+
+        if ("Location Employee".equals(userType)) {
             Intent intent = new Intent(this, AddItemActivity.class);
             intent.putExtra("location_id", Objects.requireNonNull(
                     getIntent().getExtras()).getInt("location_id"));

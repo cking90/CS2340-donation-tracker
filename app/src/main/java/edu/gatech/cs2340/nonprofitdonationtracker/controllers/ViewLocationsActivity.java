@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.nonprofitdonationtracker.controllers;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -43,7 +44,9 @@ public class ViewLocationsActivity extends AppCompatActivity {
     private void initRecyclerView() {
         Log.d("initRecyclerView", "initRecycler: started");
         RecyclerView recyclerView = findViewById(R.id.locationsRecyclerView);
-        Bundle extras = getIntent().getExtras();
+
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
         assert extras != null;
         LocationRecyclerViewAdapter adapter = new LocationRecyclerViewAdapter(locationNames,
                                                     locationAddresses, locationIDs,
