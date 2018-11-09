@@ -40,7 +40,7 @@ public class AddItemActivity extends AppCompatActivity {
         price = findViewById(R.id.price);
         categorySpinner = findViewById(R.id.categorySpinner);
 
-        ArrayAdapter<Category> adapter = new ArrayAdapter(
+        ArrayAdapter<Category> adapter = new ArrayAdapter<>(
                 this,android.R.layout.simple_spinner_item, Category.values());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(adapter);
