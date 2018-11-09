@@ -73,9 +73,11 @@ public class  ViewSingleLocationActivity extends AppCompatActivity {
      */
     public void onClickAddItem(View view) {
         Bundle extras = getIntent().getExtras();
-        if ("Location Employee".equals(Objects.requireNonNull(extras).getString("user_type"))) {
+        if ("Location Employee".equals(
+                Objects.requireNonNull(extras).getString("user_type"))) {
             Intent intent = new Intent(this, AddItemActivity.class);
-            intent.putExtra("location_id", Objects.requireNonNull(getIntent().getExtras()).getInt("location_id"));
+            intent.putExtra("location_id", Objects.requireNonNull(
+                    getIntent().getExtras()).getInt("location_id"));
             intent.putExtra("user_type",extras.getString("user_type"));
             startActivity(intent);
         } else {
@@ -97,7 +99,8 @@ public class  ViewSingleLocationActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ViewAllDonationsActivity.class);
         intent.putExtra("location_id", currLocationID);
         intent.putExtra("user_type", Objects.requireNonNull(extras).getString("user_type"));
-        Log.d("coconuts", Objects.requireNonNull(Location.getLocationWithKey(currLocationID)).toString());
+        Log.d("coconuts", Objects.requireNonNull(
+                Location.getLocationWithKey(currLocationID)).toString());
         startActivity(intent);
     }
 
