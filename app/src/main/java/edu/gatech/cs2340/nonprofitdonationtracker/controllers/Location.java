@@ -47,10 +47,17 @@ public class Location {
      * Standardized order of the Location data
      * in the csv file
      */
-    private static final int KEY_INDEX = 0, NAME_INDEX = 1, LAT_INDEX = 2,
-                        LONG_INDEX = 3, STREET_INDEX = 4, CITY_INDEX = 5,
-                        STATE_INDEX = 6, ZIP_INDEX = 7, TYPE_INDEX = 8,
-                        PHONE_INDEX = 9, URL_INDEX = 10;
+    private static final int KEY_INDEX = 0;
+    private static final int NAME_INDEX = 1;
+    private static final int LAT_INDEX = 2;
+    private static final int LONG_INDEX = 3;
+    private static final int STREET_INDEX = 4;
+    private static final int CITY_INDEX = 5;
+    private static final int STATE_INDEX = 6;
+    private static final int ZIP_INDEX = 7;
+    private static final int TYPE_INDEX = 8;
+    private static final int PHONE_INDEX = 9;
+    private static final int URL_INDEX = 10;
 
     public Location(int key, String name, double latitude, double longitude,
                         String street, String city, String state, int zipcode,
