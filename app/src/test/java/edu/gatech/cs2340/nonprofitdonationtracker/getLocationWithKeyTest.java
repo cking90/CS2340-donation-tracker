@@ -14,6 +14,10 @@ import static org.junit.Assert.assertEquals;
  * checks the location with key method
  */
 public class getLocationWithKeyTest {
+
+    /**
+     * checks the location with key method through different test conditions mentioned below
+     */
     @Test
     public void getLocationWithKey() {
         //no locations, testing for loop condition where it doesn't enter
