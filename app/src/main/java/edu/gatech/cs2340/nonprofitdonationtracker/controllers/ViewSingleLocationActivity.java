@@ -23,18 +23,19 @@ public class  ViewSingleLocationActivity extends AppCompatActivity {
     private int currLocationID;
     private Location currLocation;
 
+    TextView locationName;
+    TextView locationAddress;
+    TextView locationKey;
+    TextView locationCoords;
+    TextView locationWebsite;
+    TextView locationPhoneNum;
+    TextView locationType;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_single_location);
-
-        TextView locationName;
-        TextView locationAddress;
-        TextView locationKey;
-        TextView locationCoords;
-        TextView locationWebsite;
-        TextView locationPhoneNum;
-        TextView locationType;
 
         Intent extrasIntent = getIntent();
         Bundle extras = extrasIntent.getExtras();

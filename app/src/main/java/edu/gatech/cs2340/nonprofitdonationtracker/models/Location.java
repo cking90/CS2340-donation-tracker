@@ -184,12 +184,13 @@ public class Location {
             while (line != null){
                 String[] data = line.split(",");
                 Log.d("CSV line", line);
+                String location = data[TYPE_INDEX].replaceAll(
+                        " ", "");
                 Location newLoc = new Location(Integer.parseInt(data[KEY_INDEX]), data[NAME_INDEX],
                         Double.parseDouble(data[LAT_INDEX]), Double.parseDouble(data[LONG_INDEX]),
                         data[STREET_INDEX], data[CITY_INDEX], data[STATE_INDEX],
                         Integer.parseInt(data[ZIP_INDEX]),
-                        LocationType.valueOf(data[TYPE_INDEX].replaceAll(
-                                " ", "").toUpperCase()),
+                        LocationType.valueOf(location.toUpperCase()),
                         Long.parseLong(
                                 data[PHONE_INDEX].replaceAll("[^0-9]", "")),
                         data[URL_INDEX]);
