@@ -12,6 +12,7 @@ import static org.junit.Assert.assertNotEquals;
 
 
 /**
+ * @author charlie
  * test to check if two equal locations are recognized as equal
  */
 public class LocationEqualsTest {
