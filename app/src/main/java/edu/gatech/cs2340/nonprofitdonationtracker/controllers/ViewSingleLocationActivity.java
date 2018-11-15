@@ -21,6 +21,7 @@ import edu.gatech.cs2340.nonprofitdonationtracker.models.Location;
 public class  ViewSingleLocationActivity extends AppCompatActivity {
 
     private int currLocationID;
+    private Location currLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class  ViewSingleLocationActivity extends AppCompatActivity {
         assert extras != null;
         currLocationID = extras.getInt("location_id");
 
-        Location currLocation = Location.getLocationWithKey(currLocationID);
+        currLocation = Location.getLocationWithKey(currLocationID);
         assert currLocation != null;
 
         locationName = findViewById(R.id.locationNameTextView);
