@@ -33,7 +33,7 @@ public class LocationEqualsTest {
                 "www.cause.com");
 
         Location location3 = new Location(3, "Dummy Location #3", 23,
-                90, "123 Beacj Drive", "Kansas City", "Kansas",
+                90, "123 Beach Drive", "Kansas City", "Kansas",
                 311239, LocationType.WAREHOUSE, 12341231,
                 "www.ugh.com");
 
