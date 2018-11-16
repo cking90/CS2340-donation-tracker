@@ -10,7 +10,7 @@ import edu.gatech.cs2340.nonprofitdonationtracker.models.LocationType;
 import static org.junit.Assert.assertEquals;
 
 /**
- * made by prem
+ * @author prem
  * checks the location with key method
  */
 public class GetLocationWithKeyTest {
