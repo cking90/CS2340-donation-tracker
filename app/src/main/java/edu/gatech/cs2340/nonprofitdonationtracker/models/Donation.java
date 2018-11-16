@@ -111,6 +111,20 @@ public class Donation {
         return this.name;
     }
 
+    /**
+     * tests equality of Donations by name
+     *
+     * @param d1 first donation
+     * @param d2 second donation
+     * @return boolean value if they are equal or not
+     */
+    public static boolean equals(Donation d1, Donation d2) {
+        if (d1.getName().equals(d2.getName())) {
+            return true;
+        }
+        return false;
+    }
+
 //    public void setDate(Date timeStamp) {this.timeStamp = timeStamp;}
 //
 //    public void setShortDescription(String shortDescription) {

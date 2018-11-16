@@ -443,8 +443,7 @@ public class Location {
     public static void addDonationToLocation(int locationId, Donation d) {
         for (Location location: Location.getLocationList()) {
             if (location.getKey() == locationId) {
-                location.addDonationLocal(d);
-                //changed from just addDonation
+                location.addDonation(d);
             }
         }
     }
