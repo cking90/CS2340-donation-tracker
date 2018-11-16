@@ -115,11 +115,17 @@ public class Donation {
      * tests equality of Donations by name
      *
      * @param d1 first donation
-     * @param d2 second donation
      * @return boolean value if they are equal or not
      */
-    public static boolean equals(Donation d1, Donation d2) {
-        return d1.getName().equals(d2.getName());
+    public boolean equals(Object d1) {
+        if (this == d1) {
+            return true;
+        }
+        if (!(d1 instanceof Donation)) {
+            return false;
+        }
+        Donation other = (Donation) d1;
+        return other.name.equals(this.name);
     }
 
 //    public void setDate(Date timeStamp) {this.timeStamp = timeStamp;}

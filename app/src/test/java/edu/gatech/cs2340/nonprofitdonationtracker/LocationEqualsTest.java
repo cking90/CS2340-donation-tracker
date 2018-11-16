@@ -4,10 +4,13 @@ package edu.gatech.cs2340.nonprofitdonationtracker;
 
 import org.junit.Test;
 
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Category;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.Donation;
 import edu.gatech.cs2340.nonprofitdonationtracker.models.Location;
 import edu.gatech.cs2340.nonprofitdonationtracker.models.LocationType;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 
 
@@ -37,11 +40,15 @@ public class LocationEqualsTest {
                 311239, LocationType.WAREHOUSE, 12341231,
                 "www.ugh.com");
 
+        Donation d1 = new Donation("item1", "a hat",
+                "a cool hat", 56.25f, Category.HAT);
+
         Location location4 = null;
 
         assertEquals(location1,location1);
         assertNotEquals(location1, location2);
         assertNotEquals(location1, location4);
+        assertFalse(location1.equals(d1));
         assertEquals(location1, location3);
 
 
