@@ -19,6 +19,9 @@ import static org.junit.Assert.assertTrue;
  */
 public class DonationEqualsTest {
 
+    /**
+     * test to check if two equal locations are recognized as equal
+     */
     @Test
     public void locationEqualsTest() {
 

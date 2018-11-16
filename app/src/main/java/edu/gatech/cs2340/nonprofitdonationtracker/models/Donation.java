@@ -119,10 +119,7 @@ public class Donation {
      * @return boolean value if they are equal or not
      */
     public static boolean equals(Donation d1, Donation d2) {
-        if (d1.getName().equals(d2.getName())) {
-            return true;
-        }
-        return false;
+        return d1.getName().equals(d2.getName());
     }
 
 //    public void setDate(Date timeStamp) {this.timeStamp = timeStamp;}
