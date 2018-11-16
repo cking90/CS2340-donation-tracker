@@ -9,7 +9,7 @@ import edu.gatech.cs2340.nonprofitdonationtracker.models.LocationType;
 import edu.gatech.cs2340.nonprofitdonationtracker.models.Donation;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+
 
 /**
  * Made by Daniel
@@ -51,6 +51,6 @@ public class AddDonationToLocationTest {
 
         //test adding to a donation with improper key
         Location.addDonationToLocation(1, d2);
-        assertNotEquals(location3.getDonations().get(0), d2);
+        assertEquals(location3.getDonations().size(), 0);
     }
 }
