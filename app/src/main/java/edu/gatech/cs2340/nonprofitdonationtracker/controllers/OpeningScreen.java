@@ -20,6 +20,7 @@ import java.util.Objects;
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 import edu.gatech.cs2340.nonprofitdonationtracker.models.Category;
 import edu.gatech.cs2340.nonprofitdonationtracker.models.Donation;
+import edu.gatech.cs2340.nonprofitdonationtracker.models.DonationInfo;
 import edu.gatech.cs2340.nonprofitdonationtracker.models.Location;
 import edu.gatech.cs2340.nonprofitdonationtracker.models.LocationType;
 import edu.gatech.cs2340.nonprofitdonationtracker.models.Model;
@@ -106,6 +107,7 @@ public class OpeningScreen extends AppCompatActivity {
                                 shortDescription, longDescription
                                 , value, category, new Date(timestamp));
                         location.addDonationLocal(donation);
+                        DonationInfo.addDonationToAllDonations(donation); //Added by Neha
                     }
                     Log.d("blue", location.toString());
                     Location.addLocationLocal(location);

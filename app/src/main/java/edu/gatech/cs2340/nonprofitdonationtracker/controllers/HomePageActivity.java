@@ -45,6 +45,16 @@ public class HomePageActivity extends AppCompatActivity {
     }
 
     /**
+     * Brings the user to the Graph Activity and
+     *
+     * @param view the activity_home_page layout file
+     */
+    public void onClickViewGraphs(View view) {
+        Intent intent = new Intent(this, GraphActivity.class);
+        startActivity(intent);
+    }
+
+    /**
      * the on click method for a button which opens MapsActivity
      * @param view - view
      */
