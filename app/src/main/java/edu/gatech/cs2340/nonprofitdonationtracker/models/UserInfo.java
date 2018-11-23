@@ -3,6 +3,7 @@ package edu.gatech.cs2340.nonprofitdonationtracker.models;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -27,18 +28,28 @@ public class UserInfo {
      * @param userType the user's UserType used to
      *                 decide access to application features
      */
-    public static void addNewUser(String name, String email, String password, String userType) {
+    public static void addNewUser(String name, String email, String password, String userType,
+                                  boolean locked, int attemptCount, Timestamp timestamp) {
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
         List<String> userInfo = new ArrayList<>();
         userInfo.add(name);
         userInfo.add(password);
         userInfo.add(userType);
-        String email2 = email.replace(".",",");
+        userInfo.add(String.valueOf(locked));
+        userInfo.add(timestamp.toString());
+        userInfo.add(String.valueOf(attemptCount));
+        String email2 = email;
+        if (email.contains(".")) {
+            email2 = email.replace(".", ",");
+        }
         loginInfo.put(email, userInfo);
         database.child("users").child(email2).child("name").setValue(name);
         database.child("users").child(email2).child("email").setValue(email);
         database.child("users").child(email2).child("password").setValue(password);
         database.child("users").child(email2).child("userType").setValue(userType);
+        database.child("users").child(email2).child("locked").setValue(String.valueOf(locked));
+        database.child("users").child(email2).child("attemptCount").setValue(String.valueOf(attemptCount));
+        database.child("users").child(email2).child("timestamp").setValue(timestamp.toString());
     }
 
     /**
@@ -51,11 +62,15 @@ public class UserInfo {
      * @param userType the user's UserType used to
      *                 decide access to application features
      */
-    public static void addUserToLocal(String name, String email, String password, String userType) {
+    public static void addUserToLocal(String name, String email, String password, String userType,
+                                      boolean locked, int attemptCount, Timestamp timestamp) {
             List<String> userInfo = new ArrayList<>();
             userInfo.add(name);
             userInfo.add(password);
             userInfo.add(userType);
+            userInfo.add(String.valueOf(locked));
+            userInfo.add(timestamp.toString());
+            userInfo.add(String.valueOf(attemptCount));
             loginInfo.put(email, userInfo);
     }
 
