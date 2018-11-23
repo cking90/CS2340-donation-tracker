@@ -208,6 +208,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 UserInfo.getLoginInfo().get(email).set(5, Integer.toString(number));
                 database.child("users").child(email).child("attemptCount").setValue(Integer.toString(number));
                 if (Integer.parseInt(UserInfo.getLoginInfo().get(email).get(5)) >= 3) {
+                    UserInfo.getLoginInfo().get(email).set(3, "true");
+                    database.child("users").child(email).child("locked").setValue("true");
                     UserInfo.getLoginInfo().get(email).set(4,
                             new Timestamp(System.currentTimeMillis() + 1 * 60 * 1000).toString());
                     database.child("users").child(email).child("timestamp").setValue(
@@ -234,6 +236,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
+            UserInfo.getLoginInfo().get(email).set(3, "false");
+            database.child("users").child(email).child("locked").setValue("false");
             UserInfo.getLoginInfo().get(email).set(5, Integer.toString(0));
             database.child("users").child(email).child("attemptCount").setValue(Integer.toString(0));
             Intent intent = new Intent(this, HomePageActivity.class);
