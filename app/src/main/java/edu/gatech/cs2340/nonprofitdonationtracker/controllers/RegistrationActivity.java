@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -14,6 +15,8 @@ import edu.gatech.cs2340.nonprofitdonationtracker.models.UserInfo;
 import edu.gatech.cs2340.nonprofitdonationtracker.models.UserType;
 
 import android.widget.Toast;
+
+import java.sql.Timestamp;
 
 /**
  * Controller for the activity_registration layout file.
@@ -72,7 +75,8 @@ public class RegistrationActivity extends AppCompatActivity {
         }
         if (!UserInfo.containsKey(email_value.toString())) {
             UserInfo.addNewUser(name_value.toString(), email_value.toString(),
-                    password_value.toString(), selected_user_type);
+                    password_value.toString(), selected_user_type, false, 0,
+                    new Timestamp(System.currentTimeMillis()));
             return true;
         } else {
             Toast toast = Toast.makeText(getApplicationContext()

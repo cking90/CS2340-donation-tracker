@@ -13,6 +13,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 
@@ -64,7 +65,12 @@ public class OpeningScreen extends AppCompatActivity {
                     String name = (String) snap.child("name").getValue();
                     String password = (String) snap.child("password").getValue();
                     String type = (String) snap.child("userType").getValue();
-                    UserInfo.addUserToLocal(name, email, password, type);
+                    String locked = (String) snap.child("locked").getValue();
+                    String attemptCount = (String) snap.child("attemptCount").getValue();
+                    String timestamp = (String) snap.child("timestamp").getValue();
+                    UserInfo.addUserToLocal(name, email, password, type,
+                            Boolean.parseBoolean(locked), Integer.parseInt(attemptCount),
+                            Timestamp.valueOf(timestamp));
                 }
 
                 for (DataSnapshot snap : dataSnapshot.child("locations").getChildren()) {

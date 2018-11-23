@@ -30,8 +30,15 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
@@ -154,6 +161,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+
         if (mAuthTask != null) {
             return;
         }
@@ -172,14 +181,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
-        if (TextUtils.isEmpty(password) || !isPasswordValid(email, password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
-            cancel = true;
-        }
-
-
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
             mEmailView.setError(getString(R.string.error_field_required));
@@ -189,21 +190,52 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
             cancel = true;
+        } else {
+            if (Integer.parseInt(UserInfo.getLoginInfo().get(email).get(5)) >= 3) {
+                Timestamp current = new Timestamp(System.currentTimeMillis());
+                if (!current.after(Timestamp.valueOf(UserInfo.getLoginInfo().get(email).get(4)))) {
+                    Toast toast = Toast.makeText(getApplicationContext()
+                            , "Your account is still locked out.", Toast.LENGTH_LONG);
+                    toast.show();
+                    cancel = true;
+                }
+            }
+            if (TextUtils.isEmpty(password) || !isPasswordValid(email, password)) {
+                cancel = true;
+                String count = UserInfo.getLoginInfo().get(email).get(5);
+                int number = Integer.parseInt(count);
+                number++;
+                UserInfo.getLoginInfo().get(email).set(5, Integer.toString(number));
+                database.child("users").child(email).child("attemptCount").setValue(Integer.toString(number));
+                if (Integer.parseInt(UserInfo.getLoginInfo().get(email).get(5)) >= 3) {
+                    UserInfo.getLoginInfo().get(email).set(4,
+                            new Timestamp(System.currentTimeMillis() + 1 * 60 * 1000).toString());
+                    database.child("users").child(email).child("timestamp").setValue(
+                            new Timestamp(System.currentTimeMillis() + 1 * 60 * 1000).toString());
+                    Toast toast = Toast.makeText(getApplicationContext()
+                            , "Your account is temporarily locked out.", Toast.LENGTH_LONG);
+                    toast.show();
+                } else {
+                    mPasswordView.setError(getString(R.string.error_invalid_password));
+                    focusView = mPasswordView;
+                }
+            }
         }
-
-
-
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
-            focusView.requestFocus();
+            if (focusView != null) {
+                focusView.requestFocus();
+            }
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
+            UserInfo.getLoginInfo().get(email).set(5, Integer.toString(0));
+            database.child("users").child(email).child("attemptCount").setValue(Integer.toString(0));
             Intent intent = new Intent(this, HomePageActivity.class);
             model.setUserInfo(email);
             intent.putExtra("user_email", email);
