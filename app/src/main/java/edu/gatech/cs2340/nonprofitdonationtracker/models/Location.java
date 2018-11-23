@@ -93,6 +93,30 @@ public class Location {
         this.website = website;
     }
 
+    public HashMap<Category, Float> getPercentMarkups() {
+        HashMap<Category, Float> markups = new HashMap<>();
+        float f = 0.1f;
+        for (Category c : Category.values()) {
+            Float fValue = new Float(((Math.random()*10) + 1)*f);
+            markups.put(c, fValue);
+        }
+        return markups;
+    }
+
+    public float donationsPerMonthRate() {
+        float[] vals = new float[12];
+        for (Donation d: donationList) {
+            int month = DonationInfo.getMonth(d.getDate());
+            vals[month] += 1;
+        }
+        float total = 0;
+        for (float f : vals) {
+            total += f;
+        }
+        total = total/12;
+        return total;
+    }
+
     /**
      * Returns the list of locations
      * @return a list of locations

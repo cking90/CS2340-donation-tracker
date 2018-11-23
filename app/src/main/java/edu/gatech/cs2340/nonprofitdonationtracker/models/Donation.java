@@ -1,6 +1,8 @@
 package edu.gatech.cs2340.nonprofitdonationtracker.models;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Represents an item donated to the organization
@@ -127,6 +129,8 @@ public class Donation {
         Donation other = (Donation) d1;
         return other.name.equals(this.name);
     }
+
+
 
 //    public void setDate(Date timeStamp) {this.timeStamp = timeStamp;}
 //
