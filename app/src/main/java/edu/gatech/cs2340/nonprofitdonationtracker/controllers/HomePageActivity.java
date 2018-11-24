@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
+
+import java.util.Objects;
+
 import edu.gatech.cs2340.nonprofitdonationtracker.R;
 import edu.gatech.cs2340.nonprofitdonationtracker.models.Model;
 
@@ -28,6 +32,23 @@ public class HomePageActivity extends AppCompatActivity {
         userEmail = model.getCurrentUserEmail();
 
     }
+
+    public void onClickAddLocation(View view) {
+        Intent extrasIntent = getIntent();
+        Bundle extras = extrasIntent.getExtras();
+        assert extras != null;
+        String userType = extras.getString("user_type");
+        if ("Manager".equals(userType)) {
+            Intent intent = new Intent(this, AddLocationActivity.class);
+            intent.putExtra("user_type", extras.getString("user_type"));
+            startActivity(intent);
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext()
+                    , "Only Managers may add locations", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
+
 
     /**
      * Brings the user to the ViewAllLocations Activity and
