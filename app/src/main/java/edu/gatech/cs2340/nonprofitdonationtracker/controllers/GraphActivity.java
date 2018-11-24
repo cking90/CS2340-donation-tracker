@@ -97,7 +97,10 @@ public class GraphActivity extends AppCompatActivity {
         IAxisValueFormatter formatter = new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
-                return locations[(int)value];
+                if (value < locations.length) {
+                    return locations[(int) value];
+                }
+                return null;
             }
         };
 
