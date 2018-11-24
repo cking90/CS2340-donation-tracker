@@ -173,7 +173,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         // Store values at the time of the login attempt.
         Editable emailField = mEmailView.getText();
-        String email = emailField.toString();
+        String email = emailField.toString().trim();
 
         Editable passwordField = mPasswordView.getText();
         String password = passwordField.toString();
